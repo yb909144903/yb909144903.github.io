@@ -2151,6 +2151,10 @@ a {
   background: url("../img/zhihu.png") center no-repeat #0663c1;
   border: 1px solid #0663c1;
 }
+#header .header-nav .social a.juejin {
+  background: url("../img/juejin.png") center no-repeat #0663c1;
+  border: 1px solid #0663c1;
+}
 #header .header-nav .social a.douban {
   background: url("../img/douban.png") center no-repeat #06c611;
   border: 1px solid #06c611;
