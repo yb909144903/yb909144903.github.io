@@ -113,13 +113,26 @@
       
     </script>
     
+    <style>
+      .homelogoback:hover {
+        overflow: hidden;
+        padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        filter:alpha(opacity=90);  -moz-opacity:0.9;  -khtml-opacity: 0.9;  opacity: 0.9;
+        box-shadow: 4px 4px 10px #fb6d19;
+      }
+    </style>
 
-    
+    <link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css">
+
+    <!-- 
       <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
-    
-
+     -->
+    <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
         
-          <div class="homelogoback" style="border: 1px solid #404040;">
+          <!-- <div class="homelogoback"  style="border: 1px solid #404040;" > -->
+          <div class="homelogoback shake-slow" style="border: 1px solid #404040;">
             <h1><a href="#content" id="logo">Timbok&#39;s Blog</a></h1>
             <h3>Life is but a span.</h3>
             <h5>Timbok</h5>
@@ -154,7 +167,9 @@
         
           <a id="beautifont" class="main-nav-link" href="/archives">归档</a>
         
-          <a id="beautifont" class="main-nav-link" href="/about">关于</a>
+          <a id="beautifont" class="main-nav-link" href="/categories">分类</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/introduce">关于</a>
         
       </p>
   </div>
@@ -168,6 +183,68 @@
       <div id="content" class="outer">
         
           <section id="main" style="float:none;">
+  
+    <article id="post-Git" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/11/29/Git/">Git中遇到的大大小小的坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/11/29/Git/" class="article-date">
+	  <time datetime="2018-11-29T12:41:49.000Z" itemprop="datePublished">2018-11-29</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          目的：记录自己平时在项目中遇到的坑   
+
+Tips
+不要在dev上操作。
+更新git: git update-
+
+
+1.windows清除git保存账号信息步骤因为做项目可能会用到不同的gitLab远程库，我的git默认是记住密码的，当时困扰了我好久，项目中的一个大佬，告诉的我这种方法。
+
+开始菜单-&gt;控制面板-&gt;凭据管理器-&gt;windows凭据-&gt;从保管库中删除.
+
+如图：
+2.Git修改文件名大小写时不更新如果使用windows系统Coding，使用git时,...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/11/29/Git/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
   
     <article id="post-vscode" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
@@ -190,6 +267,8 @@
 	</a>
 
       
+    <a class="article-category-link" href="/categories/工具资源/">工具资源</a>
+
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -244,6 +323,8 @@ GitHub账号
 	</a>
 
       
+    <a class="article-category-link" href="/categories/随身笔记/">随身笔记</a>
+
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -322,7 +403,9 @@ GitHub账号
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
-    <a href="/about" class="mobile-nav-link">About</a>
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/introduce" class="mobile-nav-link">Introduce</a>
   
 </nav> -->
     

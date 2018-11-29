@@ -3,33 +3,26 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>三分钟教你同步 visual studio code 设置 | Timbok&#39;s Blog</title>
+  <title>git中遇到的大大小小的坑 | Timbok&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
-  <meta name="description" content="简介Visual Studio Code(以下简称vsCode)现在已经渐渐成为前端开发的主力工具，谁让它这么轻便，功能又这么轻便呢。用vscode Coding的小伙伴们也一定会装很多插件吧。但是当你准备更换电脑的时候，是不是为迁移插件和设置而烦恼？我曾经换电脑的时候，把vsCode上自己心爱的插件一个个记下，然后去新电脑上重装，太蠢了。今天我就把vsCode同步设置和插件的方法告诉大家。 准">
+  <meta name="description" content="目的：记录自己平时在项目中遇到的坑     Tips 不要在dev上操作。 更新git: git update-   1.windows清除git保存账号信息步骤因为做项目可能会用到不同的gitLab远程库，我的git默认是记住密码的，当时困扰了我好久，项目中的一个大佬，告诉的我这种方法。  开始菜单-&amp;gt;控制面板-&amp;gt;凭据管理器-&amp;gt;windows凭据-&amp;gt;从保管库中删除.  如">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三分钟教你同步 visual studio code 设置">
-<meta property="og:url" content="https://yb909144903.github.io/2018/11/28/vscode/index.html">
+<meta property="og:title" content="Git中遇到的大大小小的坑">
+<meta property="og:url" content="https://yb909144903.github.io/2018/11/29/Git/index.html">
 <meta property="og:site_name" content="Timbok&#39;s Blog">
-<meta property="og:description" content="简介Visual Studio Code(以下简称vsCode)现在已经渐渐成为前端开发的主力工具，谁让它这么轻便，功能又这么轻便呢。用vscode Coding的小伙伴们也一定会装很多插件吧。但是当你准备更换电脑的时候，是不是为迁移插件和设置而烦恼？我曾经换电脑的时候，把vsCode上自己心爱的插件一个个记下，然后去新电脑上重装，太蠢了。今天我就把vsCode同步设置和插件的方法告诉大家。 准">
+<meta property="og:description" content="目的：记录自己平时在项目中遇到的坑     Tips 不要在dev上操作。 更新git: git update-   1.windows清除git保存账号信息步骤因为做项目可能会用到不同的gitLab远程库，我的git默认是记住密码的，当时困扰了我好久，项目中的一个大佬，告诉的我这种方法。  开始菜单-&amp;gt;控制面板-&amp;gt;凭据管理器-&amp;gt;windows凭据-&amp;gt;从保管库中删除.  如">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/14/165d6e0871f1e1d4?w=710&h=450&f=png&s=101677">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/14/165d6e7598d54437?w=321&h=635&f=png&s=61373">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/14/165d6e8d352cfe6e?w=603&h=255&f=png&s=22002">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/14/165d6eb17840a944?w=1144&h=641&f=png&s=76989">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/14/165d6ec28b407806?w=1145&h=501&f=png&s=67123">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/14/165d6ee9fd5c1f73?w=1366&h=1473&f=png&s=170284">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/14/165d6f0da32d5d96?w=600&h=136&f=png&s=13080">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/14/165d6f83182f24a2?w=1062&h=678&f=png&s=71397">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/14/165d6fc193000c64?w=1366&h=502&f=png&s=36039">
-<meta property="og:updated_time" content="2018-11-29T08:28:51.808Z">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/7/1651337a87bb120d?w=655&h=404&f=png&s=36211">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/10/165c2459af328fcf?w=903&h=230&f=png&s=4138">
+<meta property="og:updated_time" content="2018-11-29T12:44:41.931Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三分钟教你同步 visual studio code 设置">
-<meta name="twitter:description" content="简介Visual Studio Code(以下简称vsCode)现在已经渐渐成为前端开发的主力工具，谁让它这么轻便，功能又这么轻便呢。用vscode Coding的小伙伴们也一定会装很多插件吧。但是当你准备更换电脑的时候，是不是为迁移插件和设置而烦恼？我曾经换电脑的时候，把vsCode上自己心爱的插件一个个记下，然后去新电脑上重装，太蠢了。今天我就把vsCode同步设置和插件的方法告诉大家。 准">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/9/14/165d6e0871f1e1d4?w=710&h=450&f=png&s=101677">
+<meta name="twitter:title" content="Git中遇到的大大小小的坑">
+<meta name="twitter:description" content="目的：记录自己平时在项目中遇到的坑     Tips 不要在dev上操作。 更新git: git update-   1.windows清除git保存账号信息步骤因为做项目可能会用到不同的gitLab远程库，我的git默认是记住密码的，当时困扰了我好久，项目中的一个大佬，告诉的我这种方法。  开始菜单-&amp;gt;控制面板-&amp;gt;凭据管理器-&amp;gt;windows凭据-&amp;gt;从保管库中删除.  如">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/8/7/1651337a87bb120d?w=655&h=404&f=png&s=36211">
   
     <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
   
@@ -164,7 +157,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-vscode" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Git" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -172,7 +165,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      三分钟教你同步 visual studio code 设置
+      Git中遇到的大大小小的坑
     </h1>
   
 
@@ -180,12 +173,12 @@
     
     <div class="article-meta">
       
-	<a href="/2018/11/28/vscode/" class="article-date">
-	  <time datetime="2018-11-28T11:57:11.000Z" itemprop="datePublished">2018-11-28</time>
+	<a href="/2018/11/29/Git/" class="article-date">
+	  <time datetime="2018-11-29T12:41:49.000Z" itemprop="datePublished">2018-11-29</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/工具资源/">工具资源</a>
+    <a class="article-category-link" href="/categories/Git/">Git</a>
 
       
 	<a class="article-views">
@@ -197,41 +190,138 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d6e0871f1e1d4?w=710&amp;h=450&amp;f=png&amp;s=101677" alt=""></p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Visual Studio Code(以下简称vsCode)现在已经渐渐成为前端开发的主力工具，谁让它这么轻便，功能又这么轻便呢。用vscode Coding的小伙伴们也一定会装很多插件吧。但是当你准备更换电脑的时候，是不是为迁移插件和设置而烦恼？我曾经换电脑的时候，把vsCode上自己心爱的插件一个个记下，然后去新电脑上重装，太蠢了。今天我就把vsCode同步设置和插件的方法告诉大家。</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
-<li>下载Settings Sync插件</li>
-<li>GitHub账号</li>
+        <font color="#999">目的：记录自己平时在项目中遇到的坑</font>   
+
+<h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>不要在dev上操作。</li>
+<li>更新git: git update-</li>
 </ul>
-<h3 id="1-安装Settings-Sync"><a href="#1-安装Settings-Sync" class="headerlink" title="1.安装Settings Sync"></a>1.安装Settings Sync</h3><p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d6e7598d54437?w=321&amp;h=635&amp;f=png&amp;s=61373" alt="图1"></p>
-<p><strong>Setting Sync 快捷键：</strong></p>
-<p>1) 上传： Shift + Alt + U (Sync: Update / Upload Settings)</p>
-<p>2) 下载： Shift + Alt + D (Sync: Download  Settings)</p>
-<p> 如果快捷键有冲突，可Ctrl + K + S快捷键设置配置其它快捷键 或 Ctrl + P / F1 在命令窗口输入 &gt;sync 即会出现相应命令供选择</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d6e8d352cfe6e?w=603&amp;h=255&amp;f=png&amp;s=22002" alt="图2"></p>
-<h3 id="2-打开GitHub"><a href="#2-打开GitHub" class="headerlink" title="2.打开GitHub"></a>2.打开GitHub</h3><p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d6eb17840a944?w=1144&amp;h=641&amp;f=png&amp;s=76989" alt="图3"></p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d6ec28b407806?w=1145&amp;h=501&amp;f=png&amp;s=67123" alt="图4"></p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d6ee9fd5c1f73?w=1366&amp;h=1473&amp;f=png&amp;s=170284" alt="图5"></p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d6f0da32d5d96?w=600&amp;h=136&amp;f=png&amp;s=13080" alt="图6"></p>
-<p>这样你就得到一个token，最好找个地方记下来。因为它就是同步设置的关键。</p>
-<h3 id="3-将token配置到vsCode"><a href="#3-将token配置到vsCode" class="headerlink" title="3.将token配置到vsCode"></a>3.将token配置到vsCode</h3><p>(Sync: Update / Uplaod Settings) Shift + Alt + U 在弹窗里输入你的token， 回车后会生成syncSummary.txt文件</p>
-<p>syncSummary.txt文件会存储VSCode的设置及所安装的插件列表</p>
-<p><strong>如果你使用的是新版本的vsCode</strong></p>
-<p>打开设置，在搜索框中输入sync，就可以看到自己的token了</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d6f83182f24a2?w=1062&amp;h=678&amp;f=png&amp;s=71397" alt="图7"></p>
-<h3 id="4-设置同步下载设置"><a href="#4-设置同步下载设置" class="headerlink" title="4.设置同步下载设置"></a>4.设置同步下载设置</h3><p>(Sync: Download  Settings) Shift + Alt + D 在弹窗里输入你的gist值，稍后片刻便可同步成功</p>
-<h3 id="5-如果要重置同步设置，变更其它token"><a href="#5-如果要重置同步设置，变更其它token" class="headerlink" title="5.如果要重置同步设置，变更其它token"></a>5.如果要重置同步设置，变更其它token</h3><p>Ctrl+P / F1 弹出输入&gt;sync,即可重新配置你的其它token来同步</p>
-<h3 id="6-Tips"><a href="#6-Tips" class="headerlink" title="6.Tips"></a>6.Tips</h3><p>上传同步设置的时候，vsCode底下可以看到操作信息</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d6fc193000c64?w=1366&amp;h=502&amp;f=png&amp;s=36039" alt="图8"></p>
-<p><strong>Setting Sync 可同步包含的所有扩展和完整的用户文件夹</strong></p>
-<p>1) 设置文件</p>
-<p>2) 快捷键设置文件</p>
-<p>3) Launch File</p>
-<p>4) Snippets Folder</p>
-<p>5) VSCode 扩展设置</p>
-<p>6) 工作空间</p>
-<p><a href="https://www.cnblogs.com/kenz520/p/7416836.html" target="_blank" rel="noopener">参考文章</a></p>
-<p><a href="http://shanalikhan.github.io/2016/05/14/Visual-studio-code-sync-settings-release-notes.html" target="_blank" rel="noopener">Settings Sync更新说明</a></p>
+<hr>
+<h2 id="1-windows清除git保存账号信息步骤"><a href="#1-windows清除git保存账号信息步骤" class="headerlink" title="1.windows清除git保存账号信息步骤"></a>1.windows清除git保存账号信息步骤</h2><p>因为做项目可能会用到不同的gitLab远程库，我的git默认是记住密码的，当时困扰了我好久，项目中的一个大佬，告诉的我这种方法。</p>
+<blockquote>
+<p>开始菜单-&gt;控制面板-&gt;凭据管理器-&gt;windows凭据-&gt;从保管库中删除.</p>
+</blockquote>
+<p>如图：<br><img src="https://user-gold-cdn.xitu.io/2018/8/7/1651337a87bb120d?w=655&amp;h=404&amp;f=png&amp;s=36211" alt=""></p>
+<h2 id="2-Git修改文件名大小写时不更新"><a href="#2-Git修改文件名大小写时不更新" class="headerlink" title="2.Git修改文件名大小写时不更新"></a>2.Git修改文件名大小写时不更新</h2><p>如果使用windows系统Coding，使用git时,如果一个文件只是把文件名的大小写改一下,提交后默认更新下来还是改之前的情况。通过谷歌，我找到以下两种方案。</p>
+<ul>
+<li><p><strong>通过修改”core.ignorecase false”来设置git大小写敏感.需要在提交端修改.</strong></p>
+<blockquote>
+<p>git config core.ignorecase false</p>
+</blockquote>
+</li>
+<li><p><strong>先删除文件再添加进去</strong></p>
+<blockquote>
+<p>git rm<br>git add.<br>git commit -m “rename file”</p>
+</blockquote>
+</li>
+<li><p><strong>终极解决方案</strong></p>
+</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/9/10/165c2459af328fcf?w=903&amp;h=230&amp;f=png&amp;s=4138" alt=""></p>
+<h2 id="3-平时项目中git的基本操作"><a href="#3-平时项目中git的基本操作" class="headerlink" title="3.平时项目中git的基本操作"></a>3.平时项目中git的基本操作</h2><ul>
+<li><p><strong>暂存修改的文件</strong></p>
+<blockquote>
+<p>git add [fileName] ——暂存某个文件<br>git add . ——暂存所有修改的文件</p>
+</blockquote>
+</li>
+<li><p><strong>撤销本地修改文件</strong></p>
+<blockquote>
+<p>git checkout [fileName] ——撤销某个文件<br>git checkout . ——撤销所有修改的文件</p>
+</blockquote>
+</li>
+<li><p><strong>提交暂存区文件</strong></p>
+<ul>
+<li>fix：修复bug</li>
+<li>update：更新文件</li>
+<li>add：新增文件</li>
+<li>modify：重命名</li>
+<li>delete：删除文件<blockquote>
+<p>git commit -m “你的提交备注”</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>不想commit，那就储藏</strong></p>
+<blockquote>
+<p>git stash ——储藏<br>git stash pop/apply ——弹出储藏</p>
+</blockquote>
+</li>
+<li><p>将本地仓库的代码推到远程分支</p>
+<blockquote>
+<p>git push [远程分支名]</p>
+</blockquote>
+</li>
+<li><p><strong>切换分支</strong></p>
+<blockquote>
+<p>git checkout [你要切换的分支名]  </p>
+</blockquote>
+</li>
+</ul>
+<p><em>注释：切换分支之前，一定要将修改的文件提交或者放进储藏区</em></p>
+<ul>
+<li><p><strong>拉取远程分支代码</strong></p>
+<blockquote>
+<p>git pull orgin [分支名]<br>git pull ——拉取当前分支的代码</p>
+</blockquote>
+</li>
+<li><p><strong>合并分支</strong></p>
+<blockquote>
+<p>git merge [你要合并的分支名]</p>
+</blockquote>
+</li>
+<li><p><strong>查看本地分支</strong></p>
+<blockquote>
+<p>git branch</p>
+</blockquote>
+</li>
+<li><p><strong>查看远程分支</strong></p>
+<blockquote>
+<p>git branch -a</p>
+</blockquote>
+</li>
+<li><p><strong>删除本地分支</strong></p>
+<blockquote>
+<p>git branch -d/-D [你要删除的分支]</p>
+</blockquote>
+</li>
+<li><p><strong>删除远程分支</strong></p>
+<blockquote>
+<p>git branch orgin –delete [你要删除掉的分支]</p>
+</blockquote>
+</li>
+<li><p><strong>查看提交记录</strong></p>
+<blockquote>
+<p>git log<br>git log -5 查看五条记录</p>
+</blockquote>
+</li>
+<li><p><strong>查看被删除的提交记录</strong></p>
+<blockquote>
+<p>git reflog</p>
+</blockquote>
+</li>
+<li><p><strong>回滚代码</strong></p>
+<blockquote>
+<p>git reset [commitId]  回滚代码但修改的代码还在<br>git reset –hard [commitId] 回滚代码且修改的代码也没了</p>
+</blockquote>
+</li>
+<li><p><strong>推送代码</strong></p>
+<blockquote>
+<p>git push orgin [当前分支]:devlop</p>
+</blockquote>
+</li>
+<li><p><strong>连接远程仓库</strong></p>
+<blockquote>
+<p>git remote add origin 仓库地址<br>仓库地址：<a href="https://git.coding.net/xxxxxxxxxxxxx/my-project.git" target="_blank" rel="noopener">https://git.coding.net/xxxxxxxxxxxxx/my-project.git</a><br>git push -u orgin master</p>
+</blockquote>
+</li>
+<li><p><strong>删除远程仓库</strong></p>
+<blockquote>
+<p> git remote remove origin</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<p style="text-align:right"><i>因为这篇文章属于我自己的记录，有的为别人博客的内容。侵权必删</i></p>
 
       
     </div>
@@ -245,7 +335,7 @@
           </li>
           <li class="post-copyright-link">
           <strong>本文链接:  </strong>
-          <a href="/2018/11/28/vscode/" target="_blank" title="三分钟教你同步 visual studio code 设置">https://yb909144903.github.io/2018/11/28/vscode/</a>
+          <a href="/2018/11/29/Git/" target="_blank" title="Git中遇到的大大小小的坑">https://yb909144903.github.io/2018/11/29/Git/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明:   </strong>
@@ -266,19 +356,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/11/29/Git/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          Git中遇到的大大小小的坑
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/27/index/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/11/28/vscode/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">测试Blog</div>
+      <div class="article-nav-title">三分钟教你同步 visual studio code 设置</div>
     </a>
   
 </nav>
@@ -292,9 +373,9 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装Settings-Sync"><span class="nav-number">1.2.</span> <span class="nav-text">1.安装Settings Sync</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-打开GitHub"><span class="nav-number">1.3.</span> <span class="nav-text">2.打开GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-将token配置到vsCode"><span class="nav-number">1.4.</span> <span class="nav-text">3.将token配置到vsCode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-设置同步下载设置"><span class="nav-number">1.5.</span> <span class="nav-text">4.设置同步下载设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-如果要重置同步设置，变更其它token"><span class="nav-number">1.6.</span> <span class="nav-text">5.如果要重置同步设置，变更其它token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Tips"><span class="nav-number">1.7.</span> <span class="nav-text">6.Tips</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#1-windows清除git保存账号信息步骤"><span class="nav-number"></span> <span class="nav-text">1.windows清除git保存账号信息步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Git修改文件名大小写时不更新"><span class="nav-number"></span> <span class="nav-text">2.Git修改文件名大小写时不更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-平时项目中git的基本操作"><span class="nav-number"></span> <span class="nav-text">3.平时项目中git的基本操作</span></a>
     
-    </div>
+    </li></div>
   </aside>
 
 </section>
