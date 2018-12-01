@@ -108,7 +108,7 @@
                   
                     <div class="item">
                   
-                    <img id="carousel-img1" src="/css/images/home-bg-1.jpg">
+                    <img id="carousel-img1" src="https://source.unsplash.com/collection/954550/1920x1080">
                   </div>
 
                   <!-- 自适应大图 -->
@@ -122,27 +122,6 @@
                         } else {
                           imageTag1.style.height = document.body.clientHeight + "px";
                           imageTag1.style.marginLeft = -(document.body.clientHeight * img1.width / img1.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img2" src="https://source.unsplash.com/collection/954550/1920x1080">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img2 = new Image();
-                      var imageTag2 = document.getElementById("carousel-img2");
-                      img2.src = imageTag2.src;
-                      img2.onload=function(){
-                        if (img2.width / img2.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag2.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag2.style.height = document.body.clientHeight + "px";
-                          imageTag2.style.marginLeft = -(document.body.clientHeight * img2.width / img2.height - document.body.clientWidth) / 2 + "px";
                         }
                       };
                   </script>
