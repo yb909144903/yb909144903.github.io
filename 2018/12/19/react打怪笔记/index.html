@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>
+    
+    react打怪笔记 |
+    
+    Timbok&#39;s Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="前端 Git React Es6 JavaScript">
+  
+  
+  
+  
+  <meta name="description" content="介绍本文用于记录在学习react中的记录。 Tips: 当组件的props或state有变化，执行render函数。 无论是使用函数或是类来声明一个组件，它决不能修改它自己的props  无状态函数式组件 (stateless functional component)例: 12345678910111213141516&amp;lt;!--this--&amp;gt;function Welcome(props">
+<meta name="keywords" content="前端 git react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react打怪笔记">
+<meta property="og:url" content="https://yb909144903.github.io/2018/12/19/react打怪笔记/index.html">
+<meta property="og:site_name" content="Timbok&#39;s Blog">
+<meta property="og:description" content="介绍本文用于记录在学习react中的记录。 Tips: 当组件的props或state有变化，执行render函数。 无论是使用函数或是类来声明一个组件，它决不能修改它自己的props  无状态函数式组件 (stateless functional component)例: 12345678910111213141516&amp;lt;!--this--&amp;gt;function Welcome(props">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14EjDJy3GW84h/Qp6cCD2iqIpGqvaVv1eWWki34FR0oMbdQ3TDB9N4fk8!/b/dFMBAAAAAAAA&bo=2AS7AgAAAAADB0c!&rf=viewer_4">
+<meta property="og:updated_time" content="2018-12-19T08:44:12.331Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react打怪笔记">
+<meta name="twitter:description" content="介绍本文用于记录在学习react中的记录。 Tips: 当组件的props或state有变化，执行render函数。 无论是使用函数或是类来声明一个组件，它决不能修改它自己的props  无状态函数式组件 (stateless functional component)例: 12345678910111213141516&amp;lt;!--this--&amp;gt;function Welcome(props">
+<meta name="twitter:image" content="http://m.qpic.cn/psb?/V14EjDJy3GW84h/Qp6cCD2iqIpGqvaVv1eWWki34FR0oMbdQ3TDB9N4fk8!/b/dFMBAAAAAAAA&bo=2AS7AgAAAAADB0c!&rf=viewer_4">
+  
+  <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/avatar.jpg">
+  <link rel="apple-touch-icon" href="/css/images/avatar.jpg">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+  <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <script>
+    console.log("%cTimbok",
+      " text-shadow: 0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);font-size:5em"
+    );
+    console.log('%c看到这段话说明你我前世有缘，这里都是很一般的博客，但是希望你我一起进步。','font-size: 15px');
+  </script>
+
+</head></html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+    <link href="https://cdn.bootcss.com/csshake/1.5.3/csshake-little.min.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_943855_whj85qlkoi.css" rel="stylesheet">
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand shake-little" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/introduce">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-react打怪笔记" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      react打怪笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/12/19/react打怪笔记/" class="article-date">
+	  <time datetime="2018-12-19T08:39:01.000Z" itemprop="datePublished">2018-12-19</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/React/">React</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>本文用于记录在学习react中的记录。</p>
+<h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a>Tips:</h4><ul>
+<li>当组件的props或state有变化，执行render函数。</li>
+<li>无论是使用函数或是类来声明一个组件，它决不能修改它自己的props</li>
+</ul>
+<h2 id="无状态函数式组件-stateless-functional-component"><a href="#无状态函数式组件-stateless-functional-component" class="headerlink" title="无状态函数式组件 (stateless functional component)"></a>无状态函数式组件 (stateless functional component)</h2><p>例:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--<span class="keyword">this</span>--&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;p&gt;hello, &#123;props.name&#125;&lt;/p&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!--or ES6--&gt;</span><br><span class="line"><span class="keyword">const</span> Welcome = <span class="function">(<span class="params">&#123; name &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;p&gt;hello, &#123;props.name&#125;&lt;/p&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> element = &lt;Welcome name="Timbok" /&gt;</span><br><span class="line"></span><br><span class="line">ReactDom.render(</span><br><span class="line">    element,</span><br><span class="line">    document.getElementById('root'),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="无生命周期方法"><a href="#无生命周期方法" class="headerlink" title="无生命周期方法"></a>无生命周期方法</h4><p>函数式组件，有时也被称为无状态组件，没有任何生命周期方法，意味着每次上层组件树状态发生变更时它们都会重新渲染，这就是因为缺少 ==shouldComponentUpdate== 方法导致的。这也同样意味着您不能定义某些基于组件挂载和卸载的行为。</p>
+<h4 id="没有-this-和-ref"><a href="#没有-this-和-ref" class="headerlink" title="没有 this 和 ref"></a>没有 this 和 ref</h4><p>更有趣的是您在函数式组件中既不能使用 ==this==关键字或访问到 ==ref==。对于习惯了严格意义上的类或面向对象风格的人来说，这很让他们惊讶。这也是使用函数最大的争论点。<br>另一个有趣的事实就是您仍然可以访问到 context，如果您将 context 定义为函数的一个 props。</p>
+<h4 id="避免常见陷阱"><a href="#避免常见陷阱" class="headerlink" title="避免常见陷阱"></a>避免常见陷阱</h4><p>在编写无状态函数式组件时，您需要避免某些特定的模式。避免在函数式组件中定义函数，这是因为每一次函数式组件被调用的时候，一个新的函数都会被创建。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Functional = <span class="function">(<span class="params">&#123;...&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> handleSomething = <span class="function"><span class="params">e</span> =&gt;</span> path([<span class="string">'event'</span>, <span class="string">'target'</span>], e)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个问题很容易解决，您可以将这个函数作为 props 传递进去，或者将它定义在组件外面。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> handleSomething = <span class="function"><span class="params">e</span> =&gt;</span> path([<span class="string">'event'</span>, <span class="string">'target'</span>], e)</span><br><span class="line"><span class="keyword">const</span> Functional = <span class="function">(<span class="params">&#123;...&#125;</span>) =&gt;</span> <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><h3 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h3><p><img src="http://m.qpic.cn/psb?/V14EjDJy3GW84h/Qp6cCD2iqIpGqvaVv1eWWki34FR0oMbdQ3TDB9N4fk8!/b/dFMBAAAAAAAA&amp;bo=2AS7AgAAAAADB0c!&amp;rf=viewer_4" alt="react生命周期图解"></p>
+<p><a href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" rel="noopener">生命周期演示</a></p>
+<h4 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h4><p>在组件初始化阶段会执行</p>
+<blockquote>
+<ol>
+<li>constructor</li>
+<li>static getDerivedStateFromProps()</li>
+<li>componentWillMount() / UNSAFE_componentWillMount()</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ol>
+</blockquote>
+<h4 id="2-更新阶段"><a href="#2-更新阶段" class="headerlink" title="2.更新阶段"></a>2.更新阶段</h4><p><code>props</code>或<code>state</code>的改变可能会引起组件的更新，组件重新渲染的过程中会调用以下方法：</p>
+<blockquote>
+<ol>
+<li>componentWillReceiveProps() / UNSAFE_componentWillReceiveProps()</li>
+<li>static getDerivedStateFromProps()</li>
+<li>shouldComponentUpdate()</li>
+<li>componentWillUpdate() / UNSAFE_componentWillUpdate()</li>
+<li>render()</li>
+<li>getSnapshotBeforeUpdate()</li>
+<li>componentDidUpdate()</li>
+</ol>
+</blockquote>
+<h4 id="3-卸载阶段"><a href="#3-卸载阶段" class="headerlink" title="3.卸载阶段"></a>3.卸载阶段</h4><blockquote>
+<ol>
+<li>componentWillUnmount()</li>
+</ol>
+</blockquote>
+<h4 id="4-错误处理"><a href="#4-错误处理" class="headerlink" title="4.错误处理"></a>4.错误处理</h4><blockquote>
+<ol>
+<li>componentDidCatch()</li>
+</ol>
+</blockquote>
+<h3 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h3><h3 id="1-constructor-props"><a href="#1-constructor-props" class="headerlink" title="1.constructor(props)"></a>1.constructor(props)</h3><p>react组件的构造函数在挂载之前被调用。在实现<code>React.Component</code>构造函数时，需要先在添加其他内容前，调用<code>super(props)</code>，用来将父组件传来的<code>props</code>绑定到这个类中，使用<code>this.props</code>将会得到。</p>
+<p>官方建议不要在<code>constructor</code>引入任何具有副作用和订阅功能的代码，这些应当在<code>componentDidMount()</code>中写入。</p>
+<p><code>constructor</code>中应当做些初始化的动作，如：初始化<code>state</code>，将事件处理函数绑定到类实例上，但也不要使用<code>setState()</code>。如果没有必要初始化state或绑定方法，则不需要构造<code>constructor</code>，或者把这个组件换成纯函数写法。</p>
+<p>当然也可以利用<code>props</code>初始化<code>state</code>，在之后修改<code>state</code>不会对props造成任何修改，但仍然建议大家提升状态到父组件中，或使用<code>redux</code>统一进行状态管理。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">  <span class="keyword">super</span>(props);</span><br><span class="line">  <span class="keyword">this</span>.state = &#123;</span><br><span class="line">    color: props.initialColor</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-static-getDerivedStateFromProps-nextProps-prevState"><a href="#2-static-getDerivedStateFromProps-nextProps-prevState" class="headerlink" title="2.static getDerivedStateFromProps(nextProps, prevState)"></a>2.static getDerivedStateFromProps(nextProps, prevState)</h3><p><code>getDerivedStateFromProps</code>在组件实例化后，和接受新的<code>props</code>后被调用。他返回一个对象来更新状态，或者返回null表示新的props不需要任何state的更新。</p>
+<p>如果是由于父组件的props更改，所带来的重新渲染，也会触发此方法。</p>
+<p>调用<code>steState()</code>不会触发<code>getDerivedStateFromProps()</code>。</p>
+<h3 id="3-componentWillMount-UNSAFE-componentWillMount"><a href="#3-componentWillMount-UNSAFE-componentWillMount" class="headerlink" title="3. componentWillMount() / UNSAFE_componentWillMount()"></a>3. componentWillMount() / UNSAFE_componentWillMount()</h3><p><code>componentWillMount()</code>将在react未来版本中被弃用。<code>UNSAFE_componentWillMount()</code>在组件挂载前被调用，在这个方法中调用<code>setState()</code>不会起作用，是由于他在<code>render()</code>前被调用。</p>
+<p>为了避免副作用和其他的订阅，官方都建议使用<code>componentDidMount()</code>代替。这个方法是用于在服务器渲染上的唯一方法。</p>
+<h3 id="4-render"><a href="#4-render" class="headerlink" title="4.render()"></a>4.render()</h3><p><code>render()</code>方法是必需的。当他被调用时，他将计算<code>this.props</code>和<code>this.state</code>，并返回以下一种类型：</p>
+<ol>
+<li>React元素。通过jsx创建，既可以是dom元素，也可以是用户自定义的组件。</li>
+<li>字符串或数字。他们将会以文本节点形式渲染到dom中。</li>
+<li>Portals。react 16版本中提出的新的解决方案，可以使组件脱离父组件层级直接挂载在DOM树的任何位置。</li>
+<li><code>null</code>，什么也不渲染</li>
+<li>布尔值。也是什么都不渲染，通常后跟组件进行判断。</li>
+</ol>
+<p>当返回<code>null</code>,<code>false</code>,<code>ReactDOM.findDOMNode(this)</code>将会返回null，什么都不会渲染。</p>
+<p><code>render()</code>方法必须是一个纯函数，他不应该改变<code>state</code>，也不能直接和浏览器进行交互，应该将事件放在其他生命周期函数中。<br>如果<code>shouldComponentUpdate()</code>返回<code>false</code>，<code>render()</code>不会被调用。</p>
+<h4 id="Fragments"><a href="#Fragments" class="headerlink" title="Fragments"></a>Fragments</h4><p>你也可以在<code>render()</code>中使用数组，如：(<em>不要忘记给每个数组元素添加key，防止出现警告</em>)<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">return</span> [</span><br><span class="line">    &lt;li key=<span class="string">"A"</span>&gt;First item&lt;<span class="regexp">/li&gt;,</span></span><br><span class="line"><span class="regexp">    &lt;li key="B"&gt;Second item&lt;/</span>li&gt;,</span><br><span class="line">    &lt;li key=<span class="string">"C"</span>&gt;Third item&lt;<span class="regexp">/li&gt;,</span></span><br><span class="line"><span class="regexp">  ];</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>换一种写法，可以不写key（v16++）<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;React.Fragment&gt;</span><br><span class="line">      &lt;li&gt;First item&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">      &lt;li&gt;Second item&lt;/</span>li&gt;</span><br><span class="line">      &lt;li&gt;Third item&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>React.Fragment&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>官方时钟示例: </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Clock</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;Hello, world!&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;It is &#123;props.date.toLocaleTimeString()&#125;.&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  ReactDOM.render(</span><br><span class="line">    &lt;Clock date=&#123;<span class="keyword">new</span> <span class="built_in">Date</span>()&#125; /&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setInterval(tick, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="5-componentWillReceiveProps-UNSAFE-componentWillReceiveProps-nextProps"><a href="#5-componentWillReceiveProps-UNSAFE-componentWillReceiveProps-nextProps" class="headerlink" title="5.componentWillReceiveProps()/UNSAFE_componentWillReceiveProps(nextProps)"></a>5.componentWillReceiveProps()/UNSAFE_componentWillReceiveProps(nextProps)</h3><p>官方建议使用<code>getDerivedStateFromProps</code>函数代替<code>componentWillReceiveProps()</code>。当组件挂载后，接收到新的<code>props</code>后会被调用。如果需要更新<code>state</code>来响应<code>props</code>的更改，则可以进行<code>this.props</code>和<code>nextProps</code>的比较，并在此方法中使用<code>this.setState()</code>。</p>
+<p>如果父组件会让这个组件重新渲染，即使<code>props</code>没有改变，也会调用这个方法。</p>
+<p>react不会在组件初始化props时调用这个方法。调用<code>this.setState</code>也不会触发。</p>
+<h3 id="6-shouldComponentUpdate-nextProps-nextState"><a href="#6-shouldComponentUpdate-nextProps-nextState" class="headerlink" title="6.shouldComponentUpdate(nextProps, nextState)"></a>6.shouldComponentUpdate(nextProps, nextState)</h3><p>调用<code>shouldComponentUpdate</code>使react知道，组件的输出是否受<code>state</code>和<code>props</code>的影响。默认每个状态的更改都会重新渲染，大多数情况下应该保持这个默认行为。</p>
+<p>在渲染新的<code>props</code>或<code>state</code>前，<code>shouldComponentUpdate</code>会被调用。默认为<code>true</code>。这个方法不会在初始化时被调用，也不会在<code>forceUpdate()</code>时被调用。返回<code>false</code>不会阻止子组件在<code>state</code>更改时重新渲染。</p>
+<p>如果<code>shouldComponentUpdate()</code>返回<code>false</code>，<code>componentwillupdate</code>,<code>render</code>和<code>componentDidUpdate</code>不会被调用。</p>
+<blockquote>
+<p>在未来版本，shouldComponentUpdate()将会作为一个提示而不是严格的指令，返回false仍然可能导致组件的重新渲染。<br>官方并不建议在<code>shouldComponentUpdate()</code>中进行深度查询或使用<code>JSON.stringify()</code>，他效率非常低，并且损伤性能。</p>
+</blockquote>
+<h3 id="7-UNSAFE-componentWillUpdate-nextProps-nextState"><a href="#7-UNSAFE-componentWillUpdate-nextProps-nextState" class="headerlink" title="7.UNSAFE_componentWillUpdate(nextProps, nextState)"></a>7.UNSAFE_componentWillUpdate(nextProps, nextState)</h3><p>在渲染新的<code>state</code>或<code>props</code>时，<code>UNSAFE_componentWillUpdate</code>会被调用，将此作为在更新发生之前进行准备的机会。这个方法不会在初始化时被调用。</p>
+<p><em>不能在这里使用this.setState()</em>，也不能做会触发视图更新的操作。如果需要更新<code>state</code>或<code>props</code>，调用<code>getDerivedStateFromProps</code>。</p>
+<h3 id="8-getSnapshotBeforeUpdate"><a href="#8-getSnapshotBeforeUpdate" class="headerlink" title="8.getSnapshotBeforeUpdate()"></a>8.getSnapshotBeforeUpdate()</h3><p>在react <code>render()</code>后的输出被渲染到DOM之前被调用。它使您的组件能够在它们被潜在更改之前捕获当前值（如滚动位置）。这个生命周期返回的任何值都将作为参数传递给componentDidUpdate（）。</p>
+<h3 id="9-componentDidUpdate-prevProps-prevState-snapshot"><a href="#9-componentDidUpdate-prevProps-prevState-snapshot" class="headerlink" title="9.componentDidUpdate(prevProps, prevState, snapshot)"></a>9.componentDidUpdate(prevProps, prevState, snapshot)</h3><p>在更新发生后立即调用<code>componentDidUpdate()</code>。此方法不用于初始渲染。当组件更新时，将此作为一个机会来操作DOM。只要您将当前的props与以前的props进行比较（例如，如果props没有改变，则可能不需要网络请求），这也是做网络请求的好地方。</p>
+<p>如果组件实现<code>getSnapshotBeforeUpdate()</code>生命周期，则它返回的值将作为第三个“快照”参数传递给<code>componentDidUpdate()</code>。否则，这个参数是<code>undefined</code>。</p>
+<h3 id="10-componentWillUnmount"><a href="#10-componentWillUnmount" class="headerlink" title="10.componentWillUnmount()"></a>10.componentWillUnmount()</h3><p>在组件被卸载并销毁之前立即被调用。在此方法中执行任何必要的清理，例如使定时器无效，取消网络请求或清理在componentDidMount（）中创建的任何监听。</p>
+<h3 id="11-componentDidCatch-error-info"><a href="#11-componentDidCatch-error-info" class="headerlink" title="11.componentDidCatch(error, info)"></a>11.componentDidCatch(error, info)</h3><p><em>错误边界</em>是React组件，可以在其子组件树中的任何位置捕获JavaScript错误，记录这些错误并显示回退UI，而不是崩溃的组件树。错误边界在渲染期间，生命周期方法以及整个树下的构造函数中捕获错误。</p>
+<p>如果类组件定义了此生命周期方法，则它将成为<em>错误边界</em>。在它中调用<code>setState()</code>可以让你在下面的树中捕获未处理的JavaScript错误，并显示一个后备UI。只能使用错误边界从意外异常中恢复;不要试图将它们用于控制流程。<a href="https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html" target="_blank" rel="noopener">详细</a></p>
+<p>错误边界只会捕获树中下面组件中的错误。错误边界本身不能捕获错误。</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
+<li><a href="https://reactjs.org/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes" target="_blank" rel="noopener">React v16.3.0: New lifecycles and context API</a></li>
+<li><a href="https://reactjs.org/docs/react-component.html" target="_blank" rel="noopener">React.Component</a></li>
+<li><a href="https://github.com/mytac/blogs/blob/master/%E7%BF%BB%E8%AF%91/react%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%88v16.3.1%EF%BC%89.md" target="_blank" rel="noopener">mytac</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '救救孩子吧，我想喝一点点奶茶！', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: "http://m.qpic.cn/psb?/V14EjDJy4TKN40/h*IPHdPwV15.xB2wqgGnwlmDqvy4pIVspPY2HvZWIYY!/b/dLYAAAAAAAAA&bo=OARwBAAAAAARF2g!&rf=viewer_4",
+  alipayImage: "http://m.qpic.cn/psb?/V14EjDJy4TKN40/y22QmkM2ZIhmdyVOB1E3eU4mGNkoc*ch1oAy.T1oqU4!/b/dDUBAAAAAAAA&bo=OASCBAAAAAARF5o!&rf=viewer_4",
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Timbok
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2018/12/19/react打怪笔记/" target="_blank" title="react打怪笔记">https://yb909144903.github.io/2018/12/19/react打怪笔记/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/02/Hexo域名/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">给Hexo搭建的博客绑定域名</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tips"><span class="nav-number">1.0.1.</span> <span class="nav-text">Tips:</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#无状态函数式组件-stateless-functional-component"><span class="nav-number">2.</span> <span class="nav-text">无状态函数式组件 (stateless functional component)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#无生命周期方法"><span class="nav-number">2.0.1.</span> <span class="nav-text">无生命周期方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#没有-this-和-ref"><span class="nav-number">2.0.2.</span> <span class="nav-text">没有 this 和 ref</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#避免常见陷阱"><span class="nav-number">2.0.3.</span> <span class="nav-text">避免常见陷阱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">3.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概况"><span class="nav-number">3.1.</span> <span class="nav-text">概况</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-初始化"><span class="nav-number">3.1.1.</span> <span class="nav-text">1.初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-更新阶段"><span class="nav-number">3.1.2.</span> <span class="nav-text">2.更新阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-卸载阶段"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.卸载阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-错误处理"><span class="nav-number">3.1.4.</span> <span class="nav-text">4.错误处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详解"><span class="nav-number">3.2.</span> <span class="nav-text">详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-constructor-props"><span class="nav-number">3.3.</span> <span class="nav-text">1.constructor(props)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-static-getDerivedStateFromProps-nextProps-prevState"><span class="nav-number">3.4.</span> <span class="nav-text">2.static getDerivedStateFromProps(nextProps, prevState)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-componentWillMount-UNSAFE-componentWillMount"><span class="nav-number">3.5.</span> <span class="nav-text">3. componentWillMount() / UNSAFE_componentWillMount()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-render"><span class="nav-number">3.6.</span> <span class="nav-text">4.render()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Fragments"><span class="nav-number">3.6.1.</span> <span class="nav-text">Fragments</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-componentWillReceiveProps-UNSAFE-componentWillReceiveProps-nextProps"><span class="nav-number">3.7.</span> <span class="nav-text">5.componentWillReceiveProps()/UNSAFE_componentWillReceiveProps(nextProps)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-shouldComponentUpdate-nextProps-nextState"><span class="nav-number">3.8.</span> <span class="nav-text">6.shouldComponentUpdate(nextProps, nextState)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-UNSAFE-componentWillUpdate-nextProps-nextState"><span class="nav-number">3.9.</span> <span class="nav-text">7.UNSAFE_componentWillUpdate(nextProps, nextState)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-getSnapshotBeforeUpdate"><span class="nav-number">3.10.</span> <span class="nav-text">8.getSnapshotBeforeUpdate()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-componentDidUpdate-prevProps-prevState-snapshot"><span class="nav-number">3.11.</span> <span class="nav-text">9.componentDidUpdate(prevProps, prevState, snapshot)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-componentWillUnmount"><span class="nav-number">3.12.</span> <span class="nav-text">10.componentWillUnmount()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-componentDidCatch-error-info"><span class="nav-number">3.13.</span> <span class="nav-text">11.componentDidCatch(error, info)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">4.</span> <span class="nav-text">参考文档</span></a></li>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <!-- <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p> -->
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 Timbok&#39;s Blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/introduce" class="mobile-nav-link">Introduce</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-130181265-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Timbok&#39;s Blog
+          </div>
+          <div class="panel-body"> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </div>
+          <div class="panel-body">
+            Copyright © 2018 Timbok All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
