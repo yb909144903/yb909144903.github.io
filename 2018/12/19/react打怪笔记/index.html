@@ -25,12 +25,12 @@
 <meta property="og:site_name" content="Timbok&#39;s Blog">
 <meta property="og:description" content="介绍本文为学习react中的记录。 Tips: 当组件的props或state有变化，执行render函数。 无论是使用函数或是类来声明一个组件，它决不能修改它自己的props React 可以将多个setState() 调用合并成一个调用来提高性能。  无状态函数式组件 (stateless functional component)React v16.7.0-alpha(内测) 将引入 Hoo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/0069PDregy1fyisziuw9pj30yg0jfadd.jpg">
-<meta property="og:updated_time" content="2018-12-25T02:57:55.578Z">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14EjDJy3GW84h/Qp6cCD2iqIpGqvaVv1eWWki34FR0oMbdQ3TDB9N4fk8!/b/dFMBAAAAAAAA&bo=2AS7AgAAAAADB0c!&rf=viewer_4">
+<meta property="og:updated_time" content="2018-12-25T03:38:14.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react打怪笔记">
 <meta name="twitter:description" content="介绍本文为学习react中的记录。 Tips: 当组件的props或state有变化，执行render函数。 无论是使用函数或是类来声明一个组件，它决不能修改它自己的props React 可以将多个setState() 调用合并成一个调用来提高性能。  无状态函数式组件 (stateless functional component)React v16.7.0-alpha(内测) 将引入 Hoo">
-<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/0069PDregy1fyisziuw9pj30yg0jfadd.jpg">
+<meta name="twitter:image" content="http://m.qpic.cn/psb?/V14EjDJy3GW84h/Qp6cCD2iqIpGqvaVv1eWWki34FR0oMbdQ3TDB9N4fk8!/b/dFMBAAAAAAAA&bo=2AS7AgAAAAADB0c!&rf=viewer_4">
   
   <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
   
@@ -246,7 +246,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Functional = <span class="function">(<span class="params">&#123;...&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> handleSomething = <span class="function"><span class="params">e</span> =&gt;</span> path([<span class="string">'event'</span>, <span class="string">'target'</span>], e)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个问题很容易解决，您可以将这个函数作为 props 传递进去，或者将它定义在组件外面。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> handleSomething = <span class="function"><span class="params">e</span> =&gt;</span> path([<span class="string">'event'</span>, <span class="string">'target'</span>], e)</span><br><span class="line"><span class="keyword">const</span> Functional = <span class="function">(<span class="params">&#123;...&#125;</span>) =&gt;</span> <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><h3 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h3><p><img src="https://ws1.sinaimg.cn/large/0069PDregy1fyisziuw9pj30yg0jfadd.jpg" alt="react生命周期图解"></p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><h3 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h3><p><img src="http://m.qpic.cn/psb?/V14EjDJy3GW84h/Qp6cCD2iqIpGqvaVv1eWWki34FR0oMbdQ3TDB9N4fk8!/b/dFMBAAAAAAAA&amp;bo=2AS7AgAAAAADB0c!&amp;rf=viewer_4" alt="react生命周期图解"></p>
 <p><a href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" rel="noopener">生命周期演示</a></p>
 <h4 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h4><p>在组件初始化阶段会执行</p>
 <blockquote>
@@ -345,8 +345,8 @@ var a = new Donate({
   title: '救救孩子吧，我想喝一点点奶茶！', // 可选参数，打赏标题
   btnText: '打赏支持', // 可选参数，打赏按钮文字
   el: document.getElementById('donation_div'),
-  wechatImage: "https://ws1.sinaimg.cn/large/0069PDregy1fyiszi414zj30u00vktar.jpg",
-  alipayImage: "https://ws1.sinaimg.cn/large/0069PDregy1fyiszhpw0lj30u00w2die.jpg",
+  wechatImage: "http://m.qpic.cn/psb?/V14EjDJy4TKN40/h*IPHdPwV15.xB2wqgGnwlmDqvy4pIVspPY2HvZWIYY!/b/dLYAAAAAAAAA&bo=OARwBAAAAAARF2g!&rf=viewer_4",
+  alipayImage: "http://m.qpic.cn/psb?/V14EjDJy4TKN40/y22QmkM2ZIhmdyVOB1E3eU4mGNkoc*ch1oAy.T1oqU4!/b/dDUBAAAAAAAA&bo=OASCBAAAAAARF5o!&rf=viewer_4",
 });
 </script>
       
