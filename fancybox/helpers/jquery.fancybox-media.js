@@ -1,199 +1,41 @@
-/*!
- * Media helper for fancyBox
- * version: 1.0.6 (Fri, 14 Jun 2013)
- * @requires fancyBox v2.0 or later
- *
- * Usage:
- *     $(".fancybox").fancybox({
- *         helpers : {
- *             media: true
- *         }
- *     });
- *
- * Set custom URL parameters:
- *     $(".fancybox").fancybox({
- *         helpers : {
- *             media: {
- *                 youtube : {
- *                     params : {
- *                         autoplay : 0
- *                     }
- *                 }
- *             }
- *         }
- *     });
- *
- * Or:
- *     $(".fancybox").fancybox({,
- *         helpers : {
- *             media: true
- *         },
- *         youtube : {
- *             autoplay: 0
- *         }
- *     });
- *
- *  Supports:
- *
- *      Youtube
- *          http://www.youtube.com/watch?v=opj24KnzrWo
- *          http://www.youtube.com/embed/opj24KnzrWo
- *          http://youtu.be/opj24KnzrWo
- *			http://www.youtube-nocookie.com/embed/opj24KnzrWo
- *      Vimeo
- *          http://vimeo.com/40648169
- *          http://vimeo.com/channels/staffpicks/38843628
- *          http://vimeo.com/groups/surrealism/videos/36516384
- *          http://player.vimeo.com/video/45074303
- *      Metacafe
- *          http://www.metacafe.com/watch/7635964/dr_seuss_the_lorax_movie_trailer/
- *          http://www.metacafe.com/watch/7635964/
- *      Dailymotion
- *          http://www.dailymotion.com/video/xoytqh_dr-seuss-the-lorax-premiere_people
- *      Twitvid
- *          http://twitvid.com/QY7MD
- *      Twitpic
- *          http://twitpic.com/7p93st
- *      Instagram
- *          http://instagr.am/p/IejkuUGxQn/
- *          http://instagram.com/p/IejkuUGxQn/
- *      Google maps
- *          http://maps.google.com/maps?q=Eiffel+Tower,+Avenue+Gustave+Eiffel,+Paris,+France&t=h&z=17
- *          http://maps.google.com/?ll=48.857995,2.294297&spn=0.007666,0.021136&t=m&z=16
- *          http://maps.google.com/?ll=48.859463,2.292626&spn=0.000965,0.002642&t=m&z=19&layer=c&cbll=48.859524,2.292532&panoid=YJ0lq28OOy3VT2IqIuVY0g&cbp=12,151.58,,0,-15.56
- */
-;(function ($) {
-	"use strict";
-
-	//Shortcut for fancyBox object
-	var F = $.fancybox,
-		format = function( url, rez, params ) {
-			params = params || '';
-
-			if ( $.type( params ) === "object" ) {
-				params = $.param(params, true);
-			}
-
-			$.each(rez, function(key, value) {
-				url = url.replace( '$' + key, value || '' );
-			});
-
-			if (params.length) {
-				url += ( url.indexOf('?') > 0 ? '&' : '?' ) + params;
-			}
-
-			return url;
-		};
-
-	//Add helper object
-	F.helpers.media = {
-		defaults : {
-			youtube : {
-				matcher : /(youtube\.com|youtu\.be|youtube-nocookie\.com)\/(watch\?v=|v\/|u\/|embed\/?)?(videoseries\?list=(.*)|[\w-]{11}|\?listType=(.*)&list=(.*)).*/i,
-				params  : {
-					autoplay    : 1,
-					autohide    : 1,
-					fs          : 1,
-					rel         : 0,
-					hd          : 1,
-					wmode       : 'opaque',
-					enablejsapi : 1
-				},
-				type : 'iframe',
-				url  : '//www.youtube.com/embed/$3'
-			},
-			vimeo : {
-				matcher : /(?:vimeo(?:pro)?.com)\/(?:[^\d]+)?(\d+)(?:.*)/,
-				params  : {
-					autoplay      : 1,
-					hd            : 1,
-					show_title    : 1,
-					show_byline   : 1,
-					show_portrait : 0,
-					fullscreen    : 1
-				},
-				type : 'iframe',
-				url  : '//player.vimeo.com/video/$1'
-			},
-			metacafe : {
-				matcher : /metacafe.com\/(?:watch|fplayer)\/([\w\-]{1,10})/,
-				params  : {
-					autoPlay : 'yes'
-				},
-				type : 'swf',
-				url  : function( rez, params, obj ) {
-					obj.swf.flashVars = 'playerVars=' + $.param( params, true );
-
-					return '//www.metacafe.com/fplayer/' + rez[1] + '/.swf';
-				}
-			},
-			dailymotion : {
-				matcher : /dailymotion.com\/video\/(.*)\/?(.*)/,
-				params  : {
-					additionalInfos : 0,
-					autoStart : 1
-				},
-				type : 'swf',
-				url  : '//www.dailymotion.com/swf/video/$1'
-			},
-			twitvid : {
-				matcher : /twitvid\.com\/([a-zA-Z0-9_\-\?\=]+)/i,
-				params  : {
-					autoplay : 0
-				},
-				type : 'iframe',
-				url  : '//www.twitvid.com/embed.php?guid=$1'
-			},
-			twitpic : {
-				matcher : /twitpic\.com\/(?!(?:place|photos|events)\/)([a-zA-Z0-9\?\=\-]+)/i,
-				type : 'image',
-				url  : '//twitpic.com/show/full/$1/'
-			},
-			instagram : {
-				matcher : /(instagr\.am|instagram\.com)\/p\/([a-zA-Z0-9_\-]+)\/?/i,
-				type : 'image',
-				url  : '//$1/p/$2/media/?size=l'
-			},
-			google_maps : {
-				matcher : /maps\.google\.([a-z]{2,3}(\.[a-z]{2})?)\/(\?ll=|maps\?)(.*)/i,
-				type : 'iframe',
-				url  : function( rez ) {
-					return '//maps.google.' + rez[1] + '/' + rez[3] + '' + rez[4] + '&output=' + (rez[4].indexOf('layer=c') > 0 ? 'svembed' : 'embed');
-				}
-			}
-		},
-
-		beforeLoad : function(opts, obj) {
-			var url   = obj.href || '',
-				type  = false,
-				what,
-				item,
-				rez,
-				params;
-
-			for (what in opts) {
-				if (opts.hasOwnProperty(what)) {
-					item = opts[ what ];
-					rez  = url.match( item.matcher );
-
-					if (rez) {
-						type   = item.type;
-						params = $.extend(true, {}, item.params, obj[ what ] || ($.isPlainObject(opts[ what ]) ? opts[ what ].params : null));
-
-						url = $.type( item.url ) === "function" ? item.url.call( this, rez, params, obj ) : format( item.url, rez, params );
-
-						break;
-					}
-				}
-			}
-
-			if (type) {
-				obj.href = url;
-				obj.type = type;
-
-				obj.autoHeight = false;
-			}
-		}
-	};
-
-}(jQuery));
+49ab2765cec9023f011daa8d8349a1",
+    "extglob@^2.0.4": "https://registry.yarnpkg.com/extglob/-/extglob-2.0.4.tgz#ad00fe4dc612a9232e8718711dc5cb5ab0285543",
+    "filename-regex@^2.0.0": "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26",
+    "fill-range@^2.1.0": "https://registry.yarnpkg.com/fill-range/-/fill-range-2.2.4.tgz#eb1e773abb056dcd8df2bfdf6af59b8b3a936565",
+    "fill-range@^4.0.0": "https://registry.yarnpkg.com/fill-range/-/fill-range-4.0.0.tgz#d544811d428f98eb06a63dc402d2403c328c38f7",
+    "finalhandler@1.1.0": "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.1.0.tgz#ce0b6855b45853e791b2fcc680046d88253dd7f5",
+    "for-in@^1.0.1": "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80",
+    "for-in@^1.0.2": "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80",
+    "for-own@^0.1.4": "https://registry.yarnpkg.com/for-own/-/for-own-0.1.5.tgz#5265c681a4f294dabbf17c9509b6763aa84510ce",
+    "fragment-cache@^0.2.1": "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19",
+    "fresh@0.5.2": "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7",
+    "fs-minipass@^1.2.5": "https://registry.yarnpkg.com/fs-minipass/-/fs-minipass-1.2.5.tgz#06c277218454ec288df77ada54a03b8702aacb9d",
+    "fs.realpath@^1.0.0": "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f",
+    "fsevents@^1.0.0": "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.4.tgz#f41dcb1af2582af3692da36fc55cbd8e1041c426",
+    "fsevents@^1.2.2": "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.4.tgz#f41dcb1af2582af3692da36fc55cbd8e1041c426",
+    "gauge@~2.7.3": "https://registry.yarnpkg.com/gauge/-/gauge-2.7.4.tgz#2c03405c7538c39d7eb37b317022e325fb018bf7",
+    "get-value@^2.0.3": "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28",
+    "get-value@^2.0.6": "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28",
+    "glob-base@^0.3.0": "https://registry.yarnpkg.com/glob-base/-/glob-base-0.3.0.tgz#dbb164f6221b1c0b1ccf82aea328b497df0ea3c4",
+    "glob-parent@^2.0.0": "https://registry.yarnpkg.com/glob-parent/-/glob-parent-2.0.0.tgz#81383d72db054fcccf5336daa902f182f6edbb28",
+    "glob-parent@^3.1.0": "https://registry.yarnpkg.com/glob-parent/-/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae",
+    "glob@7.0.x": "https://registry.yarnpkg.com/glob/-/glob-7.0.6.tgz#211bafaf49e525b8cd93260d14ab136152b3f57a",
+    "glob@^6.0.1": "https://registry.yarnpkg.com/glob/-/glob-6.0.4.tgz#0f08860f6a155127b2fadd4f9ce24b1aab6e4d22",
+    "glob@^7.0.5": "https://registry.yarnpkg.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1",
+    "graceful-fs@^4.1.11": "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00",
+    "graceful-fs@^4.1.3": "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00",
+    "graceful-fs@^4.1.4": "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00",
+    "has-ansi@^2.0.0": "https://registry.yarnpkg.com/has-ansi/-/has-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91",
+    "has-flag@^3.0.0": "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd",
+    "has-unicode@^2.0.0": "https://registry.yarnpkg.com/has-unicode/-/has-unicode-2.0.1.tgz#e0e6fe6a28cf51138855e086d1691e771de2a8b9",
+    "has-value@^0.3.1": "https://registry.yarnpkg.com/has-value/-/has-value-0.3.1.tgz#7b1f58bada62ca827ec0a2078025654845995e1f",
+    "has-value@^1.0.0": "https://registry.yarnpkg.com/has-value/-/has-value-1.0.0.tgz#18b281da585b1c5c51def24c930ed29a0be6b177",
+    "has-values@^0.1.4": "https://registry.yarnpkg.com/has-values/-/has-values-0.1.4.tgz#6d61de95d91dfca9b9a02089ad384bff8f62b771",
+    "has-values@^1.0.0": "https://registry.yarnpkg.com/has-values/-/has-values-1.0.0.tgz#95b0b63fec2146619a6fe57fe75628d5a39efe4f",
+    "hexo-bunyan@^1.0.0": "https://registry.yarnpkg.com/hexo-bunyan/-/hexo-bunyan-1.0.0.tgz#b2106b26547b232f0195db863cb5d5ff8527fd36",
+    "hexo-cli@^1.1.0": "http://registry.npmjs.org/hexo-cli/-/hexo-cli-1.1.0.tgz#496d238d4646dbfd1cf047b6dc5271bfb5cb798f",
+    "hexo-front-matter@^0.2.2": "https://registry.yarnpkg.com/hexo-front-matter/-/hexo-front-matter-0.2.3.tgz#c7ca8ef420ea36bd85e8408a2e8c9bf49efa605e",
+    "hexo-fs@^0.2.0": "http://registry.npmjs.org/hexo-fs/-/hexo-fs-0.2.3.tgz#c3a81b46e457dfafc56d87c78ef114104f4a3e41",
+    "hexo-generator-archive@^0.1.5": "https://registry.yarnpkg.com/hexo-generator-archive/-/hexo-generator-archive-0.1.5.tgz#a979214cdddee2693e0551809c294bedadbb69b3",
+    "hexo-generator-category@^0.1.3": "https://registry.yarnpkg.com/hexo-generator-category/-/hexo-generator-category-0.1.3.tgz#b9e6a5862530a83bdd7da4c819c1b9f3e4ccb4b2",
+    "hexo-generator-index@^0.2.1": "https://registry.yarnpkg.com/hexo-generator-index/-/hexo-generator-index-0.2.1.tgz#9042229fcac79aaf700575da19332bf3f7ee5c

@@ -1,464 +1,472 @@
-<!DOCTYPE html>
-<html>
+Index, nextOptionStringIndex;
 
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>
-    
-    相册 |
-    
-    Timbok&#39;s Blog
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  <meta name="keywords" content="前端 Git React Es6 JavaScript">
-  
-  
-  
-  
-  <meta name="description" content="看到这段话说明你也是个IT工作者，这里有很多不错的技术博，希望和大家成为朋友，互相进步。">
-<meta name="keywords" content="前端 git react">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Photo">
-<meta property="og:url" content="https://yb909144903.github.io/photo/index.html">
-<meta property="og:site_name" content="Timbok&#39;s Blog">
-<meta property="og:description" content="看到这段话说明你也是个IT工作者，这里有很多不错的技术博，希望和大家成为朋友，互相进步。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-29T08:33:26.820Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Photo">
-<meta name="twitter:description" content="看到这段话说明你也是个IT工作者，这里有很多不错的技术博，希望和大家成为朋友，互相进步。">
-  
-  <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
-  
+  while (startIndex <= maxOptionStringIndex) {
+    // consume any Positionals preceding the next option
+    nextOptionStringIndex = null;
+    for (position in optionStringIndices) {
+      if (!optionStringIndices.hasOwnProperty(position)) { continue; }
 
-  
-
-  <link rel="icon" href="/css/images/avatar.jpg">
-  <link rel="apple-touch-icon" href="/css/images/avatar.jpg">
-  
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face {
-      font-family: futura-pt;
-      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
-      font-weight: 500;
-      font-style: normal;
+      position = parseInt(position, 10);
+      if (position >= startIndex) {
+        if (nextOptionStringIndex !== null) {
+          nextOptionStringIndex = Math.min(nextOptionStringIndex, position);
+        } else {
+          nextOptionStringIndex = position;
+        }
+      }
     }
 
-    @font-face {
-      font-family: futura-pt;
-      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
-      font-weight: 500;
-      font-style: normal;
+    if (startIndex !== nextOptionStringIndex) {
+      positionalsEndIndex = consumePositionals(startIndex);
+      // only try to parse the next optional if we didn't consume
+      // the option string during the positionals parsing
+      if (positionalsEndIndex > startIndex) {
+        startIndex = positionalsEndIndex;
+        continue;
+      } else {
+        startIndex = positionalsEndIndex;
+      }
     }
 
-    @font-face {
-      font-family: futura-pt;
-      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
-      font-weight: lighter;
-      font-style: normal;
+    // if we consumed all the positionals we could and we're not
+    // at the index of an option string, there were extra arguments
+    if (!optionStringIndices[startIndex]) {
+      var strings = argStrings.slice(startIndex, nextOptionStringIndex);
+      extras = extras.concat(strings);
+      startIndex = nextOptionStringIndex;
     }
+    // consume the next optional and any arguments for it
+    startIndex = consumeOptional(startIndex);
+  }
 
-    @font-face {
-      font-family: futura-pt;
-      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
-      font-weight: 400;
-      font-style: italic;
-    }
-  </style>
-  <link rel="stylesheet" href="/css/style.css">
+  // consume any positionals following the last Optional
+  var stopIndex = consumePositionals(startIndex);
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
-  <script src="/js/bootstrap.js"></script>
+  // if we didn't consume all the argument strings, there were extras
+  extras = extras.concat(argStrings.slice(stopIndex));
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css">
+  // if we didn't use all the Positional objects, there were too few
+  // arg strings supplied.
+  if (positionals.length > 0) {
+    self.error('too few arguments');
+  }
 
-  
-  <link rel="stylesheet" href="/css/dialog.css">
-  
-
-  
-
-  
-  <link rel="stylesheet" href="/css/header-post.css">
-  
-
-  
-  <link rel="stylesheet" href="/css/archive.css">
-  
-
-  
-  <link rel="stylesheet" href="/css/vdonate.css">
-  
-
-  <script>
-    console.log("%cTimbok",
-      " text-shadow: 0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);font-size:5em"
-    );
-    console.log('%c看到这段话说明你我前世有缘，这里都是很一般的博客，但是希望你我一起进步。','font-size: 15px');
-  </script>
-
-</head></html>
-
-
-  <body>
-
-
-  
-  <div id="container">
-    <div id="wrap">
-      
-        <header>
-    <link href="https://cdn.bootcss.com/csshake/1.5.3/csshake-little.min.css" rel="stylesheet">
-    <link href="//at.alicdn.com/t/font_943855_whj85qlkoi.css" rel="stylesheet">
-    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="navbar-inner">
-          
-          <div class="container"> 
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            
-              <a class="brand shake-little" style="
-                 margin-top: 0px;">
-                  <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
-              </a>
-            
-            
-            <div class="navbar-collapse collapse">
-              <ul class="hnav navbar-nav">
-                
-                  <li> <a class="main-nav-link" href="/">首页</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/introduce">关于</a> </li>
-                
-                  <li><div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="">
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div></li>
-            </ul></div>
-          </div>
-                
-      </div>
-    </div>
-
-</header>
-
-
-
-      
-            
-      <div id="content" class="outer">
-        
-          <section id="main" style="float:none;"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      Photo
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/photo/index.html" class="article-date">
-	  <time datetime="2018-11-29T08:33:26.000Z" itemprop="datePublished">2018-11-29</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div id="donation_div"></div>
-
-<script src="/js/vdonate.js"></script>
-<script>
-var a = new Donate({
-  title: '救救孩子吧，我想喝一点点奶茶！', // 可选参数，打赏标题
-  btnText: '打赏支持', // 可选参数，打赏按钮文字
-  el: document.getElementById('donation_div'),
-  wechatImage: "http://m.qpic.cn/psb?/V14EjDJy4TKN40/h*IPHdPwV15.xB2wqgGnwlmDqvy4pIVspPY2HvZWIYY!/b/dLYAAAAAAAAA&bo=OARwBAAAAAARF2g!&rf=viewer_4",
-  alipayImage: "http://m.qpic.cn/psb?/V14EjDJy4TKN40/y22QmkM2ZIhmdyVOB1E3eU4mGNkoc*ch1oAy.T1oqU4!/b/dDUBAAAAAAAA&bo=OASCBAAAAAARF5o!&rf=viewer_4",
-});
-</script>
-      
-      
-      <div>
-        <ul class="post-copyright">
-          <li class="post-copyright-author">
-          <strong>本文作者:  </strong>Timbok
-          </li>
-          <li class="post-copyright-link">
-          <strong>本文链接:  </strong>
-          <a href="/photo/index.html" target="_blank" title="Photo">https://yb909144903.github.io/photo/index.html</a>
-          </li>
-          <li class="post-copyright-license">
-            <strong>版权声明:   </strong>
-            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-            许可协议。转载请注明出处
-          </li>
-         
-        </ul>
-<div>
-</div></div>
-      
-      
-      
-
-    </footer>
-  </div>
-  
-    
-  
-</article>
-
-<!-- Table of Contents -->
-
-</section>
-        
-      </div>
-      
-      <footer id="footer">
-  
-
-  <div class="container">
-      	<div class="row">
-	      <!-- <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p> -->
-	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 Timbok&#39;s Blog All Rights Reserved.</p>
-	      
-	      
-    		<p class="busuanzi_uv">
-				访客数 : <span id="busuanzi_value_site_uv"></span> |  
-				访问量 : <span id="busuanzi_value_site_pv"></span>
-		    </p>
-  		   
-		</div>
-
-		
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-    var allheader = document.getElementById("allheader");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    if (allheader != null) {
-      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    } else {
-      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    }
-</script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/introduce" class="mobile-nav-link">Introduce</a>
-  
-</nav> -->
-    
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
+  // make sure all required actions were present
+  self._actions.forEach(function (action) {
+    if (action.required) {
+      if (seenActions.indexOf(action) < 0) {
+        self.error(format('Argument "%s" is required', action.getName()));
+      }
     }
   });
-</script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  // make sure all required groups have one option present
+  var actionUsed = false;
+  self._mutuallyExclusiveGroups.forEach(function (group) {
+    if (group.required) {
+      actionUsed = group._groupActions.some(function (action) {
+        return seenNonDefaultActions.indexOf(action) !== -1;
+      });
+
+      // if no actions were used, report the error
+      if (!actionUsed) {
+        var names = [];
+        group._groupActions.forEach(function (action) {
+          if (action.help !== c.SUPPRESS) {
+            names.push(action.getName());
+          }
+        });
+        names = names.join(' ');
+        var msg = 'one of the arguments ' + names + ' is required';
+        self.error(msg);
       }
+    }
+  });
+
+  // return the updated namespace and the extra arguments
+  return [ namespace, extras ];
+};
+
+ArgumentParser.prototype._readArgsFromFiles = function (argStrings) {
+  // expand arguments referencing files
+  var self = this;
+  var fs = require('fs');
+  var newArgStrings = [];
+  argStrings.forEach(function (argString) {
+    if (self.fromfilePrefixChars.indexOf(argString[0]) < 0) {
+      // for regular arguments, just add them back into the list
+      newArgStrings.push(argString);
+    } else {
+      // replace arguments referencing files with the file content
+      try {
+        var argstrs = [];
+        var filename = argString.slice(1);
+        var content = fs.readFileSync(filename, 'utf8');
+        content = content.trim().split('\n');
+        content.forEach(function (argLine) {
+          self.convertArgLineToArgs(argLine).forEach(function (arg) {
+            argstrs.push(arg);
+          });
+          argstrs = self._readArgsFromFiles(argstrs);
+        });
+        newArgStrings.push.apply(newArgStrings, argstrs);
+      } catch (error) {
+        return self.error(error.message);
+      }
+    }
+  });
+  return newArgStrings;
+};
+
+ArgumentParser.prototype.convertArgLineToArgs = function (argLine) {
+  return [ argLine ];
+};
+
+ArgumentParser.prototype._matchArgument = function (action, regexpArgStrings) {
+
+  // match the pattern for this action to the arg strings
+  var regexpNargs = new RegExp('^' + this._getNargsPattern(action));
+  var matches = regexpArgStrings.match(regexpNargs);
+  var message;
+
+  // throw an exception if we weren't able to find a match
+  if (!matches) {
+    switch (action.nargs) {
+      /*eslint-disable no-undefined*/
+      case undefined:
+      case null:
+        message = 'Expected one argument.';
+        break;
+      case c.OPTIONAL:
+        message = 'Expected at most one argument.';
+        break;
+      case c.ONE_OR_MORE:
+        message = 'Expected at least one argument.';
+        break;
+      default:
+        message = 'Expected %s argument(s)';
+    }
+
+    throw argumentErrorHelper(
+      action,
+      format(message, action.nargs)
+    );
+  }
+  // return the number of arguments matched
+  return matches[1].length;
+};
+
+ArgumentParser.prototype._matchArgumentsPartial = function (actions, regexpArgStrings) {
+  // progressively shorten the actions list by slicing off the
+  // final actions until we find a match
+  var self = this;
+  var result = [];
+  var actionSlice, pattern, matches;
+  var i, j;
+
+  function getLength(string) {
+    return string.length;
+  }
+
+  for (i = actions.length; i > 0; i--) {
+    pattern = '';
+    actionSlice = actions.slice(0, i);
+    for (j = 0; j < actionSlice.length; j++) {
+      pattern += self._getNargsPattern(actionSlice[j]);
+    }
+
+    pattern = new RegExp('^' + pattern);
+    matches = regexpArgStrings.match(pattern);
+
+    if (matches && matches.length > 0) {
+      // need only groups
+      matches = matches.splice(1);
+      result = result.concat(matches.map(getLength));
+      break;
+    }
+  }
+
+  // return the list of arg string counts
+  return result;
+};
+
+ArgumentParser.prototype._parseOptional = function (argString) {
+  var action, optionString, argExplicit, optionTuples;
+
+  // if it's an empty string, it was meant to be a positional
+  if (!argString) {
+    return null;
+  }
+
+  // if it doesn't start with a prefix, it was meant to be positional
+  if (this.prefixChars.indexOf(argString[0]) < 0) {
+    return null;
+  }
+
+  // if the option string is present in the parser, return the action
+  if (this._optionStringActions[argString]) {
+    return [ this._optionStringActions[argString], argString, null ];
+  }
+
+  // if it's just a single character, it was meant to be positional
+  if (argString.length === 1) {
+    return null;
+  }
+
+  // if the option string before the "=" is present, return the action
+  if (argString.indexOf('=') >= 0) {
+    optionString = argString.split('=', 1)[0];
+    argExplicit = argString.slice(optionString.length + 1);
+
+    if (this._optionStringActions[optionString]) {
+      action = this._optionStringActions[optionString];
+      return [ action, optionString, argExplicit ];
+    }
+  }
+
+  // search through all possible prefixes of the option string
+  // and all actions in the parser for possible interpretations
+  optionTuples = this._getOptionTuples(argString);
+
+  // if multiple actions match, the option string was ambiguous
+  if (optionTuples.length > 1) {
+    var optionStrings = optionTuples.map(function (optionTuple) {
+      return optionTuple[1];
     });
-</script>
+    this.error(format(
+          'Ambiguous option: "%s" could match %s.',
+          argString, optionStrings.join(', ')
+    ));
+  // if exactly one action matched, this segmentation is good,
+  // so return the parsed action
+  } else if (optionTuples.length === 1) {
+    return optionTuples[0];
+  }
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
+  // if it was not found as an option, but it looks like a negative
+  // number, it was meant to be positional
+  // unless there are negative-number-like options
+  if (argString.match(this._regexpNegativeNumber)) {
+    if (!this._hasNegativeNumberOptionals.some(Boolean)) {
+      return null;
+    }
+  }
+  // if it contains a space, it was meant to be a positional
+  if (argString.search(' ') >= 0) {
+    return null;
+  }
+
+  // it was meant to be an optional but there is no such option
+  // in this parser (though it might be a valid option in a subparser)
+  return [ null, argString, null ];
+};
+
+ArgumentParser.prototype._getOptionTuples = function (optionString) {
+  var result = [];
+  var chars = this.prefixChars;
+  var optionPrefix;
+  var argExplicit;
+  var action;
+  var actionOptionString;
+
+  // option strings starting with two prefix characters are only split at
+  // the '='
+  if (chars.indexOf(optionString[0]) >= 0 && chars.indexOf(optionString[1]) >= 0) {
+    if (optionString.indexOf('=') >= 0) {
+      var optionStringSplit = optionString.split('=', 1);
+
+      optionPrefix = optionStringSplit[0];
+      argExplicit = optionStringSplit[1];
+    } else {
+      optionPrefix = optionString;
+      argExplicit = null;
+    }
+
+    for (actionOptionString in this._optionStringActions) {
+      if (actionOptionString.substr(0, optionPrefix.length) === optionPrefix) {
+        action = this._optionStringActions[actionOptionString];
+        result.push([ action, actionOptionString, argExplicit ]);
+      }
+    }
+
+  // single character options can be concatenated with their arguments
+  // but multiple character options always have to have their argument
+  // separate
+  } else if (chars.indexOf(optionString[0]) >= 0 && chars.indexOf(optionString[1]) < 0) {
+    optionPrefix = optionString;
+    argExplicit = null;
+    var optionPrefixShort = optionString.substr(0, 2);
+    var argExplicitShort = optionString.substr(2);
+
+    for (actionOptionString in this._optionStringActions) {
+      if (!$$.has(this._optionStringActions, actionOptionString)) continue;
+
+      action = this._optionStringActions[actionOptionString];
+      if (actionOptionString === optionPrefixShort) {
+        result.push([ action, actionOptionString, argExplicitShort ]);
+      } else if (actionOptionString.substr(0, optionPrefix.length) === optionPrefix) {
+        result.push([ action, actionOptionString, argExplicit ]);
+      }
+    }
+
+  // shouldn't ever get here
+  } else {
+    throw new Error(format('Unexpected option string: %s.', optionString));
+  }
+  // return the collected option tuples
+  return result;
+};
+
+ArgumentParser.prototype._getNargsPattern = function (action) {
+  // in all examples below, we have to allow for '--' args
+  // which are represented as '-' in the pattern
+  var regexpNargs;
+
+  switch (action.nargs) {
+    // the default (null) is assumed to be a single argument
+    case undefined:
+    case null:
+      regexpNargs = '(-*A-*)';
+      break;
+    // allow zero or more arguments
+    case c.OPTIONAL:
+      regexpNargs = '(-*A?-*)';
+      break;
+    // allow zero or more arguments
+    case c.ZERO_OR_MORE:
+      regexpNargs = '(-*[A-]*)';
+      break;
+    // allow one or more arguments
+    case c.ONE_OR_MORE:
+      regexpNargs = '(-*A[A-]*)';
+      break;
+    // allow any number of options or arguments
+    case c.REMAINDER:
+      regexpNargs = '([-AO]*)';
+      break;
+    // allow one argument followed by any number of options or arguments
+    case c.PARSER:
+      regexpNargs = '(-*A[-AO]*)';
+      break;
+    // all others should be integers
+    default:
+      regexpNargs = '(-*' + $$.repeat('-*A', action.nargs) + '-*)';
+  }
+
+  // if this is an optional action, -- is not allowed
+  if (action.isOptional()) {
+    regexpNargs = regexpNargs.replace(/-\*/g, '');
+    regexpNargs = regexpNargs.replace(/-/g, '');
+  }
+
+  // return the pattern
+  return regexpNargs;
+};
+
+//
+// Value conversion methods
+//
+
+ArgumentParser.prototype._getValues = function (action, argStrings) {
+  var self = this;
+
+  // for everything but PARSER args, strip out '--'
+  if (action.nargs !== c.PARSER && action.nargs !== c.REMAINDER) {
+    argStrings = argStrings.filter(function (arrayElement) {
+      return arrayElement !== '--';
     });
-</script>
+  }
 
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+  var value, argString;
 
+  // optional argument produces a default when not present
+  if (argStrings.length === 0 && action.nargs === c.OPTIONAL) {
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+    value = (action.isOptional()) ? action.constant : action.defaultValue;
 
+    if (typeof (value) === 'string') {
+      value = this._getValue(action, value);
+      this._checkValue(action, value);
+    }
 
-<script src="/js/scripts.js"></script>
+  // when nargs='*' on a positional, if there were no command-line
+  // args, use the default if it is anything other than None
+  } else if (argStrings.length === 0 && action.nargs === c.ZERO_OR_MORE &&
+    action.optionStrings.length === 0) {
 
+    value = (action.defaultValue || argStrings);
+    this._checkValue(action, value);
 
+  // single argument or optional argument produces a single value
+  } else if (argStrings.length === 1 &&
+        (!action.nargs || action.nargs === c.OPTIONAL)) {
 
+    argString = argStrings[0];
+    value = this._getValue(action, argString);
+    this._checkValue(action, value);
 
+  // REMAINDER arguments convert all values, checking none
+  } else if (action.nargs === c.REMAINDER) {
+    value = argStrings.map(function (v) {
+      return self._getValue(action, v);
+    });
 
+  // PARSER arguments convert all values, but check only the first
+  } else if (action.nargs === c.PARSER) {
+    value = argStrings.map(function (v) {
+      return self._getValue(action, v);
+    });
+    this._checkValue(action, value[0]);
 
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  // all other types of nargs produce a list
+  } else {
+    value = argStrings.map(function (v) {
+      return self._getValue(action, v);
+    });
+    value.forEach(function (v) {
+      self._checkValue(action, v);
+    });
+  }
 
-ga('create', 'UA-130181265-1', 'auto');
-ga('send', 'pageview');
+  // return the converted value
+  return value;
+};
 
-</script>
-<!-- End Google Analytics -->
+ArgumentParser.prototype._getValue = function (action, argString) {
+  var result;
 
+  var typeFunction = this._registryGet('type', action.type, action.type);
+  if (typeof typeFunction !== 'function') {
+    var message = format('%s is not callable', typeFunction);
+    throw argumentErrorHelper(action, message);
+  }
 
+  // convert the value to the appropriate type
+  try {
+    result = typeFunction(argString);
 
+    // ArgumentTypeErrors indicate errors
+    // If action.type is not a registered string, it is a function
+    // Try to deduce its name for inclusion in the error message
+    // Failing that, include the error message it raised.
+  } catch (e) {
+    var name = null;
+    if (typeof action.type === 'string') {
+      name = action.type;
+    } else {
+      name = action.type.name || action.type.displayName || '<function>';
+    }
+    var msg = format('Invalid %s value: %s', name, argString);
+    if (name === '<function>') { msg += '\n' + e.message; }
+    throw argumentErrorHelper(action, msg);
+  }
+  // return the converted value
+  return result;
+};
 
-
-
-
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">设置</h2>
-      </div>
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-
-
-      <div class="modal-body">
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
-              正文字号大小
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            您已调整页面字体大小
-          </div>
-        </div>
-      
-
-
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
-              夜间护眼模式
-            </a>
-        </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            夜间模式已经开启，再次单击按钮即可关闭 
-          </div>
-        </div>
-
-        <div>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
-         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            Timbok&#39;s Blog
-          </div>
-          <div class="panel-body"> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </div>
-          <div class="panel-body">
-            Copyright © 2018 Timbok All Rights Reserved.
-          </div>
-        </div>
-      </div>
-
-
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-    </div>
-  </div>
-</div>
-  
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
-</body>
-</html>
+ArgumentParser.prototype._checkValue = function (action, value) {
+  // converted value must be one of the choices (if specified)
+  var choices = action.choices;
+  if (choices) {
+    // choise for argument can by array or string
+    if ((typeof choices === 'string' || Array.isArray(choices))
