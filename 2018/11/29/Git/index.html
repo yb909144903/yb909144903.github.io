@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/7/1651337a87bb120d?w=655&h=404&f=png&s=36211">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/10/165c2459af328fcf?w=903&h=230&f=png&s=4138">
-<meta property="og:updated_time" content="2018-11-29T12:44:41.931Z">
+<meta property="og:updated_time" content="2019-01-09T12:44:12.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git中遇到的大大小小的坑">
 <meta name="twitter:description" content="目的：记录自己平时在项目中遇到的坑     Tips 不要在dev上操作。 更新git: git update-   1.windows清除git保存账号信息步骤因为做项目可能会用到不同的gitLab远程库，我的git默认是记住密码的，当时困扰了我好久，项目中的一个大佬，告诉的我这种方法。  开始菜单-&amp;gt;控制面板-&amp;gt;凭据管理器-&amp;gt;windows凭据-&amp;gt;从保管库中删除.  如">
@@ -262,19 +262,13 @@
 </li>
 </ul>
 <p><img src="https://user-gold-cdn.xitu.io/2018/9/10/165c2459af328fcf?w=903&amp;h=230&amp;f=png&amp;s=4138" alt=""></p>
-<h2 id="3-平时项目中git的基本操作"><a href="#3-平时项目中git的基本操作" class="headerlink" title="3.平时项目中git的基本操作"></a>3.平时项目中git的基本操作</h2><ul>
-<li><p><strong>暂存修改的文件</strong></p>
-<blockquote>
+<h2 id="3-平时项目中git的基本操作"><a href="#3-平时项目中git的基本操作" class="headerlink" title="3.平时项目中git的基本操作"></a>3.平时项目中git的基本操作</h2><h3 id="暂存修改的文件"><a href="#暂存修改的文件" class="headerlink" title="暂存修改的文件"></a>暂存修改的文件</h3><blockquote>
 <p>git add [fileName] ——暂存某个文件<br>git add . ——暂存所有修改的文件</p>
 </blockquote>
-</li>
-<li><p><strong>撤销本地修改文件</strong></p>
-<blockquote>
+<h3 id="撤销本地修改文件"><a href="#撤销本地修改文件" class="headerlink" title="撤销本地修改文件"></a>撤销本地修改文件</h3><blockquote>
 <p>git checkout [fileName] ——撤销某个文件<br>git checkout . ——撤销所有修改的文件</p>
 </blockquote>
-</li>
-<li><p><strong>提交暂存区文件</strong></p>
-<ul>
+<h3 id="提交暂存区文件"><a href="#提交暂存区文件" class="headerlink" title="提交暂存区文件"></a>提交暂存区文件</h3><ul>
 <li>fix：修复bug</li>
 <li>update：更新文件</li>
 <li>add：新增文件</li>
@@ -284,86 +278,52 @@
 </blockquote>
 </li>
 </ul>
-</li>
-<li><p><strong>不想commit，那就储藏</strong></p>
-<blockquote>
-<p>git stash ——储藏<br>git stash pop/apply ——弹出储藏</p>
+<h3 id="不想commit，那就储藏"><a href="#不想commit，那就储藏" class="headerlink" title="不想commit，那就储藏"></a>不想commit，那就储藏</h3><blockquote>
+<p>git stash ——储藏<br>git stash pop/apply ——弹出储藏<br>git stash save ‘message’ ——储藏是加message<br>git stash drop stash@{$num} ——丢弃stash@{$num}存储，从列表中删除这个存储<br>git stash clear –删除所有缓存的stash</p>
 </blockquote>
-</li>
-<li><p>将本地仓库的代码推到远程分支</p>
-<blockquote>
+<h3 id="将本地仓库的代码推到远程分支"><a href="#将本地仓库的代码推到远程分支" class="headerlink" title="将本地仓库的代码推到远程分支"></a>将本地仓库的代码推到远程分支</h3><blockquote>
 <p>git push [远程分支名]</p>
 </blockquote>
-</li>
-<li><p><strong>切换分支</strong></p>
-<blockquote>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><blockquote>
 <p>git checkout [你要切换的分支名]  </p>
 </blockquote>
-</li>
-</ul>
 <p><em>注释：切换分支之前，一定要将修改的文件提交或者放进储藏区</em></p>
-<ul>
-<li><p><strong>拉取远程分支代码</strong></p>
-<blockquote>
+<h3 id="拉取远程分支代码"><a href="#拉取远程分支代码" class="headerlink" title="拉取远程分支代码"></a>拉取远程分支代码</h3><blockquote>
 <p>git pull orgin [分支名]<br>git pull ——拉取当前分支的代码</p>
 </blockquote>
-</li>
-<li><p><strong>合并分支</strong></p>
-<blockquote>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><blockquote>
 <p>git merge [你要合并的分支名]</p>
 </blockquote>
-</li>
-<li><p><strong>查看本地分支</strong></p>
-<blockquote>
+<h3 id="查看本地分支"><a href="#查看本地分支" class="headerlink" title="查看本地分支"></a>查看本地分支</h3><blockquote>
 <p>git branch</p>
 </blockquote>
-</li>
-<li><p><strong>查看远程分支</strong></p>
-<blockquote>
+<h3 id="查看远程分支"><a href="#查看远程分支" class="headerlink" title="查看远程分支"></a>查看远程分支</h3><blockquote>
 <p>git branch -a</p>
 </blockquote>
-</li>
-<li><p><strong>删除本地分支</strong></p>
-<blockquote>
+<h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><blockquote>
 <p>git branch -d/-D [你要删除的分支]</p>
 </blockquote>
-</li>
-<li><p><strong>删除远程分支</strong></p>
-<blockquote>
+<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><blockquote>
 <p>git branch orgin –delete [你要删除掉的分支]</p>
 </blockquote>
-</li>
-<li><p><strong>查看提交记录</strong></p>
-<blockquote>
+<h3 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h3><blockquote>
 <p>git log<br>git log -5 查看五条记录</p>
 </blockquote>
-</li>
-<li><p><strong>查看被删除的提交记录</strong></p>
-<blockquote>
+<h3 id="查看被删除的提交记录"><a href="#查看被删除的提交记录" class="headerlink" title="查看被删除的提交记录"></a>查看被删除的提交记录</h3><blockquote>
 <p>git reflog</p>
 </blockquote>
-</li>
-<li><p><strong>回滚代码</strong></p>
-<blockquote>
+<h3 id="回滚代码"><a href="#回滚代码" class="headerlink" title="回滚代码"></a>回滚代码</h3><blockquote>
 <p>git reset [commitId]  回滚代码但修改的代码还在<br>git reset –hard [commitId] 回滚代码且修改的代码也没了</p>
 </blockquote>
-</li>
-<li><p><strong>推送代码</strong></p>
-<blockquote>
+<h3 id="推送代码"><a href="#推送代码" class="headerlink" title="推送代码"></a>推送代码</h3><blockquote>
 <p>git push orgin [当前分支]:devlop</p>
 </blockquote>
-</li>
-<li><p><strong>连接远程仓库</strong></p>
-<blockquote>
+<h3 id="连接远程仓库"><a href="#连接远程仓库" class="headerlink" title="连接远程仓库"></a>连接远程仓库</h3><blockquote>
 <p>git remote add origin 仓库地址<br>仓库地址：<a href="https://git.coding.net/xxxxxxxxxxxxx/my-project.git" target="_blank" rel="noopener">https://git.coding.net/xxxxxxxxxxxxx/my-project.git</a><br>git push -u orgin master</p>
 </blockquote>
-</li>
-<li><p><strong>删除远程仓库</strong></p>
-<blockquote>
+<h3 id="删除远程仓库"><a href="#删除远程仓库" class="headerlink" title="删除远程仓库"></a>删除远程仓库</h3><blockquote>
 <p> git remote remove origin</p>
 </blockquote>
-</li>
-</ul>
 <hr>
 <p style="text-align:right"><i>因为这篇文章属于我自己的记录，有的为别人博客的内容。侵权必删</i></p>
 
@@ -439,9 +399,9 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#1-windows清除git保存账号信息步骤"><span class="nav-number"></span> <span class="nav-text">1.windows清除git保存账号信息步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Git修改文件名大小写时不更新"><span class="nav-number"></span> <span class="nav-text">2.Git修改文件名大小写时不更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-平时项目中git的基本操作"><span class="nav-number"></span> <span class="nav-text">3.平时项目中git的基本操作</span></a>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#1-windows清除git保存账号信息步骤"><span class="nav-number"></span> <span class="nav-text">1.windows清除git保存账号信息步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Git修改文件名大小写时不更新"><span class="nav-number"></span> <span class="nav-text">2.Git修改文件名大小写时不更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-平时项目中git的基本操作"><span class="nav-number"></span> <span class="nav-text">3.平时项目中git的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#暂存修改的文件"><span class="nav-number"></span> <span class="nav-text">暂存修改的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销本地修改文件"><span class="nav-number"></span> <span class="nav-text">撤销本地修改文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交暂存区文件"><span class="nav-number"></span> <span class="nav-text">提交暂存区文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不想commit，那就储藏"><span class="nav-number"></span> <span class="nav-text">不想commit，那就储藏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将本地仓库的代码推到远程分支"><span class="nav-number"></span> <span class="nav-text">将本地仓库的代码推到远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换分支"><span class="nav-number"></span> <span class="nav-text">切换分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取远程分支代码"><span class="nav-number"></span> <span class="nav-text">拉取远程分支代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并分支"><span class="nav-number"></span> <span class="nav-text">合并分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看本地分支"><span class="nav-number"></span> <span class="nav-text">查看本地分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看远程分支"><span class="nav-number"></span> <span class="nav-text">查看远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除本地分支"><span class="nav-number"></span> <span class="nav-text">删除本地分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除远程分支"><span class="nav-number"></span> <span class="nav-text">删除远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看提交记录"><span class="nav-number"></span> <span class="nav-text">查看提交记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看被删除的提交记录"><span class="nav-number"></span> <span class="nav-text">查看被删除的提交记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回滚代码"><span class="nav-number"></span> <span class="nav-text">回滚代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推送代码"><span class="nav-number"></span> <span class="nav-text">推送代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接远程仓库"><span class="nav-number"></span> <span class="nav-text">连接远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除远程仓库"><span class="nav-number"></span> <span class="nav-text">删除远程仓库</span></a>
     
-    </li></div>
+    </li></ol></li></div>
   </aside>
 
 </section>
