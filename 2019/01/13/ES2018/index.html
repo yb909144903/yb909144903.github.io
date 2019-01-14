@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>
+    
+    每个javascript开发人员都应该知道的新es2018功能（译文） |
+    
+    Timbok&#39;s Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="前端 Git React Es6 JavaScript">
+  
+  
+  
+  
+  <meta name="description" content="前言 原文地址：https://css-tricks.com/new-es2018-features-every-javascript-developer-should-know/ 原文作者：Faraz Kelhini 译者：Timbok 翻译工具：Google Translate   本文首发于我的个人网站: [Timbok.top]()--&amp;gt; 正文ECMAScript标准的第九版，官方称为EC">
+<meta name="keywords" content="前端 git react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每个JavaScript开发人员都应该知道的新ES2018功能（译文）">
+<meta property="og:url" content="https://yb909144903.github.io/2019/01/13/ES2018/index.html">
+<meta property="og:site_name" content="Timbok&#39;s Blog">
+<meta property="og:description" content="前言 原文地址：https://css-tricks.com/new-es2018-features-every-javascript-developer-should-know/ 原文作者：Faraz Kelhini 译者：Timbok 翻译工具：Google Translate   本文首发于我的个人网站: [Timbok.top]()--&amp;gt; 正文ECMAScript标准的第九版，官方称为EC">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-14T06:44:33.012Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="每个JavaScript开发人员都应该知道的新ES2018功能（译文）">
+<meta name="twitter:description" content="前言 原文地址：https://css-tricks.com/new-es2018-features-every-javascript-developer-should-know/ 原文作者：Faraz Kelhini 译者：Timbok 翻译工具：Google Translate   本文首发于我的个人网站: [Timbok.top]()--&amp;gt; 正文ECMAScript标准的第九版，官方称为EC">
+  
+  <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/avatar.jpg">
+  <link rel="apple-touch-icon" href="/css/images/avatar.jpg">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+  <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <script>
+    console.log("%cTimbok",
+      " text-shadow: 0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);font-size:5em"
+    );
+    console.log('%c看到这段话说明你我前世有缘，这里都是很一般的博客，但是希望你我一起进步。','font-size: 15px');
+  </script>
+
+</head></html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+    <link href="https://cdn.bootcss.com/csshake/1.5.3/csshake-little.min.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_943855_whj85qlkoi.css" rel="stylesheet">
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand shake-little" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/drip">点滴</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/introduce">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-ES2018" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      每个JavaScript开发人员都应该知道的新ES2018功能（译文）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/01/13/ES2018/" class="article-date">
+	  <time datetime="2019-01-13T07:40:24.000Z" itemprop="datePublished">2019-01-13</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li>原文地址：<a href="https://css-tricks.com/new-es2018-features-every-javascript-developer-should-know/" target="_blank" rel="noopener">https://css-tricks.com/new-es2018-features-every-javascript-developer-should-know/</a></li>
+<li>原文作者：<a href="https://css-tricks.com/author/faraz-kelhini/" target="_blank" rel="noopener">Faraz Kelhini</a></li>
+<li>译者：<a href="https://timbok.top" target="_blank" rel="noopener">Timbok</a></li>
+<li>翻译工具：Google Translate</li>
+</ul>
+<!--> 本文首发于我的个人网站: [Timbok.top]()-->
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>ECMAScript标准的第九版，官方称为ECMAScript 2018（或简称ES2018），于2018年6月发布。从ES2016开始，ECMAScript规范的新版本每年发布而不是每几年发布一次，并且添加的功能少于主要版本以前。该标准的最新版本通过添加四个新RegExp功能，<code>rest/spread</code>属性，<code>asynchronous iteration</code>，和<code>Promise.prototype.finally</code>。此外，ES2018从标记模板中删除了转义序列的语法限制。</p>
+<p>这些新变化将在后面的小节中解释。</p>
+<h2 id="rest-spread属性"><a href="#rest-spread属性" class="headerlink" title="rest/spread属性"></a>rest/spread属性</h2><p>ES2015最有趣的功能之一是点差运算符。该运算符使复制和合并数组变得更加简单。您可以使用运算符<code>...</code>，而不是调用<code>concat()</code>or <code>slice()</code>方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// make a copy of arr1</span></span><br><span class="line"><span class="keyword">const</span> copy = [...arr1];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(copy);    <span class="comment">// → [10, 20, 30]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// merge arr2 with arr1</span></span><br><span class="line"><span class="keyword">const</span> merge = [...arr1, ...arr2];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(merge);    <span class="comment">// → [10, 20, 30, 40, 50]</span></span><br></pre></td></tr></table></figure>
+<p>在必须作为函数的单独参数传入数组的情况下，扩展运算符也派上用场。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// equivalent to</span></span><br><span class="line"><span class="comment">// console.log(Math.max(10, 20, 30));</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.max(...arr));    <span class="comment">// → 30</span></span><br></pre></td></tr></table></figure>
+<p>ES2018通过向对象文字添加扩展属性来进一步扩展此语法。使用spread属性，您可以将对象的自身可枚举属性复制到新对象上。请考虑以下示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  a: <span class="number">10</span>,</span><br><span class="line">  b: <span class="number">20</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;</span><br><span class="line">  ...obj1,</span><br><span class="line">  c: <span class="number">30</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj2);    <span class="comment">// → &#123;a: 10, b: 20, c: 30&#125;</span></span><br></pre></td></tr></table></figure>
+<p>在此代码中，<code>...</code>运算符用于检索属性<code>obj1</code>并将其分配给<code>obj2</code>。在ES2018之前，尝试这样做会引发错误。如果有多个具有相同名称的属性，则将使用最后一个属性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  a: <span class="number">10</span>,</span><br><span class="line">  b: <span class="number">20</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;</span><br><span class="line">  ...obj1,</span><br><span class="line">  a: <span class="number">30</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj2);    <span class="comment">// → &#123;a: 30, b: 20&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Spread属性还提供了一种合并两个或多个对象的新方法，可以将其用作方法的替代<code>Object.assign()</code>方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj1 = &#123;<span class="attr">a</span>: <span class="number">10</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;<span class="attr">b</span>: <span class="number">20</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> obj3 = &#123;<span class="attr">c</span>: <span class="number">30</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES2018</span></span><br><span class="line"><span class="built_in">console</span>.log(&#123;...obj1, ...obj2, ...obj3&#125;);    <span class="comment">// → &#123;a: 10, b: 20, c: 30&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES2015</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.assign(&#123;&#125;, obj1, obj2, obj3));    <span class="comment">// → &#123;a: 10, b: 20, c: 30&#125;</span></span><br></pre></td></tr></table></figure>
+<p>但请注意，spread属性并不总是产生相同的结果<code>Object.assign()</code>。请考虑以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">Object</span>.prototype, <span class="string">'a'</span>, &#123;</span><br><span class="line">  set(value) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'set called!'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;<span class="attr">a</span>: <span class="number">10</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(&#123;...obj&#125;);    </span><br><span class="line"><span class="comment">// → &#123;a: 10&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.assign(&#123;&#125;, obj));    </span><br><span class="line"><span class="comment">// → set called!</span></span><br><span class="line"><span class="comment">// → &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>在此代码中，该<code>Object.assign()</code>方法执行继承的setter属性。相反，传播属性完全忽略了setter。</p>
+<p>重要的是要记住，spread属性只复制可枚举的属性。在以下示例中，<code>type</code>属性不会显示在复制的对象中，因为其<code>enumerable</code>属性设置为<code>false</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> car = &#123;</span><br><span class="line">  color: <span class="string">'blue'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(car, <span class="string">'type'</span>, &#123;</span><br><span class="line">  value: <span class="string">'coupe'</span>,</span><br><span class="line">  enumerable: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(&#123;...car&#125;);    <span class="comment">// → &#123;color: "blue"&#125;</span></span><br></pre></td></tr></table></figure>
+<p>即使它们是可枚举的，也会忽略继承的属性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> car = &#123;</span><br><span class="line">  color: <span class="string">'blue'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> car2 = <span class="built_in">Object</span>.create(car, &#123;</span><br><span class="line">  type: &#123;</span><br><span class="line">    value: <span class="string">'coupe'</span>,</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(car2.color);                      <span class="comment">// → blue</span></span><br><span class="line"><span class="built_in">console</span>.log(car2.hasOwnProperty(<span class="string">'color'</span>));    <span class="comment">// → false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(car2.type);                       <span class="comment">// → coupe</span></span><br><span class="line"><span class="built_in">console</span>.log(car2.hasOwnProperty(<span class="string">'type'</span>));     <span class="comment">// → true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(&#123;...car2&#125;);                       <span class="comment">// → &#123;type: "coupe"&#125;</span></span><br></pre></td></tr></table></figure>
+<p>在此代码中，<code>car2</code>继承<code>color</code>属性<code>car</code>。因为spread属性只复制对象的自己的属性，<code>color</code>所以不包含在返回值中。</p>
+<p>请记住，spread属性只能生成对象的浅表副本。如果属性包含对象，则仅复制对象的引用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;<span class="attr">x</span>: &#123;<span class="attr">y</span>: <span class="number">10</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">const</span> copy1 = &#123;...obj&#125;;    </span><br><span class="line"><span class="keyword">const</span> copy2 = &#123;...obj&#125;; </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(copy1.x === copy2.x);    <span class="comment">// → true</span></span><br></pre></td></tr></table></figure>
+<p>这里<code>copy1</code>和<code>copy2</code>的x是指在内存中的同一对象，所以全等运算返回<code>true</code>。</p>
+<p>ES2015中添加的另一个有用功能是rest参数，它使JavaScript程序员可以使用它<code>...</code>来表示值作为数组。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>];</span><br><span class="line"><span class="keyword">const</span> [x, ...rest] = arr;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x);       <span class="comment">// → 10</span></span><br><span class="line"><span class="built_in">console</span>.log(rest);    <span class="comment">// → [20, 30]</span></span><br></pre></td></tr></table></figure>
+<p>这里，<code>arr</code>的第一个值被分配给对应的<code>x</code>，而剩余的元素被分配给<code>rest</code>变量。这种称为阵列解构的模式变得如此受欢迎，以至于Ecma技术委员会决定为对象带来类似的功能：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  a: <span class="number">10</span>,</span><br><span class="line">  b: <span class="number">20</span>,</span><br><span class="line">  c: <span class="number">30</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123;a, ...rest&#125; = obj;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);       <span class="comment">// → 10</span></span><br><span class="line"><span class="built_in">console</span>.log(rest);    <span class="comment">// → &#123;b: 20, c: 30&#125;</span></span><br></pre></td></tr></table></figure>
+<p>此代码使用解构赋值中的其余属性将剩余的自身可枚举属性复制到新对象中。请注意，rest属性必须始终出现在对象的末尾，否则会引发错误：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  a: <span class="number">10</span>,</span><br><span class="line">  b: <span class="number">20</span>,</span><br><span class="line">  c: <span class="number">30</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123;...rest, a&#125; = obj;    <span class="comment">// → SyntaxError: Rest element must be last element</span></span><br></pre></td></tr></table></figure>
+<p>还要记住，在对象中使用多个rest会导致错误，除非它们是嵌套的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  a: <span class="number">10</span>,</span><br><span class="line">  b: &#123;</span><br><span class="line">    x: <span class="number">20</span>,</span><br><span class="line">    y: <span class="number">30</span>,</span><br><span class="line">    z: <span class="number">40</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123;<span class="attr">b</span>: &#123;x, ...rest1&#125;, ...rest2&#125; = obj;    <span class="comment">// no error</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123;...rest, ...rest2&#125; = obj;    <span class="comment">// → SyntaxError: Rest element must be last element</span></span><br></pre></td></tr></table></figure>
+<h3 id="Support-for-Rest-Spread"><a href="#Support-for-Rest-Spread" class="headerlink" title="Support for Rest/Spread"></a>Support for Rest/Spread</h3><table>
+<thead>
+<tr>
+<th>Chrome</th>
+<th>Firefox</th>
+<th>Safari</th>
+<th>Edge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>60</td>
+<td>55</td>
+<td>11.1</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Chrome Android</th>
+<th>Firefox Android</th>
+<th>iOS Safari</th>
+<th>Edge Mobile</th>
+<th>Samsung Internet</th>
+<th>Android Webview</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>60</td>
+<td>55</td>
+<td>11.3</td>
+<td>No</td>
+<td>8.2</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><ul>
+<li>8.0.0（运行时需要加<code>-harmony</code>）</li>
+<li>8.3.0（完全支持）</li>
+</ul>
+<h2 id="Asynchronous-Iteration-异步迭代"><a href="#Asynchronous-Iteration-异步迭代" class="headerlink" title="Asynchronous Iteration(异步迭代)"></a>Asynchronous Iteration(异步迭代)</h2><p>迭代数据集是编程的重要部分。此前ES2015，提供的JavaScript语句如<code>for</code>，<code>for...in</code>和<code>while</code>，和方法<code>map()</code>，<code>filter()</code>以及<code>forEach()</code>都用于此目的。为了使程序员能够一次一个地处理集合中的元素，ES2015引入了迭代器接口。</p>
+<p>如果对象具有<code>Symbol.iterator</code>属性，则该对象是可迭代的。在ES2015中，字符串和集合对象（如Set，Map和Array）带有Symbol.iterator属性，因此可以迭代。以下代码给出了如何一次访问可迭代元素的示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>];</span><br><span class="line"><span class="keyword">const</span> iterator = arr[<span class="built_in">Symbol</span>.iterator]();</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: 10, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: 20, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: 30, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure>
+<p><code>Symbol.iterator</code>是一个众所周知的符号，指定一个返回迭代器的函数。与迭代器交互的主要方法是<code>next()</code>方法。此方法返回具有两个属性的对象：<code>value</code>和<code>done</code>。<code>value</code>属性为集合中下一个元素的值。<code>done</code>属性的值为<code>true</code>或<code>false</code>表示集合是否迭代完成。</p>
+<p>默认情况下，普通对象不可迭代，但如果在其上定义<code>Symbol.iterator</code>属性，则它可以变为可迭代，如下例所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> collection = &#123;</span><br><span class="line">  a: <span class="number">10</span>,</span><br><span class="line">  b: <span class="number">20</span>,</span><br><span class="line">  c: <span class="number">30</span>,</span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="keyword">const</span> values = <span class="built_in">Object</span>.keys(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      next: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          value: <span class="keyword">this</span>[values[i++]],</span><br><span class="line">          done: i &gt; values.length</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> iterator = collection[<span class="built_in">Symbol</span>.iterator]();</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: 10, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: 20, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: 30, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure>
+<p>此对象是可迭代的，因为它定义了一个<code>Symbol.iterator</code>属性。迭代器使用该<code>Object.keys()</code>方法获取对象属性名称的数组，然后将其分配给<code>values</code>常量。它还定义了一个计数器变量<code>i</code>，并给它一个初始值0.当执行迭代器时，它返回一个包含<code>next()</code>方法的对象。每次调用<code>next()</code>方法时，它都返回一对<code>{value, done}</code>，<code>value</code>保持集合中的下一个元素并<code>done</code>保持一个布尔值，指示迭代器是否已达到集合的需要。</p>
+<p>虽然这段代码完美无缺，但却不必要。使用生成器函数可以大大简化过程：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> collection = &#123;</span><br><span class="line">  a: <span class="number">10</span>,</span><br><span class="line">  b: <span class="number">20</span>,</span><br><span class="line">  c: <span class="number">30</span>,</span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]: <span class="function"><span class="keyword">function</span> * (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> <span class="keyword">this</span>) &#123;</span><br><span class="line">      <span class="keyword">yield</span> <span class="keyword">this</span>[key];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> iterator = collection[<span class="built_in">Symbol</span>.iterator]();</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: 10, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: 20, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: 30, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());    <span class="comment">// → &#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure>
+<p>在这个生成器中，<code>for...in</code>循环用于枚举集合并产生每个属性的值。结果与前一个示例完全相同，但它大大缩短了。</p>
+<p>迭代器的缺点是它们不适合表示异步数据源。ES2018的补救解决方案是异步迭代器和异步迭代。异步迭代器与传统迭代器的不同之处在于，它不是以形式返回普通对象<code>{value, done}</code>，而是返回履行的承诺<code>{value, done}</code>。异步迭代定义了一个返回异步迭代器的Symbol.asyncIterator方法（而不是<code>Symbol.iterator</code>）。</p>
+<p>一个例子让这个更清楚：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> collection = &#123;</span><br><span class="line">  a: <span class="number">10</span>,</span><br><span class="line">  b: <span class="number">20</span>,</span><br><span class="line">  c: <span class="number">30</span>,</span><br><span class="line">  [<span class="built_in">Symbol</span>.asyncIterator]() &#123;</span><br><span class="line">    <span class="keyword">const</span> values = <span class="built_in">Object</span>.keys(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      next: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(&#123;</span><br><span class="line">          value: <span class="keyword">this</span>[values[i++]], </span><br><span class="line">          done: i &gt; values.length</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> iterator = collection[<span class="built_in">Symbol</span>.asyncIterator]();</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(iterator.next().then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result);    <span class="comment">// → &#123;value: 10, done: false&#125;</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next().then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result);    <span class="comment">// → &#123;value: 20, done: false&#125; </span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next().then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result);    <span class="comment">// → &#123;value: 30, done: false&#125; </span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next().then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result);    <span class="comment">// → &#123;value: undefined, done: true&#125; </span></span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>请注意，不可使用promises的迭代器来实现相同的结果。虽然普通的同步迭代器可以异步确定值，但它仍然需要同步确定<code>done</code>的状态。</p>
+<p>同样，您可以使用生成器函数简化过程，如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> collection = &#123;</span><br><span class="line">  a: <span class="number">10</span>,</span><br><span class="line">  b: <span class="number">20</span>,</span><br><span class="line">  c: <span class="number">30</span>,</span><br><span class="line">  [<span class="built_in">Symbol</span>.asyncIterator]: <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> * (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> <span class="keyword">this</span>) &#123;</span><br><span class="line">      <span class="keyword">yield</span> <span class="keyword">this</span>[key];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> iterator = collection[<span class="built_in">Symbol</span>.asyncIterator]();</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(iterator.next().then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result);    <span class="comment">// → &#123;value: 10, done: false&#125;</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next().then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result);    <span class="comment">// → &#123;value: 20, done: false&#125; </span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next().then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result);    <span class="comment">// → &#123;value: 30, done: false&#125; </span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next().then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result);    <span class="comment">// → &#123;value: undefined, done: true&#125; </span></span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>通常，生成器函数返回带有<code>next()</code>方法的生成器对象。当调用<code>next()</code>时，它返回一个<code>{value，done}</code>，其<code>value</code>属性保存了<code>yield</code>值。异步生成器执行相同的操作，除了它返回一个履行<code>{value，done}</code>的promise。</p>
+<p>迭代可迭代对象的一种简单方法是使用<code>for...of</code>语句，但是<code>for...of</code>不能与<code>async iterables</code>一起使用，因为<code>value</code>和<code>done</code>不是同步确定的。因此，ES2018提供了<code>for...await...of</code>。我们来看一个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> collection = &#123;</span><br><span class="line">  a: <span class="number">10</span>,</span><br><span class="line">  b: <span class="number">20</span>,</span><br><span class="line">  c: <span class="number">30</span>,</span><br><span class="line">  [<span class="built_in">Symbol</span>.asyncIterator]: <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> * (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> <span class="keyword">this</span>) &#123;</span><br><span class="line">      <span class="keyword">yield</span> <span class="keyword">this</span>[key];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> x <span class="keyword">of</span> collection) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(x);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// logs:</span></span><br><span class="line"><span class="comment">// → 10</span></span><br><span class="line"><span class="comment">// → 20</span></span><br><span class="line"><span class="comment">// → 30</span></span><br></pre></td></tr></table></figure>
+<p>在此代码中，<code>for...await...of</code>语句隐式调用<code>Symbol.asyncIterator</code>集合对象上的方法以获取异步迭代器。每次循环时，都会调用迭代器的<code>next()</code>方法，它返回一个promise。一旦解析了promise，就会将结果对象的<code>value</code>属性读取到<code>x</code>变量中。循环继续，直到返回的对象的<code>done</code>属性值为<code>true</code>。</p>
+<p>请记住，该<code>for...await...of</code>语句仅在异步生成器和异步函数中有效。违反此规则会导致一个<code>SyntaxError</code>报错。</p>
+<p><code>next()</code>方法可能会返回拒绝的promise。要优雅地处理被拒绝的promise，您可以将<code>for...await...of</code>语句包装在语句中<code>try...catch</code>，如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> collection = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.asyncIterator]() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      next: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Something went wrong.'</span>))</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> value <span class="keyword">of</span> collection) &#123;&#125;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Caught: '</span> + error.message);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// logs:</span></span><br><span class="line"><span class="comment">// → Caught: Something went wrong.</span></span><br></pre></td></tr></table></figure>
+<h3 id="Support-for-Asynchronous-Iterators"><a href="#Support-for-Asynchronous-Iterators" class="headerlink" title="Support for Asynchronous Iterators"></a>Support for Asynchronous Iterators</h3><table>
+<thead>
+<tr>
+<th>Chrome</th>
+<th>Firefox</th>
+<th>Safari</th>
+<th>Edge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>63</td>
+<td>57</td>
+<td>12</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Chrome Android</th>
+<th>Firefox Android</th>
+<th>iOS Safari</th>
+<th>Edge Mobile</th>
+<th>Samsung Internet</th>
+<th>Android Webview</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>63</td>
+<td>57</td>
+<td>12</td>
+<td>No</td>
+<td>8.2</td>
+<td>63</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Node-js-1"><a href="#Node-js-1" class="headerlink" title="Node.js"></a>Node.js</h3><ul>
+<li>8.0.0（运行时需要加<code>-harmony</code>）</li>
+<li>8.3.0（完全支持）</li>
+</ul>
+<h2 id="Promise-prototype-finally"><a href="#Promise-prototype-finally" class="headerlink" title="Promise.prototype.finally"></a>Promise.prototype.finally</h2><p>ES2018的另一个令人兴奋的补充是<code>finally()</code>方法。一些JavaScript库之前已经实现了类似的方法，这在许多情况下证明是有用的。这鼓励了Ecma技术委员会正式添加<code>finally()</code>到规范中。使用这个方法，程序员将能不管promise的结果如何，都能执行一个代码块。我们来看一个简单的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'https://www.google.com'</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response.status);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123; </span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">  &#125;)</span><br><span class="line">  .finally(<span class="function"><span class="params">()</span> =&gt;</span> &#123; </span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'#spinner'</span>).style.display = <span class="string">'none'</span>;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p><code>finally()</code>无论操作是否成功，当您需要在操作完成后进行一些清理时，该方法会派上用场。在此代码中，该<code>finally()</code>方法只是在获取和处理数据后隐藏加载微调器。代码不是在<code>then()</code>和<code>catch()</code>方法中复制最终逻辑，而是在promise被fulfilled或rejected后注册要执行的函数。</p>
+<p>你可以使用<code>promise.then(func，func)</code>而不是<code>promise.finally(func)</code>来实现相同的结果，但你必须在fulfillment处理程序和rejection处理程序中重复相同的代码，或者为它声明一个变量：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'https://www.google.com'</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response.status);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123; </span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(final, final);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">final</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">'#spinner'</span>).style.display = <span class="string">'none'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和<code>then()</code>和<code>catch()</code>一样，<code>finally()</code>方法总是返回一个promise，因此可以链接更多的方法。通常，您希望使用<code>finally()</code>作为最后一个链，但在某些情况下，例如在发出HTTP请求时，最好链接另一个<code>catch()</code>以处理<code>finally()</code>中可能发生的错误。</p>
+<h3 id="Support-for-Promise-prototype-finally"><a href="#Support-for-Promise-prototype-finally" class="headerlink" title="Support for Promise.prototype.finally"></a>Support for Promise.prototype.finally</h3><table>
+<thead>
+<tr>
+<th>Chrome</th>
+<th>Firefox</th>
+<th>Safari</th>
+<th>Edge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>63</td>
+<td>58</td>
+<td>11.1</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Chrome Android</th>
+<th>Firefox Android</th>
+<th>iOS Safari</th>
+<th>Edge Mobile</th>
+<th>Samsung Internet</th>
+<th>Android Webview</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>63</td>
+<td>58</td>
+<td>11.1</td>
+<td>No</td>
+<td>8.2</td>
+<td>63</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Node-js-2"><a href="#Node-js-2" class="headerlink" title="Node.js"></a>Node.js</h3><ul>
+<li>10.0.0（完全支持）</li>
+</ul>
+<h2 id="新的RegExp功能"><a href="#新的RegExp功能" class="headerlink" title="新的RegExp功能"></a>新的RegExp功能</h2><p>ES2018为该RegExp对象增加了四个新功能，进一步提高了JavaScript的字符串处理能力。这些功能如下：</p>
+<ul>
+<li>S（DOTALL）标志</li>
+<li>Named Capture Groups(命名捕获组)</li>
+<li>Lookbehind Assertions(后向断言)</li>
+<li>Unicode Property Escapes(Unicode属性转义)</li>
+</ul>
+<h3 id="S（DOTALL）标志"><a href="#S（DOTALL）标志" class="headerlink" title="S（DOTALL）标志"></a>S（DOTALL）标志</h3><p>点（<code>.</code>）是正则表达式模式中的特殊字符，它匹配除换行符之外的任何字符，例如换行符（<code>\n</code>）或回车符（<code>\r</code>）。匹配所有字符（包括换行符）的解决方法是使用具有两个相反短字的字符类，例如<code>[\d\D]</code>。此字符类告诉正则表达式引擎找到一个数字（<code>\d</code>）或非数字（<code>\D</code>）的字符。因此，它匹配任何字符：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/one[\d\D]two/</span>.test(<span class="string">'one\ntwo'</span>));    <span class="comment">// → true</span></span><br></pre></td></tr></table></figure>
+<p>ES2018引入了一种模式，其中点可用于实现相同的结果。可以使用s标志在每个正则表达式的基础上激活此模式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/one.two/</span>.test(<span class="string">'one\ntwo'</span>));     <span class="comment">// → false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/one.two/</span>s.test(<span class="string">'one\ntwo'</span>));    <span class="comment">// → true</span></span><br></pre></td></tr></table></figure>
+<p>使用标志来选择新行为的好处是向后兼容性。因此，使用点字符的现有正则表达式模式不受影响。</p>
+<h3 id="Named-Capture-Groups-命名捕获组"><a href="#Named-Capture-Groups-命名捕获组" class="headerlink" title="Named Capture Groups(命名捕获组)"></a>Named Capture Groups(命名捕获组)</h3><p>在一些正则表达式模式中，使用数字来引用捕获组可能会令人困惑。例如，使用<code>/(\d{4})-(\d{2})-(\d{2})/</code>与日期匹配的正则表达式。由于美式英语中的日期符号与英式英语不同，因此很难知道哪个组指的是哪一天，哪个组指的是月份：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> re = <span class="regexp">/(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)/</span>;</span><br><span class="line"><span class="keyword">const</span> match= re.exec(<span class="string">'2019-01-10'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(match[<span class="number">0</span>]);    <span class="comment">// → 2019-01-10</span></span><br><span class="line"><span class="built_in">console</span>.log(match[<span class="number">1</span>]);    <span class="comment">// → 2019</span></span><br><span class="line"><span class="built_in">console</span>.log(match[<span class="number">2</span>]);    <span class="comment">// → 01</span></span><br><span class="line"><span class="built_in">console</span>.log(match[<span class="number">3</span>]);    <span class="comment">// → 10</span></span><br></pre></td></tr></table></figure>
+<p>ES2018引入了使用<code>(?&lt;name&gt;...)</code>语法的命名捕获组。因此，匹配日期的模式可以用不那么模糊的方式编写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> re = <span class="regexp">/(?&lt;year&gt;\d&#123;4&#125;)-(?&lt;month&gt;\d&#123;2&#125;)-(?&lt;day&gt;\d&#123;2&#125;)/</span>;</span><br><span class="line"><span class="keyword">const</span> match = re.exec(<span class="string">'2019-01-10'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(match.groups);          <span class="comment">// → &#123;year: "2019", month: "01", day: "10"&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(match.groups.year);     <span class="comment">// → 2019</span></span><br><span class="line"><span class="built_in">console</span>.log(match.groups.month);    <span class="comment">// → 01</span></span><br><span class="line"><span class="built_in">console</span>.log(match.groups.day);      <span class="comment">// → 10</span></span><br></pre></td></tr></table></figure>
+<p>您可以使用<code>\k&lt;name&gt;</code>语法在模式中稍后调用命名的捕获组。例如，要在句子中查找连续的重复单词，您可以使用<code>/\b(?&lt;dup&gt;\w+)\s+\k&lt;dup&gt;\b/</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> re = <span class="regexp">/\b(?&lt;dup&gt;\w+)\s+\k&lt;dup&gt;\b/</span>;</span><br><span class="line"><span class="keyword">const</span> match = re.exec(<span class="string">'Get that that cat off the table!'</span>);        </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(match.index);    <span class="comment">// → 4</span></span><br><span class="line"><span class="built_in">console</span>.log(match[<span class="number">0</span>]);       <span class="comment">// → that that</span></span><br></pre></td></tr></table></figure>
+<p>要将命名的捕获组插入到方法的替换字符串中<code>replace()</code>，您需要使用<code>$&lt;name&gt;</code>构造。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">'red &amp; blue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str.replace(<span class="regexp">/(red) &amp; (blue)/</span>, <span class="string">'$2 &amp; $1'</span>));    </span><br><span class="line"><span class="comment">// → blue &amp; red</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str.replace(<span class="regexp">/(?&lt;red&gt;red) &amp; (?&lt;blue&gt;blue)/</span>, <span class="string">'$&lt;blue&gt; &amp; $&lt;red&gt;'</span>));    </span><br><span class="line"><span class="comment">// → blue &amp; red</span></span><br></pre></td></tr></table></figure>
+<h3 id="Lookbehind-Assertions-后向断言"><a href="#Lookbehind-Assertions-后向断言" class="headerlink" title="Lookbehind Assertions(后向断言)"></a>Lookbehind Assertions(后向断言)</h3><p>ES2018为JavaScript带来了后向性断言，这些断言已经在其他正则表达式实现中可用多年。以前，JavaScript只支持超前断言。后向断言用表示<code>(?&lt;=...)</code>，并使您能够匹配基于模式之前的子字符串的模式。例如，如果要在不捕获货币符号的情况下以美元，英镑或欧元匹配产品的价格，则可以使用<code>/(?&lt;=\$|£|€)\d+(\.\d*)?/</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> re = <span class="regexp">/(?&lt;=\$|£|€)\d+(\.\d*)?/</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(re.exec(<span class="string">'199'</span>));     </span><br><span class="line"><span class="comment">// → null</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(re.exec(<span class="string">'$199'</span>));    </span><br><span class="line"><span class="comment">// → ["199", undefined, index: 1, input: "$199", groups: undefined]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(re.exec(<span class="string">'€50'</span>));     </span><br><span class="line"><span class="comment">// → ["50", undefined, index: 1, input: "€50", groups: undefined]</span></span><br></pre></td></tr></table></figure>
+<p>还有一个lookbehind的否定版本，用<code>(?&lt;!...)</code>，只有当模式前面没有lookbehind中的模式时，负lookbehind才允许您匹配模式。例如，模式<code>/(?&lt;!un)available/</code>匹配没有“un”前缀的可用词</p>
+<p><em>这段翻译的不好，放上原文</em></p>
+<p>There is also a negative version of lookbehind, which is denoted by <code>(?&lt;!...)</code>. A negative lookbehind allows you to match a pattern only if it is not preceded by the pattern within the lookbehind. For example, the pattern <code>/(?&lt;!un)available/</code> matches the word available if it does not have a “un” prefix:</p>
+<h3 id="Unicode-Property-Escapes-Unicode属性转义"><a href="#Unicode-Property-Escapes-Unicode属性转义" class="headerlink" title="Unicode Property Escapes(Unicode属性转义)"></a>Unicode Property Escapes(Unicode属性转义)</h3><p>ES2018提供了一种称为Unicode属性转义的新类型转义序列，它在正则表达式中提供对完整Unicode的支持。假设您要在字符串中匹配Unicode字符㉛。虽然㉛被认为是一个数字，但是你不能将它与<code>\d</code>速记字符类匹配，因为它只支持ASCII [0-9]字符。另一方面，Unicode属性转义可用于匹配Unicode中的任何十进制数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">'㉛'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/\d/u</span>.test(str));    <span class="comment">// → false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/\p&#123;Number&#125;/u</span>.test(str));     <span class="comment">// → true</span></span><br></pre></td></tr></table></figure>
+<p>同样，如果要匹配任何Unicode字母字符，你可以使用<code>\p{Alphabetic}</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">'ض'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/\p&#123;Alphabetic&#125;/u</span>.test(str));     <span class="comment">// → true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// the \w shorthand cannot match ض</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="regexp">/\w/u</span>.test(str));    <span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
+<p>还有一个否定版本<code>\p{...}</code>，表示为<code>\P{...}</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/\P&#123;Number&#125;/u</span>.test(<span class="string">'㉛'</span>));    <span class="comment">// → false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/\P&#123;Number&#125;/u</span>.test(<span class="string">'ض'</span>));    <span class="comment">// → true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/\P&#123;Alphabetic&#125;/u</span>.test(<span class="string">'㉛'</span>));    <span class="comment">// → true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/\P&#123;Alphabetic&#125;/u</span>.test(<span class="string">'ض'</span>));    <span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
+<p>除了字母和数字之外，还有几个属性可以在Unicode属性转义中使用。您可以在<a href="https://tc39.github.io/proposal-regexp-unicode-property-escapes/#sec-static-semantics-unicodematchproperty-p" target="_blank" rel="noopener">当前规范提案</a>中找到支持的Unicode属性列表。</p>
+<h3 id="Support-for-New-RegExp"><a href="#Support-for-New-RegExp" class="headerlink" title="Support for New RegExp"></a>Support for New RegExp</h3><table>
+<thead>
+<tr>
+<th>*</th>
+<th>Chrome</th>
+<th>Firefox</th>
+<th>Safari</th>
+<th>Edge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S（DOTALL）标志</td>
+<td>62</td>
+<td>No</td>
+<td>11.1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>命名捕获组</td>
+<td>64</td>
+<td>No</td>
+<td>11.1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>后向断言</td>
+<td>62</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Unicode属性转义</td>
+<td>64</td>
+<td>No</td>
+<td>11.1</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>*</th>
+<th>Chrome Android</th>
+<th>Firefox Android</th>
+<th>iOS Safari</th>
+<th>Edge Mobile</th>
+<th>Samsung Internet</th>
+<th>Android Webview</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S（DOTALL）标志</td>
+<td>62</td>
+<td>No</td>
+<td>11.3</td>
+<td>No</td>
+<td>8.2</td>
+<td>62</td>
+</tr>
+<tr>
+<td>命名捕获组</td>
+<td>64</td>
+<td>No</td>
+<td>11.3</td>
+<td>No</td>
+<td>No</td>
+<td>64</td>
+</tr>
+<tr>
+<td>后向断言</td>
+<td>62</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>8.2</td>
+<td>62</td>
+</tr>
+<tr>
+<td>Unicode属性转义</td>
+<td>64</td>
+<td>No</td>
+<td>11.3</td>
+<td>No</td>
+<td>No</td>
+<td>64</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Node-js-3"><a href="#Node-js-3" class="headerlink" title="Node.js"></a>Node.js</h3><ul>
+<li>8.3.0 (运行时需要加<code>-harmony</code>)</li>
+<li>8.10.0 (support for s (dotAll) flag and lookbehind assertions)</li>
+<li>10.0.0 (完全支持)</li>
+</ul>
+<h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><p>当模板字符串紧跟在表达式之后时，它被称为标记模板字符串。当您想要使用函数解析模板文字时，标记的模板会派上用场。请考虑以下示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">string, substitute</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(substitute === <span class="string">'ES6'</span>) &#123;</span><br><span class="line">    substitute = <span class="string">'ES2015'</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> substitute + string[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> version = <span class="string">'ES6'</span>;</span><br><span class="line"><span class="keyword">const</span> result = fn<span class="string">`<span class="subst">$&#123;version&#125;</span> was a major update`</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(result);    <span class="comment">// → ES2015 was a major update</span></span><br></pre></td></tr></table></figure>
+<p>在此代码中，调用标记表达式（它是常规函数）并传递模板文字。该函数只是修改字符串的动态部分并返回它。</p>
+<p>在ES2018之前，标记的模板字符串具有与转义序列相关的语法限制。反斜杠后跟某些字符序列被视为特殊字符：<code>\x</code>解释为十六进制转义符，<code>\u</code>解释为unicode转义符，<code>\</code>后跟一个数字解释为八进制转义符。其结果是，字符串，例如”<code>C:\xxx\uuu</code>“或者”<code>\ubuntu</code>“被认为是由解释无效转义序列，并会抛出SyntaxError。</p>
+<p>ES2018从标记模板中删除了这些限制，而不是抛出错误，表示无效的转义序列如下undefined</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">string, substitute</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(substitute);    <span class="comment">// → escape sequences:</span></span><br><span class="line">  <span class="built_in">console</span>.log(string[<span class="number">1</span>]);     <span class="comment">// → undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">'escape sequences:'</span>;</span><br><span class="line"><span class="keyword">const</span> result = fn<span class="string">`<span class="subst">$&#123;str&#125;</span> \ubuntu C:\xxx\uuu`</span>;</span><br></pre></td></tr></table></figure>
+<p>请记住，在常规模板文字中使用非法转义序列仍会导致错误：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="string">`\ubuntu`</span>;</span><br><span class="line"><span class="comment">// → SyntaxError: Invalid Unicode escape sequence</span></span><br></pre></td></tr></table></figure>
+<h3 id="Support-for-Template-Literal-Revision"><a href="#Support-for-Template-Literal-Revision" class="headerlink" title="Support for Template Literal Revision"></a>Support for Template Literal Revision</h3><table>
+<thead>
+<tr>
+<th>Chrome</th>
+<th>Firefox</th>
+<th>Safari</th>
+<th>Edge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>62</td>
+<td>56</td>
+<td>11</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Chrome Android</th>
+<th>Firefox Android</th>
+<th>iOS Safari</th>
+<th>Edge Mobile</th>
+<th>Samsung Internet</th>
+<th>Android Webview</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>62</td>
+<td>56</td>
+<td>11</td>
+<td>No</td>
+<td>8.2</td>
+<td>62</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Node-js-4"><a href="#Node-js-4" class="headerlink" title="Node.js"></a>Node.js</h3><ul>
+<li>8.3.0 （运行时需要加<code>-harmony</code>）</li>
+<li>8.10.0（完全支持）</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我们已经仔细研究了ES2018中引入的几个关键特性，包括异步迭代，<code>rest/spread</code>属性<code>Promise.prototype.finally()</code>以及<code>RegExp</code>对象的添加。虽然其中一些浏览器供应商尚未完全实现其中一些功能，但由于像Babel这样的JavaScript转换器，它们今天仍然可以使用。</p>
+<p>ECMAScript正在迅速发展，并且每隔一段时间就会引入新功能，因此请查看<a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md" target="_blank" rel="noopener">已完成提案的列表</a>，了解新功能的全部内容。</p>
+<p>第一次翻译文章，能力有限，水平一般，翻译不妥之处，还望指正。感谢。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '救救孩子吧，我想喝一点点奶茶！', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/webchat.jpg",
+  alipayImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/alipay.jpg",
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Timbok
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2019/01/13/ES2018/" target="_blank" title="每个JavaScript开发人员都应该知道的新ES2018功能（译文）">https://yb909144903.github.io/2019/01/13/ES2018/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/19/react打怪笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">react打怪笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rest-spread属性"><span class="nav-number">2.1.</span> <span class="nav-text">rest/spread属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Support-for-Rest-Spread"><span class="nav-number">2.1.1.</span> <span class="nav-text">Support for Rest/Spread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js"><span class="nav-number">2.1.2.</span> <span class="nav-text">Node.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asynchronous-Iteration-异步迭代"><span class="nav-number">2.2.</span> <span class="nav-text">Asynchronous Iteration(异步迭代)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Support-for-Asynchronous-Iterators"><span class="nav-number">2.2.1.</span> <span class="nav-text">Support for Asynchronous Iterators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">Node.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-prototype-finally"><span class="nav-number">2.3.</span> <span class="nav-text">Promise.prototype.finally</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Support-for-Promise-prototype-finally"><span class="nav-number">2.3.1.</span> <span class="nav-text">Support for Promise.prototype.finally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">Node.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新的RegExp功能"><span class="nav-number">2.4.</span> <span class="nav-text">新的RegExp功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#S（DOTALL）标志"><span class="nav-number">2.4.1.</span> <span class="nav-text">S（DOTALL）标志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Named-Capture-Groups-命名捕获组"><span class="nav-number">2.4.2.</span> <span class="nav-text">Named Capture Groups(命名捕获组)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lookbehind-Assertions-后向断言"><span class="nav-number">2.4.3.</span> <span class="nav-text">Lookbehind Assertions(后向断言)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unicode-Property-Escapes-Unicode属性转义"><span class="nav-number">2.4.4.</span> <span class="nav-text">Unicode Property Escapes(Unicode属性转义)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Support-for-New-RegExp"><span class="nav-number">2.4.5.</span> <span class="nav-text">Support for New RegExp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js-3"><span class="nav-number">2.4.6.</span> <span class="nav-text">Node.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串"><span class="nav-number">2.5.</span> <span class="nav-text">模板字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Support-for-Template-Literal-Revision"><span class="nav-number">2.5.1.</span> <span class="nav-text">Support for Template Literal Revision</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js-4"><span class="nav-number">2.5.2.</span> <span class="nav-text">Node.js</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <!-- <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p> -->
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2019 Timbok&#39;s Blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/drip" class="mobile-nav-link">Drip</a>
+  
+    <a href="/introduce" class="mobile-nav-link">Introduce</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-130181265-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Timbok&#39;s Blog
+          </div>
+          <div class="panel-body"> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </div>
+          <div class="panel-body">
+            Copyright © 2019 Timbok All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
