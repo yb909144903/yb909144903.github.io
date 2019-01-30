@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>
+    
+    typescript指南（译文） |
+    
+    Timbok&#39;s Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="前端 Git React Es6 JavaScript">
+  
+  
+  
+  
+  <meta name="description" content="前言 原文地址：https://flaviocopes.com/typescript/ 原文作者：Flavio 译者：Timbok 翻译工具：Google Translate  正文什么？都2019了，你还不会TypeScirpt？别担心，我也不会，前几天看到一篇写的很好的入门文章，翻译一下，一起学习。 TypeScript是2018年发展最快的技术之一。它无处不在，每个人都在谈论它。本文将指导您">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TYPESCRIPT指南（译文）">
+<meta property="og:url" content="https://yb909144903.github.io/2019/01/30/TypeScript/index.html">
+<meta property="og:site_name" content="Timbok&#39;s Blog">
+<meta property="og:description" content="前言 原文地址：https://flaviocopes.com/typescript/ 原文作者：Flavio 译者：Timbok 翻译工具：Google Translate  正文什么？都2019了，你还不会TypeScirpt？别担心，我也不会，前几天看到一篇写的很好的入门文章，翻译一下，一起学习。 TypeScript是2018年发展最快的技术之一。它无处不在，每个人都在谈论它。本文将指导您">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-30T02:43:15.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TYPESCRIPT指南（译文）">
+<meta name="twitter:description" content="前言 原文地址：https://flaviocopes.com/typescript/ 原文作者：Flavio 译者：Timbok 翻译工具：Google Translate  正文什么？都2019了，你还不会TypeScirpt？别担心，我也不会，前几天看到一篇写的很好的入门文章，翻译一下，一起学习。 TypeScript是2018年发展最快的技术之一。它无处不在，每个人都在谈论它。本文将指导您">
+  
+  <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/avatar.jpg">
+  <link rel="apple-touch-icon" href="/css/images/avatar.jpg">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+  <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <script>
+    console.log("%cTimbok",
+      " text-shadow: 0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);font-size:5em"
+    );
+    console.log('%c看到这段话说明你我前世有缘，这里都是很一般的博客，但是希望你我一起进步。','font-size: 15px');
+  </script>
+
+</head></html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+    <link href="https://cdn.bootcss.com/csshake/1.5.3/csshake-little.min.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_943855_whj85qlkoi.css" rel="stylesheet">
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand shake-little" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/drip">点滴</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/introduce">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-TypeScript" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      TYPESCRIPT指南（译文）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/01/30/TypeScript/" class="article-date">
+	  <time datetime="2019-01-30T02:39:41.000Z" itemprop="datePublished">2019-01-30</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li>原文地址：<a href="https://flaviocopes.com/typescript/" target="_blank" rel="noopener">https://flaviocopes.com/typescript/</a></li>
+<li>原文作者：<a href="https://flaviocopes.com/" target="_blank" rel="noopener">Flavio</a></li>
+<li>译者：<a href="https://timbok.top" target="_blank" rel="noopener">Timbok</a></li>
+<li>翻译工具：Google Translate</li>
+</ul>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>什么？都2019了，你还不会TypeScirpt？别担心，我也不会，前几天看到一篇写的很好的入门文章，翻译一下，一起学习。</p>
+<p>TypeScript是2018年发展最快的技术之一。它无处不在，每个人都在谈论它。本文将指导您了解其关键概念</p>
+<p>过去几年中，很少有技术能有TypeScript这么大的影响。<br>让我添加一些证据，支持TypeScript。</p>
+<p>在“The State of JavaScript 2018”调查中，近50％的受访者表示他们使用TypeScript，并会再次使用它。超过30％的人表示他们想学习它。对此感兴趣的人中有很大一部分。</p>
+<p>TypeScript是由微软创建的，它对于创建编程语言并不陌生，其创建者之一是Anders Hejlsberg，一位以Turbo Pascal（❤️）和Delphi而闻名的丹麦软件工程师。我把心思放在Turbo Pascal上，因为Pascal是我的第一个编程语言，我们在学校使用了Turbo Pascal。</p>
+<p>它是一种开源语言，在<a href="https://github.com/Microsoft/TypeScript" target="_blank" rel="noopener">https://github.com/Microsoft/TypeScript</a>上公开开发。</p>
+<p>Angular是使用TypeScript的，据说Vue.js使用TypeScript制作3.0版本。Node.js的创建者Ryan Dahl也说了很多关于它的事情。</p>
+<p>我认为这些东西有助于你清晰认识TypeScript。这不仅仅是一种随机的JavaScript风格，将在下个月消亡，它绝对会留下来。事实上，这意味着您可能需要在未来的项目或下一个工作中使用它。也许它会帮助你找到一份工作，所以让我们深入研究它。</p>
+<h2 id="编写并编译您的第一个TYPESCRIPT文件"><a href="#编写并编译您的第一个TYPESCRIPT文件" class="headerlink" title="编写并编译您的第一个TYPESCRIPT文件"></a>编写并编译您的第一个TYPESCRIPT文件</h2><p>TypeScript开始很容易。如果您曾经写过一行JavaScript，那么您已经编写了TypeScript代码！</p>
+<p>我所做的这个奇怪的陈述是TypeScript成功的原因之一：它是JavaScript的严格超集。</p>
+<p>这有点像SCSS的CSS。</p>
+<p>特别是，它是<a href="http://es6.ruanyifeng.com/#docs/intro" target="_blank" rel="noopener">ECMAScript 2015</a>（也称为ES6）的超集。这意味着任何有效的JavaScript也是有效的TypeScript。</p>
+<p>TypeScript的许多功能都等同于JavaScript。例如变量，模块系统，迭代器等。</p>
+<p>所以，没有必要编写绝对的第一个TypeScript文件，因为你已经在你不知道的情况下写过，让我们通过显式制作一个TypeScript文件来制作一个“hello world！”，并将其编译成JavaScript。</p>
+<p>运行<code>npm install -g typescript</code>以全局安装可使用<code>tsc</code>命令使用的TypeScript编译器。</p>
+<p>创建一个新文件夹，然后创建一个<code>app.ts</code>文件。<code>.ts</code>是TypeScript文件扩展名。</p>
+<p>写下第一个程序：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> greet = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Hello world!'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greet()</span><br></pre></td></tr></table></figure></p>
+<p>这只是普通的JavaScript，但存储在一个<code>.ts</code>文件中。</p>
+<p>现在使用编译程序<code>tsc app.ts</code>。结果将是一个新的JavaScript文件：<code>app.js</code>，包含以下内容：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> greet = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello world!'</span>);</span><br><span class="line">&#125;;</span><br><span class="line">greet();</span><br></pre></td></tr></table></figure></p>
+<p>TypeScript代码已编译为JavaScript。JavaScript代码稍有改动，例如你可以注意到它添加了分号，<code>var</code>用来代替<code>const</code>和使用常规函数而不是箭头函数。</p>
+<p>它看起来像<em>旧的</em> JavaScript，对吗？这是因为TypeScript默认编译为ES5，因为这是几乎可以保证在所有现代浏览器中都支持的ECMAScript版本。您可以将编译目标更改为其他版本，例如编译为ES2018：<code>tsc app.ts --target ES2018</code>：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> greet = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello world!'</span>);</span><br><span class="line">&#125;;</span><br><span class="line">greet();</span><br></pre></td></tr></table></figure>
+<p>看，这里几乎没有改变我们的原始<code>.ts</code>文件，除了额外的分号。</p>
+<p>有一个非常方便的网站，可让您在<a href="https://www.typescriptlang.org/play/" target="_blank" rel="noopener">https://www.typescriptlang.org/play/</a>上使用TypeScript到JavaScript编辑。</p>
+<h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p>到目前为止，我们编译了一个<code>.ts</code>文件，但我们只编译了纯JavaScript。</p>
+<p>您看到了TypeScript的第一个功能：您可以使用现代JavaScript并将其编译为ES5（或更高版本），这是<a href="https://flaviocopes.com/babel/" target="_blank" rel="noopener">Babel</a>所做的。我们还没有使用任何TypeScript功能。</p>
+<p>TypeScript提供的最重要的功能是类型系统：静态类型，接口，类型推断，枚举，混合类型，泛型，联合/交集类型，访问修饰符，空检查。</p>
+<p>如果你曾经使用过类型语言，比如Go或C，你已经知道它是如何工作的。如果没有，并且您只使用Python或Ruby这样的动态语言进行编程，这对您来说是全新的，但不要担心。</p>
+<p>例如，类型系统允许您向变量，函数参数和函数返回类型添加类型，从而为程序提供更严格的结构。我们编译的JavaScript代码没有类型，它们在编译阶段会丢失。</p>
+<p>以下是在TypeScript中定义字符串变量的方法：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> greeting : <span class="built_in">string</span> = <span class="string">"hello!"</span></span><br></pre></td></tr></table></figure></p>
+<p>类型推断让我们避免在明显的情况下编写类型：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> greeting = <span class="string">"hello!"</span></span><br></pre></td></tr></table></figure></p>
+<p>类型由TS确定。</p>
+<p>这是函数接受特定类型的参数的方式：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> multiply = <span class="function">(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">number</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a * b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果传递一个字符串给<code>multiply()</code>，编译器会给你一个错误。</p>
+<p>以下是函数声明其返回值的方式：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> multiply = (a: <span class="built_in">number</span>, b: <span class="built_in">number</span>): <span class="function"><span class="params">number</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a * b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>有效类型是</p>
+<ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>enum</li>
+<li>void</li>
+<li>null</li>
+<li>undefined</li>
+<li>any</li>
+<li>never</li>
+<li>Array</li>
+<li>tuple</li>
+</ul>
+<p><code>any</code> 是一种全能类型，如其名称所示，可识别任何类型。</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>ES2015 / ES6为JavaScript 添加了类，作为<a href="https://flaviocopes.com/javascript-prototypal-inheritance/" target="_blank" rel="noopener">原型继承</a>的简单语法糖。</p>
+<p>无论喜欢与否，在引擎盖下，JavaScript仍然使用原型继承，具有其独特的功能和怪癖。</p>
+<p>TypeScript类与JavaScript类略有不同。原因是TypeScript在JavaScript之前引入了类（它们是在ES2015 / ES6中引入的）。</p>
+<p>就像在JavaScript中一样，您以这种方式声明类：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Car &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>默认情况下，所有字段都是公开 您可以将字段设置为私有或受保护：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Car &#123;</span><br><span class="line">  <span class="keyword">public</span> color: <span class="built_in">string</span></span><br><span class="line">  <span class="keyword">private</span> name: <span class="built_in">string</span></span><br><span class="line">  <span class="keyword">protected</span> brand: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>就像在其他编程语言中发生的那样，私有字段只能在声明它们的类中访问。受保护的字段也只能通过派生类来访问。</p>
+<p>您还可以声明静态字段，它们是类字段而不是对象字段：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Car &#123;</span><br><span class="line">  <span class="keyword">static</span> numberOfWheels = <span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>您可以使用构造函数初始化字段：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Car &#123;</span><br><span class="line">  color: <span class="built_in">string</span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">theColor: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.color = theColor</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种简写语法使其更简单：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Car &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> color: <span class="built_in">string</span></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  printColor() &#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.color)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">new</span> Car(<span class="string">'red'</span>)).printColor()</span><br></pre></td></tr></table></figure></p>
+<p>字段也可以是只读的：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Car &#123;</span><br><span class="line">  readonly color: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在这种情况下，它的值只能在构造函数中设置。</p>
+<p>类具有方法：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Car &#123;</span><br><span class="line">  color: <span class="built_in">string</span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> color: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.color = color</span><br><span class="line">  &#125;</span><br><span class="line">  drive() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'You are driving the car'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>与纯JavaScript一样，您可以使用<code>new</code>关键字从这些类创建对象：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myCar = <span class="keyword">new</span> Car(<span class="string">'red'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>并且您可以使用<code>extend</code>关键字扩展现有类：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> ElectricCar <span class="keyword">extends</span> Car &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>您可以在构造函数和方法中调用super()来调用扩展类对应的方法</p>
+<p>类可以定义为抽象，这意味着需要有一个扩展它的类，并实现其最终的抽象方法：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> Car &#123;</span><br><span class="line">  <span class="keyword">abstract</span> drive()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> SportsCar <span class="keyword">extends</span> Car &#123;</span><br><span class="line">  drive() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'You are driving a sports car'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="访问器"><a href="#访问器" class="headerlink" title="访问器"></a>访问器</h2><p>字段可以有<code>getter</code>和<code>setter</code>。例：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Car &#123;</span><br><span class="line">  <span class="keyword">private</span> _color: <span class="built_in">string</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span> color(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._color</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">set</span> color(color: <span class="built_in">string</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>._color = color</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口基于基本类型构建。您可以将接口用作类型，并且此接口可以包含其他类型定义：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> SetOfNumbers &#123;</span><br><span class="line">  a: <span class="built_in">number</span>;</span><br><span class="line">  b: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> multiply = <span class="function">(<span class="params"><span class="keyword">set</span>: SetOfNumbers</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">set</span>.a * <span class="keyword">set</span>.b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">multiply(&#123; a:<span class="number">1</span>, b: <span class="number">2</span> &#125;)</span><br></pre></td></tr></table></figure></p>
+<p>接口也可以是类实现的接口：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Car &#123;</span><br><span class="line">  name: <span class="string">'string'</span></span><br><span class="line">  <span class="keyword">new</span> (brand: <span class="built_in">string</span>)</span><br><span class="line">  drive(): <span class="built_in">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> SportsCar <span class="keyword">implements</span> Car &#123;</span><br><span class="line">  <span class="keyword">public</span> name</span><br><span class="line">  construtor(<span class="keyword">public</span> brand: <span class="built_in">string</span>) &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line">  drive() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'You are driving a sports car'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="函数特点"><a href="#函数特点" class="headerlink" title="函数特点"></a>函数特点</h3><p>函数可以使用<code>?</code>来表明参数类型可选：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Car &#123;</span><br><span class="line">  drive(kilometers?: <span class="built_in">number</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (kilometers) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`Drive the car for <span class="subst">$&#123;kilometers&#125;</span> kilometers`</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`Drive the car`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>参数也可以有默认值：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Car &#123;</span><br><span class="line">  drive(kilometers = <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Drive the car for <span class="subst">$&#123;kilometers&#125;</span> kilometers`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>函数可以使用<code>...</code>接受不同数量的参数：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Car &#123;</span><br><span class="line">  drive(kilometers = <span class="number">10</span>, ...occupants: <span class="built_in">string</span>[]) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Drive the car for <span class="subst">$&#123;kilometers&#125;</span> kilometers, with those people on it:`</span>)</span><br><span class="line">    occupants.map(<span class="function">(<span class="params">person</span>) =&gt;</span> <span class="built_in">console</span>.log(person))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">(<span class="keyword">new</span> Car()).drive(<span class="number">20</span>, <span class="string">'Flavio'</span>, <span class="string">'Roger'</span>, <span class="string">'Syd'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><p>枚举是定义命名常量的一种很好的方法，遗憾的是，它不受JavaScript支持，但是被其他语言推广。</p>
+<p>TypeScript为我们提供了枚举：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Order &#123;</span><br><span class="line">  First,</span><br><span class="line">  Second,</span><br><span class="line">  Third,</span><br><span class="line">  Fourth</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>TS在内部为每个值分配唯一标识符，我们可以简单地引用<code>Order.First</code>，<code>Order.Second</code>依此类推。</p>
+<p>您可以显式地为常量指定值：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Order &#123;</span><br><span class="line">  First = <span class="number">0</span>,</span><br><span class="line">  Second = <span class="number">1</span>,</span><br><span class="line">  Third = <span class="number">2</span>,</span><br><span class="line">  Fourth = <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或者也使用字符串：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Order &#123;</span><br><span class="line">  First = <span class="string">'FIRST'</span>,</span><br><span class="line">  Second = <span class="string">'SECOND'</span>,</span><br><span class="line">  Third = <span class="string">'THIRD'</span>,</span><br><span class="line">  Fourth = <span class="string">'FOURTH'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>泛型是许多不同编程语言的一部分。简而言之，您可以创建一个使用不同类型的函数，接口或类，而无需预先指定类型。</p>
+<p>但是在编译时，如果你开始使用一个类型的函数，然后你改变类型（例如从数字到字符串），编译器将抛出一个错误。</p>
+<p>我们可以通过省略类型或使用<code>any</code>类型来实现这一点，但是使用泛型，所有工具都能够帮助我们</p>
+<p>示例语法：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>&lt;<span class="title">T</span>&gt;(<span class="params">a : T</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Hi <span class="subst">$&#123;a&#125;</span>!`</span>)</span><br><span class="line">&#125;</span><br><span class="line">greet(<span class="string">'Flavio'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>有趣的<code>T</code>符号标识通用类型。</p>
+<p>可以使用以下extends关键字将类型限制为某个类或接口：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Greetable &#123; name: <span class="built_in">string</span> &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">Greetable</span>&gt;(<span class="params">a : T</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">`Hi <span class="subst">$&#123;a.name&#125;</span>!`</span>)</span><br><span class="line">&#125;</span><br><span class="line">greet(&#123; name: <span class="string">'Flavio'</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这些都是TypeScript的基础知识。详细学习地址：</p>
+<ul>
+<li>中文文档：<a href="https://github.com/zhongsp/TypeScript" target="_blank" rel="noopener">https://github.com/zhongsp/TypeScript</a></li>
+<li>英文文档：<a href="http://www.typescriptlang.org/docs/home.html" target="_blank" rel="noopener">http://www.typescriptlang.org/docs/home.html</a></li>
+</ul>
+<p>能力有限，水平一般，翻译不妥之处，还望指正。感谢。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '救救孩子吧，我想喝一点点奶茶！', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/webchat.jpg",
+  alipayImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/alipay.jpg",
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Timbok
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2019/01/30/TypeScript/" target="_blank" title="TYPESCRIPT指南（译文）">https://yb909144903.github.io/2019/01/30/TypeScript/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MjE2MC8xODcwNw==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/13/ES2018/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">每个JavaScript开发人员都应该知道的新ES2018功能（译文）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写并编译您的第一个TYPESCRIPT文件"><span class="nav-number">2.1.</span> <span class="nav-text">编写并编译您的第一个TYPESCRIPT文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型"><span class="nav-number">2.2.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类"><span class="nav-number">2.3.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问器"><span class="nav-number">2.4.</span> <span class="nav-text">访问器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">2.5.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数特点"><span class="nav-number">2.5.1.</span> <span class="nav-text">函数特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举"><span class="nav-number">2.6.</span> <span class="nav-text">枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型"><span class="nav-number">2.7.</span> <span class="nav-text">泛型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <!-- <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p> -->
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2019 Timbok&#39;s Blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/drip" class="mobile-nav-link">Drip</a>
+  
+    <a href="/introduce" class="mobile-nav-link">Introduce</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-130181265-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Timbok&#39;s Blog
+          </div>
+          <div class="panel-body"> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </div>
+          <div class="panel-body">
+            Copyright © 2019 Timbok All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
