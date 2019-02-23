@@ -17,18 +17,18 @@
   
   
   
-  <meta name="description" content="前言 原文地址：https://css-tricks.com/new-es2018-features-every-javascript-developer-should-know/ 原文作者：Faraz Kelhini 译者：Timbok 翻译工具：Google Translate   本文首发于我的个人网站: [Timbok.top]()--&amp;gt; 正文ECMAScript标准的第九版，官方称为EC">
+  <meta name="description" content="前言 原文地址：https://css-tricks.com/new-es2018-features-every-javascript-developer-should-know/ 原文作者：Faraz Kelhini 译者：Timbok 翻译工具：Google Translate  正文ECMAScript标准的第九版，官方称为ECMAScript 2018（或简称ES2018），于2018年6">
 <meta name="keywords" content="前端 git react">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每个JavaScript开发人员都应该知道的新ES2018功能（译文）">
 <meta property="og:url" content="https://yb909144903.github.io/2019/01/13/ES2018/index.html">
 <meta property="og:site_name" content="Timbok&#39;s Blog">
-<meta property="og:description" content="前言 原文地址：https://css-tricks.com/new-es2018-features-every-javascript-developer-should-know/ 原文作者：Faraz Kelhini 译者：Timbok 翻译工具：Google Translate   本文首发于我的个人网站: [Timbok.top]()--&amp;gt; 正文ECMAScript标准的第九版，官方称为EC">
+<meta property="og:description" content="前言 原文地址：https://css-tricks.com/new-es2018-features-every-javascript-developer-should-know/ 原文作者：Faraz Kelhini 译者：Timbok 翻译工具：Google Translate  正文ECMAScript标准的第九版，官方称为ECMAScript 2018（或简称ES2018），于2018年6">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-14T06:44:34.000Z">
+<meta property="og:updated_time" content="2019-02-23T01:21:53.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每个JavaScript开发人员都应该知道的新ES2018功能（译文）">
-<meta name="twitter:description" content="前言 原文地址：https://css-tricks.com/new-es2018-features-every-javascript-developer-should-know/ 原文作者：Faraz Kelhini 译者：Timbok 翻译工具：Google Translate   本文首发于我的个人网站: [Timbok.top]()--&amp;gt; 正文ECMAScript标准的第九版，官方称为EC">
+<meta name="twitter:description" content="前言 原文地址：https://css-tricks.com/new-es2018-features-every-javascript-developer-should-know/ 原文作者：Faraz Kelhini 译者：Timbok 翻译工具：Google Translate  正文ECMAScript标准的第九版，官方称为ECMAScript 2018（或简称ES2018），于2018年6">
   
   <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
   
@@ -237,7 +237,6 @@
 <li>译者：<a href="https://timbok.top" target="_blank" rel="noopener">Timbok</a></li>
 <li>翻译工具：Google Translate</li>
 </ul>
-<!--> 本文首发于我的个人网站: [Timbok.top]()-->
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>ECMAScript标准的第九版，官方称为ECMAScript 2018（或简称ES2018），于2018年6月发布。从ES2016开始，ECMAScript规范的新版本每年发布而不是每几年发布一次，并且添加的功能少于主要版本以前。该标准的最新版本通过添加四个新RegExp功能，<code>rest/spread</code>属性，<code>asynchronous iteration</code>，和<code>Promise.prototype.finally</code>。此外，ES2018从标记模板中删除了转义序列的语法限制。</p>
 <p>这些新变化将在后面的小节中解释。</p>
 <h2 id="rest-spread属性"><a href="#rest-spread属性" class="headerlink" title="rest/spread属性"></a>rest/spread属性</h2><p>ES2015最有趣的功能之一是点差运算符。该运算符使复制和合并数组变得更加简单。您可以使用运算符<code>...</code>，而不是调用<code>concat()</code>or <code>slice()</code>方法：</p>
