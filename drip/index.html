@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="Timbok&#39;s Blog">
 <meta property="og:description" content="好文推荐 lodash的debounce,bind和es7的@装饰器  this、apply、call、bind  手把手教你撸一个简易的 webpack  JavaScript开发者应懂的33个概念  如何编写高质量的函数  狼叔：如何正确的学习Node.js   常用命令行记录npm1.查看所有高级的npm moudles  npm list –depth=0  2.查看所有全局安装的模块">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-03T02:07:04.449Z">
+<meta property="og:updated_time" content="2019-03-06T03:20:52.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Daily Sharing">
 <meta name="twitter:description" content="好文推荐 lodash的debounce,bind和es7的@装饰器  this、apply、call、bind  手把手教你撸一个简易的 webpack  JavaScript开发者应懂的33个概念  如何编写高质量的函数  狼叔：如何正确的学习Node.js   常用命令行记录npm1.查看所有高级的npm moudles  npm list –depth=0  2.查看所有全局安装的模块">
@@ -217,7 +217,7 @@
     <div class="article-meta">
       
 	<a href="/drip/index.html" class="article-date">
-	  <time datetime="2019-03-03T02:07:04.449Z" itemprop="datePublished">2019-03-03</time>
+	  <time datetime="2019-03-06T03:20:52.449Z" itemprop="datePublished">2019-03-06</time>
 	</a>
 
       
@@ -305,12 +305,10 @@
 <li>–local     使用仓库级配置文件</li>
 <li>–worktree  使用工作区级别的配置文件</li>
 </ul>
-<ol>
-<li>查看git配置<blockquote>
+<p>1.查看git配置</p>
+<blockquote>
 <p>git config –list</p>
 </blockquote>
-</li>
-</ol>
 <p>2.配置姓名和邮箱</p>
 <blockquote>
 <p>git config user.name Timbok</p>
@@ -367,27 +365,18 @@ var a = new Donate({
       
       
         
-	<div id="comment">
-		<!-- 来必力City版安装代码 -->
-		<div id="lv-container" data-id="city" data-uid="MTAyMC80MjE2MC8xODcwNw==">
-		<script type="text/javascript">
-		   (function(d, s) {
-		       var j, e = d.getElementsByTagName(s)[0];
-
-		       if (typeof LivereTower === 'function') { return; }
-
-		       j = d.createElement(s);
-		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-		       j.async = true;
-
-		       e.parentNode.insertBefore(j, e);
-		   })(document, 'script');
-		</script>
-		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-		</div>
-		<!-- City版安装代码已完成 -->
-	</div>
-
+	<!-- Valine start -->
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <div id="vcomments" style="margin-top: 20px;"></div>
+  <script>
+      new Valine({
+          el: '#vcomments',
+          appId: '2OIV4MkEvPw7WNQEXOKh9YNq-gzGzoHsz',
+          appKey: 'rvPKKHDlqLtjJhcIaUg0XETR'
+      })
+  </script>
+	<!-- Valine end -->
 
 
       
