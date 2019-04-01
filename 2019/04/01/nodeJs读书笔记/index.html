@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>
+    
+    nodejs读书笔记 |
+    
+    Timbok&#39;s Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="前端 Git React Es6 JavaScript">
+  
+  
+  
+  
+  <meta name="description" content="核心概念  Chrome V8 是 Google 发布的开源 JavaScript 引擎，采用 C/C++ 编写，在 Google 的 Chrome 浏览器中被使用。Chrome V8 引擎可以独立运行，也可以用来嵌入到 C/C++ 应用程序中执行。 Event Loop 事件循环（由 libuv 提供） Thread Pool 线程池（由 libuv 提供） 事件循环和线性池负责所有I/O任务的">
+<meta name="keywords" content="前端 git react JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodeJs读书笔记">
+<meta property="og:url" content="https://timbok.github.io/2019/04/01/nodeJs读书笔记/index.html">
+<meta property="og:site_name" content="Timbok&#39;s Blog">
+<meta property="og:description" content="核心概念  Chrome V8 是 Google 发布的开源 JavaScript 引擎，采用 C/C++ 编写，在 Google 的 Chrome 浏览器中被使用。Chrome V8 引擎可以独立运行，也可以用来嵌入到 C/C++ 应用程序中执行。 Event Loop 事件循环（由 libuv 提供） Thread Pool 线程池（由 libuv 提供） 事件循环和线性池负责所有I/O任务的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i5ting.github.io/How-to-learn-node-correctly/media/14912707129964/14912763353044.png">
+<meta property="og:updated_time" content="2019-04-01T06:29:04.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodeJs读书笔记">
+<meta name="twitter:description" content="核心概念  Chrome V8 是 Google 发布的开源 JavaScript 引擎，采用 C/C++ 编写，在 Google 的 Chrome 浏览器中被使用。Chrome V8 引擎可以独立运行，也可以用来嵌入到 C/C++ 应用程序中执行。 Event Loop 事件循环（由 libuv 提供） Thread Pool 线程池（由 libuv 提供） 事件循环和线性池负责所有I/O任务的">
+<meta name="twitter:image" content="https://i5ting.github.io/How-to-learn-node-correctly/media/14912707129964/14912763353044.png">
+  
+  <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/avatar.jpg">
+  <link rel="apple-touch-icon" href="/css/images/avatar.jpg">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+  <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <script>
+    console.log("%cTimbok",
+      " text-shadow: 0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);font-size:5em"
+    );
+    console.log('%c这里都是很一般的博客，但是希望你我一起进步。','font-size: 15px');
+  </script>
+
+</head></html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+    <link href="https://cdn.bootcss.com/csshake/1.5.3/csshake-little.min.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_943855_whj85qlkoi.css" rel="stylesheet">
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand shake-little" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/message">留言</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/share">分享</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/introduce">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-nodeJs读书笔记" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      nodeJs读书笔记
+    </h1>
+  
+
+      </header>
+    
+    
+      <div class="article-meta">
+        
+	<a href="/2019/04/01/nodeJs读书笔记/" class="article-date">
+	  <time datetime="2019-04-01T06:28:29.000Z" itemprop="datePublished">2019-04-01</time>
+	</a>
+
+        
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+
+        
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h1><p><img src="https://i5ting.github.io/How-to-learn-node-correctly/media/14912707129964/14912763353044.png" alt="Node.js 早期的架构图"></p>
+<ul>
+<li>Chrome V8 是 Google 发布的开源 JavaScript 引擎，采用 C/C++ 编写，在 Google 的 Chrome 浏览器中被使用。Chrome V8 引擎可以独立运行，也可以用来嵌入到 C/C++ 应用程序中执行。</li>
+<li>Event Loop 事件循环（由 libuv 提供）</li>
+<li>Thread Pool 线程池（由 libuv 提供）</li>
+<li>事件循环和线性池负责所有I/O任务的分发与执行</li>
+<li><strong>Node.js在接受任务的时候是单线程的，但在执行具体任务的时候是多线程的。</strong></li>
+<li>NodeJS是一个JS脚本解析器，任何操作系统下安装NodeJS本质上做的事情都是把NodeJS执行程序复制到一个目录，然后保证这个目录在系统PATH环境变量下，以便终端下可以使用node命令。</li>
+</ul>
+<h1 id="模块系统"><a href="#模块系统" class="headerlink" title="模块系统"></a>模块系统</h1><p><strong>exports</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exports.hello = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// todo</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>module</strong></p>
+<p>通过module对象可以访问到当前模块的一些相关信息，但最多的用途是替换当前模块的导出对象。例如模块导出对象默认是一个普通对象，如果想改成一个函数的话，可以使用以下方式。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//hello.js </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hello</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="keyword">var</span> name; </span><br><span class="line">    <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">thyName</span>) </span>&#123; </span><br><span class="line">        name = thyName; </span><br><span class="line">    &#125;; </span><br><span class="line">    <span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Hello '</span> + name); </span><br><span class="line">    &#125;; </span><br><span class="line">&#125;; </span><br><span class="line"><span class="built_in">module</span>.exports = Hello;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// other.js</span></span><br><span class="line"><span class="keyword">var</span> hello = <span class="built_in">require</span>(<span class="string">'./hello'</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>require</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hello = <span class="built_in">require</span>(<span class="string">'./hello'</span>);</span><br></pre></td></tr></table></figure></p>
+<h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><ul>
+<li>在<code>fs</code>模块中，所有的方法都分为同步和异步两种实现</li>
+<li>API名称有<code>Sync</code>的，皆为同步方法。例: <code>writeFileSync</code></li>
+</ul>
+<p><a href="http://nodejs.cn/api/fs.html" target="_blank" rel="noopener">官方文档</a></p>
+<p><a href="https://juejin.im/post/5b9768b2e51d450e9942eb98" target="_blank" rel="noopener">掘金学习文档</a></p>
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><p>利用文件读写模仿复制，如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copy</span>(<span class="params">buffer, src</span>) </span>&#123;</span><br><span class="line">  fs.writeFile(src, buffer, (err)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(!err) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'复制成功'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params">src, copyToSrc</span>) </span>&#123;</span><br><span class="line">  fs.readFile(src, (err, data) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(!err) &#123;</span><br><span class="line">      copy(data, copyToSrc);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main(<span class="string">'../package.json'</span>, <span class="string">'test.txt'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>直接使用fs的复制api，如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copyFun</span>(<span class="params">src, copyToSrc</span>) </span>&#123;</span><br><span class="line">  fs.copyFile(src, copyToSrc, err =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(err) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'复制成功'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">copyFun(<span class="string">'../package.json'</span>, <span class="string">'test.txt'</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="文件夹"><a href="#文件夹" class="headerlink" title="文件夹"></a>文件夹</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 操作文件夹</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查看文件操作权限</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">accessFun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  fs.access(<span class="string">'../19-03-04'</span>, err=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(err) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'不可访问'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'可读可写'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取文件目录下的文件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readdirFun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  fs.readdir(<span class="string">'../19-03-04'</span>, (err, data) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(!err) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用async将同步方法变成异步</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">readdirSyncFun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> data = <span class="keyword">await</span> fs.readdirSync(<span class="string">'../19-03-04'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">readdirFun();</span><br></pre></td></tr></table></figure>
+<h1 id="进程-process"><a href="#进程-process" class="headerlink" title="进程 process"></a>进程 process</h1><p><a href="https://juejin.im/post/5848ee3c8e450a006aad306b" target="_blank" rel="noopener">如何玩转子进程</a></p>
+<p>process是一个全局对象，主要有以下属性</p>
+<ul>
+<li>stdin 标准输入可读流</li>
+<li>stdout 标准输入可写流</li>
+<li>stderr 标准错误输出流</li>
+<li>argv 终端输入参数数组</li>
+<li>env 操作系统环境信息</li>
+<li>pid 应用程序进程id</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">process.stdin.on(<span class="string">'data'</span>, (chunk) =&gt; &#123;</span><br><span class="line">  process.stdout.write(<span class="string">'接收的数据：'</span> + chunk);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">➜ node process.js</span><br><span class="line">➜ <span class="number">123</span></span><br><span class="line">接收的数据：<span class="number">123</span></span><br><span class="line">➜ data</span><br><span class="line">接收的数据：data</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '救救孩子吧，我想喝一点点奶茶！', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/webchat.jpg",
+  alipayImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/alipay.jpg",
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Timbok
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2019/04/01/nodeJs读书笔记/" target="_blank" title="nodeJs读书笔记">https://timbok.github.io/2019/04/01/nodeJs读书笔记/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<!-- Valine start -->
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <div id="vcomments" style="margin-top: 20px;"></div>
+  <script>
+      new Valine({
+          el: '#vcomments',
+          appId: '2OIV4MkEvPw7WNQEXOKh9YNq-gzGzoHsz',
+          appKey: 'rvPKKHDlqLtjJhcIaUg0XETR',
+          avatar: 'monsterid',
+          placeholder: '来啊，快活啊！ㄟ( ▔, ▔ )ㄏ',
+      })
+  </script>
+	<!-- Valine end -->
+
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/03/如何给博客加上音乐/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">如何给博客加上音乐</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#核心概念"><span class="nav-number">1.</span> <span class="nav-text">核心概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块系统"><span class="nav-number">2.</span> <span class="nav-text">模块系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件系统"><span class="nav-number">3.</span> <span class="nav-text">文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件"><span class="nav-number">3.1.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件夹"><span class="nav-number">3.2.</span> <span class="nav-text">文件夹</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程-process"><span class="nav-number">4.</span> <span class="nav-text">进程 process</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <!-- <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p> -->
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2019 Timbok&#39;s Blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/message" class="mobile-nav-link">Message</a>
+  
+    <a href="/share" class="mobile-nav-link">Share</a>
+  
+    <a href="/introduce" class="mobile-nav-link">Introduce</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-130181265-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var id = '996ec7f06c07b1e3b09cd843ae120862';
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + id;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Timbok&#39;s Blog
+          </div>
+          <div class="panel-body"> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </div>
+          <div class="panel-body">
+            Copyright © 2019 Timbok All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
