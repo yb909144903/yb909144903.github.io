@@ -270,6 +270,62 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Mac实现iTerm2 免登录ssh服务器" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/07/23/Mac实现iTerm2 免登录ssh服务器/">Mac实现iTerm2 免登录ssh服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    
+      <div class="article-meta">
+        
+	<a href="/2019/07/23/Mac实现iTerm2 免登录ssh服务器/" class="article-date">
+	  <time datetime="2019-07-23T03:43:09.000Z" itemprop="datePublished">2019-07-23</time>
+	</a>
+
+        
+    <a class="article-category-link" href="/categories/工具资源/">工具资源</a>
+
+        
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          没图自己想象在你电脑的任意位置创建自动登录的脚本
+
+touch itermSsh.sh
+vim itermSsh.sh
+shell12345678910#!/usr/bin/expect -fset user _userset host _hostset password _passwordset timeout -1spawn ssh $user@$hostexpect &quot;*assword:*&quot;send &quot;$password\r&quot;interacte...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/07/23/Mac实现iTerm2 免登录ssh服务器/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-Summary and Prospect" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
@@ -506,60 +562,6 @@ npm install –save hexo-tag-aplayer
         </p>
         <p class="article-more-link">
           <a href="/2019/03/03/如何给博客加上音乐/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-Jay" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/03/03/Jay/">周杰伦的歌</a>
-    </h1>
-  
-
-      </header>
-    
-    
-      <div class="article-meta">
-        
-	<a href="/2019/03/03/Jay/" class="article-date">
-	  <time datetime="2019-03-03T08:48:04.000Z" itemprop="datePublished">2019-03-03</time>
-	</a>
-
-        
-    <a class="article-category-link" href="/categories/诗歌与远方/">诗歌与远方</a>
-
-        
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          网易云没有Jay，但是又不想打开其他音乐播放器。就把周杰伦的歌都放在博客上，想听就来。
-
-    
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/03/03/Jay/#more">阅读全文</a>
         </p>
       
     </div>
