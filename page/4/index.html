@@ -6,8 +6,6 @@
   
   <title>
     
-    归档: 2019/3 |
-    
     Timbok&#39;s Blog
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,7 +19,7 @@
 <meta name="keywords" content="前端 git react JavaScript">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Timbok&#39;s Blog">
-<meta property="og:url" content="https://timbok.github.io/archives/2019/03/index.html">
+<meta property="og:url" content="https://timbok.github.io/page/4/index.html">
 <meta property="og:site_name" content="Timbok&#39;s Blog">
 <meta property="og:description" content="一个前端的技术博客，偶尔也会分享一些好的文章和行业趣事。">
 <meta property="og:locale" content="zh-CN">
@@ -80,17 +78,13 @@
   <link rel="stylesheet" href="/css/bootstrap.css">
 
   
-  <link rel="stylesheet" href="/css/dialog.css">
+  <link rel="stylesheet" href="/css/home.css">
   
 
   
 
   
-  <link rel="stylesheet" href="/css/header-post.css">
-  
 
-  
-  <link rel="stylesheet" href="/css/archive.css">
   
 
   
@@ -111,265 +105,241 @@
 
 
   
-  <div id="container">
-    <div id="wrap">
-      
-        <header>
-    <link href="https://cdn.bootcss.com/csshake/1.5.3/csshake-little.min.css" rel="stylesheet">
-    <link href="//at.alicdn.com/t/font_943855_whj85qlkoi.css" rel="stylesheet">
-    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="navbar-inner">
-          
-          <div class="container"> 
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+    <header id="header">
 
-            
-              <a class="brand shake-little" style="
-                 margin-top: 0px;">
-                  <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
-              </a>
-            
-            
-            <div class="navbar-collapse collapse">
-              <ul class="hnav navbar-nav">
-                
-                  <li> <a class="main-nav-link" href="/">首页</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/message">留言</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/share">分享</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/introduce">关于</a> </li>
-                
-                  <li><div id="search-form-wrap">
+	<!-- 背景图模式 -->
+	
 
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="">
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
+    
+      <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
 
-</div></li>
-            </ul></div>
+      <!-- Support rolling -->  
+        
+        <section class="awSlider">
+          <div class="carousel slide carousel-fade " data-ride="carousel">
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+               
+                  
+                    <div class="item active">
+                  
+                    <img id="carousel-img0" src="/css/images/home-bg.jpg">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img0 = new Image();
+                      var imageTag0 = document.getElementById("carousel-img0");
+                      img0.src = imageTag0.src;
+                      img0.onload=function(){
+                        if (img0.width / img0.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag0.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag0.style.height = document.body.clientHeight + "px";
+                          imageTag0.style.marginLeft = -(document.body.clientHeight * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Geri</span>
+            </a>
+            <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">İleri</span>
+            </a>
           </div>
-                
-      </div>
+        </section>
+        <script>
+          $('section.awSlider .carousel').carousel({
+              pause: '',
+              interval: 5000
+          });
+          var startImage = $('section.awSlider .item.active > img').attr('src');
+          $('section.awSlider .carousel').on('slid.bs.carousel', function () {
+              var bscn = $(this).find('.item.active > img').attr('src');
+              $('section.awSlider > img').attr('src', bscn);
+          });
+        </script>
+      
+
+    
+ 
+
+
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+
+      <!-- 折线Polyline背景 -->
+      
+    </script>
+    
+    <style>
+      .homelogoback:hover {
+        overflow: hidden;
+        padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        filter:alpha(opacity=90);  -moz-opacity:0.9;  -khtml-opacity: 0.9;  opacity: 0.9;
+        box-shadow: 4px 4px 100px #fb6d19;
+      }
+    </style>
+
+    <link href="https://cdn.bootcss.com/csshake/1.5.3/csshake-slow.css" rel="stylesheet">
+
+    <!-- 
+      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
+     -->
+    <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
+        
+          <!-- <div class="homelogoback"  style="border: 1px solid #404040;" > -->
+          <div class="homelogoback shake-slow" style="border: 1px solid #404040;">
+            <h1><a href="#content" id="logo">Timbok&#39;s Blog</a></h1>
+            <h3>Life is but a span.</h3>
+            <h5>Timbok</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
     </div>
+  </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="/">首页</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/archives">归档</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/categories">分类</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/message">留言</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/share">分享</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/introduce">关于</a>
+        
+      </p>
+  </div>
 
 </header>
-
-
-
+  
+  <div id="container">
+    <div id="wrap">
       
             
       <div id="content" class="outer">
         
-          <section id="main">
-  <div class="archives-tags-wrap"><blockquote><span>嗯，目前共计16篇文章</span></blockquote>
-
-
-<!-- 分页显示 -->
-
-	
-	
-		
-		
-		  
-		  
-		  <section class="archives-wrap">
-		    <div class="archive-year-wrap">
-		      <h1><a href="/archives/2019" class="archive-year">2019</a></h1>
-		    </div>
-		    <div class="archives">
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2019/03/03/如何给博客加上音乐/" class="archive-article-date">
-	  <time datetime="2019-03-03T09:23:19.000Z" itemprop="datePublished">2019-03-03</time>
-	</a>
-
-      
+          <section id="main" style="float:none;">
+  
+    <article id="post-vscode" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2019/03/03/如何给博客加上音乐/">如何给博客加上音乐</a>
+      <a class="article-title" href="/2018/11/28/vscode/">三分钟教你同步 visual studio code 设置</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2019/03/03/Jay/" class="archive-article-date">
-	  <time datetime="2019-03-03T08:48:04.000Z" itemprop="datePublished">2019-03-03</time>
+      </header>
+    
+    
+      <div class="article-meta">
+        
+	<a href="/2018/11/28/vscode/" class="article-date">
+	  <time datetime="2018-11-28T11:57:11.000Z" itemprop="datePublished">2018-11-28</time>
 	</a>
 
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2019/03/03/Jay/">周杰伦的歌</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-	
-		</div></section>
-	
-
-	<!-- 页数指示器 -->
-	
-
-
-
-
-</div></section>
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">关注我</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/yb909144903" title="Github" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-       
-          
-     			  <li><a href="https://weibo.com/p/1005055642090348" title="Weibo" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-       
-          
-     			  <li><a href="https://twitter.com/lTsRitcncEqoa80" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-       
-            <li><a href="https://juejin.im/user/5abcb256f265da238d50ccc0" title="juejin" target="_blank"><i class="fa iconfont icon-juejin" aria-hidden="true"></i></a></li> 
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具资源/">工具资源</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂记和随笔/">杂记和随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/诗歌与远方/">诗歌与远方</a><span class="category-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a href="/2019/08/12/stompJs出现TextEncoder is not defined解决方法/">stompJs出现TextEncoder is not defined解决方法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/23/Mac实现iTerm2 免登录ssh服务器/">Mac实现iTerm2 免登录ssh服务器</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/09/Summary and Prospect/">Summary and Prospect</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/04/一棵开花的树/">一棵开花的树</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/01/nodeJs读书笔记/">nodeJs读书笔记</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+    <a class="article-category-link" href="/categories/工具资源/">工具资源</a>
 
-  
-</aside>
         
       </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          
+简介Visual Studio Code(以下简称vsCode)现在已经渐渐成为前端开发的主力工具，谁让它这么轻便，功能又这么轻便呢。用vscode Coding的小伙伴们也一定会装很多插件吧。但是当你准备更换电脑的时候，是不是为迁移插件和设置而烦恼？我曾经换电脑的时候，把vsCode上自己心爱的插件一个个记下，然后去新电脑上重装，太蠢了。今天我就把vsCode同步设置和插件的方法告诉大家。
+准备工作
+下载Settings Sync插件
+GitHub账号
+
+1.安装Settings Sy...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/11/28/vscode/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+</section>
+        
+      </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
       
       <footer id="footer">
   
@@ -462,6 +432,8 @@
 
 <script src="/js/scripts.js"></script>
 
+
+  <script src="/js/home.js"></script>
 
 
 

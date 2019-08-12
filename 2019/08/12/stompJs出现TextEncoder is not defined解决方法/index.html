@@ -6,7 +6,7 @@
   
   <title>
     
-    归档: 2019/2 |
+    stompjs出现textencoder is not defined解决方法 |
     
     Timbok&#39;s Blog
   </title>
@@ -17,17 +17,18 @@
   
   
   
-  <meta name="description" content="一个前端的技术博客，偶尔也会分享一些好的文章和行业趣事。">
+  <meta name="description" content="介绍上周在实现一个聊天的业务时，测试发现该功能在IE和Edge下是不能实现。在查看报错之后发现报错 Unhandled promise rejection ReferenceError: &amp;#39;TextEncoder&amp;#39; is not defined。原来是stompJs使用了TextEncoder方法，但IE和Edge的JavaScript运行环境不支持该方法。我找到了以下几种方法。只">
 <meta name="keywords" content="前端 git react JavaScript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Timbok&#39;s Blog">
-<meta property="og:url" content="https://timbok.github.io/archives/2019/02/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stompJs出现TextEncoder is not defined解决方法">
+<meta property="og:url" content="https://timbok.github.io/2019/08/12/stompJs出现TextEncoder is not defined解决方法/index.html">
 <meta property="og:site_name" content="Timbok&#39;s Blog">
-<meta property="og:description" content="一个前端的技术博客，偶尔也会分享一些好的文章和行业趣事。">
+<meta property="og:description" content="介绍上周在实现一个聊天的业务时，测试发现该功能在IE和Edge下是不能实现。在查看报错之后发现报错 Unhandled promise rejection ReferenceError: &amp;#39;TextEncoder&amp;#39; is not defined。原来是stompJs使用了TextEncoder方法，但IE和Edge的JavaScript运行环境不支持该方法。我找到了以下几种方法。只">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-12T08:49:50.827Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Timbok&#39;s Blog">
-<meta name="twitter:description" content="一个前端的技术博客，偶尔也会分享一些好的文章和行业趣事。">
+<meta name="twitter:title" content="stompJs出现TextEncoder is not defined解决方法">
+<meta name="twitter:description" content="介绍上周在实现一个聊天的业务时，测试发现该功能在IE和Edge下是不能实现。在查看报错之后发现报错 Unhandled promise rejection ReferenceError: &amp;#39;TextEncoder&amp;#39; is not defined。原来是stompJs使用了TextEncoder方法，但IE和Edge的JavaScript运行环境不支持该方法。我找到了以下几种方法。只">
   
   <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
   
@@ -90,8 +91,6 @@
   
 
   
-  <link rel="stylesheet" href="/css/archive.css">
-  
 
   
   <link rel="stylesheet" href="/css/vdonate.css">
@@ -107,7 +106,7 @@
 </head></html>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -130,7 +129,7 @@
 
             
               <a class="brand shake-little" style="
-                 margin-top: 0px;">
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
                   <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
               </a>
             
@@ -201,194 +200,146 @@
             
       <div id="content" class="outer">
         
-          <section id="main">
-  <div class="archives-tags-wrap"><blockquote><span>嗯，目前共计16篇文章</span></blockquote>
-
-
-<!-- 分页显示 -->
-
-	
-	
-		
-		
-		  
-		  
-		  <section class="archives-wrap">
-		    <div class="archive-year-wrap">
-		      <h1><a href="/archives/2019" class="archive-year">2019</a></h1>
-		    </div>
-		    <div class="archives">
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2019/02/28/百度美化/" class="archive-article-date">
-	  <time datetime="2019-02-28T12:49:46.000Z" itemprop="datePublished">2019-02-28</time>
-	</a>
-
-      
+          <section id="main" style="float:none;"><article id="post-stompJs出现TextEncoder is not defined解决方法" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2019/02/28/百度美化/">给你的百度画个妆</a>
+      stompJs出现TextEncoder is not defined解决方法
     </h1>
   
 
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2019/02/23/JavaScript闯关笔记/" class="archive-article-date">
-	  <time datetime="2019-02-23T01:20:27.000Z" itemprop="datePublished">2019-02-23</time>
+      </header>
+    
+    
+      <div class="article-meta">
+        
+	<a href="/2019/08/12/stompJs出现TextEncoder is not defined解决方法/" class="article-date">
+	  <time datetime="2019-08-12T08:48:12.000Z" itemprop="datePublished">2019-08-12</time>
 	</a>
 
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2019/02/23/JavaScript闯关笔记/">JavaScript闯关笔记</a>
-    </h1>
-  
+        
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
 
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2019/02/18/MacBook快捷键/" class="archive-article-date">
-	  <time datetime="2019-02-18T12:31:13.000Z" itemprop="datePublished">2019-02-18</time>
+        
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
 	</a>
 
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2019/02/18/MacBook快捷键/">MacBook常用快捷键</a>
-    </h1>
-  
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>上周在实现一个聊天的业务时，测试发现该功能在IE和Edge下是不能实现。在查看报错之后发现报错 <code>Unhandled promise rejection ReferenceError: &#39;TextEncoder&#39; is not defined</code>。<br>原来是stompJs使用了TextEncoder方法，但IE和Edge的JavaScript运行环境不支持该方法。<br>我找到了以下几种方法。<br>只针对SPA应用</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="In-NodeJs"><a href="#In-NodeJs" class="headerlink" title="In NodeJs"></a>In NodeJs</h2><p>如果你的NodeJs版本升到了v11，那么node的运行环境是支持TextEncoder方法的。但是如果你的项目的nodeJs版本低于v11，可以安装module<code>text-encodin</code>。</p>
+<p><code>$ npm install text-encoding</code></p>
+<p>加在入口文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// These have been added in NodeJS v11, so good idea is to check first</span><br><span class="line">if (typeof TextEncoder !== &apos;function&apos;) &#123;</span><br><span class="line">    const TextEncodingPolyfill = require(&apos;text-encoding&apos;);</span><br><span class="line">    window.TextEncoder = TextEncodingPolyfill.TextEncoder;</span><br><span class="line">    window.TextDecoder = TextEncodingPolyfill.TextDecoder;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><p>因为第一种方法解决了我的方法，所以一下方法没有去实践。</p>
+<p>据了解有两个备用库<code>websocket</code>和<code>ws</code>可以使用。</p>
+<ul>
+<li>websocket</li>
+</ul>
+<p><code>$ npm install websocket</code></p>
+<p>在全局对象<code>global</code>中添加</p>
+<p><code>Object.assign(global, { WebSocket: require(&#39;websocket&#39;).w3cwebsocket });</code></p>
+<ul>
+<li>ws</li>
+</ul>
+<p><code>$ npm install ws</code></p>
+<p><code>Object.assign(global, { WebSocket: require(&#39;ws&#39;) });</code></p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '救救孩子吧，我想喝一点点奶茶！', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/webchat.jpg",
+  alipayImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/alipay.jpg",
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Timbok
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2019/08/12/stompJs出现TextEncoder is not defined解决方法/" target="_blank" title="stompJs出现TextEncoder is not defined解决方法">https://timbok.github.io/2019/08/12/stompJs出现TextEncoder is not defined解决方法/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<!-- Valine start -->
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <div id="vcomments" style="margin-top: 20px;"></div>
+  <script>
+      new Valine({
+          el: '#vcomments',
+          appId: '2OIV4MkEvPw7WNQEXOKh9YNq-gzGzoHsz',
+          appKey: 'rvPKKHDlqLtjJhcIaUg0XETR',
+          avatar: 'monsterid',
+          placeholder: '来啊，快活啊！ㄟ( ▔, ▔ )ㄏ',
+      })
+  </script>
+	<!-- Valine end -->
+
+
+      
+      
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/23/Mac实现iTerm2 免登录ssh服务器/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Mac实现iTerm2 免登录ssh服务器</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-	
-	
-		</div></section>
-	
 
-	<!-- 页数指示器 -->
-	
+<!-- Table of Contents -->
 
-
-
-
-</div></section>
-          <aside id="sidebar">
-  
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">关注我</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/yb909144903" title="Github" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-       
-          
-     			  <li><a href="https://weibo.com/p/1005055642090348" title="Weibo" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-       
-          
-     			  <li><a href="https://twitter.com/lTsRitcncEqoa80" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-       
-            <li><a href="https://juejin.im/user/5abcb256f265da238d50ccc0" title="juejin" target="_blank"><i class="fa iconfont icon-juejin" aria-hidden="true"></i></a></li> 
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#In-NodeJs"><span class="nav-number">2.1.</span> <span class="nav-text">In NodeJs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebSocket"><span class="nav-number">2.2.</span> <span class="nav-text">WebSocket</span></a></li></ol></li></ol>
+    
     </div>
-  </div>
+  </aside>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具资源/">工具资源</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂记和随笔/">杂记和随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/诗歌与远方/">诗歌与远方</a><span class="category-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/08/12/stompJs出现TextEncoder is not defined解决方法/">stompJs出现TextEncoder is not defined解决方法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/23/Mac实现iTerm2 免登录ssh服务器/">Mac实现iTerm2 免登录ssh服务器</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/09/Summary and Prospect/">Summary and Prospect</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/04/一棵开花的树/">一棵开花的树</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/01/nodeJs读书笔记/">nodeJs读书笔记</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
+</section>
         
       </div>
       
@@ -485,6 +436,8 @@
 
 
 
+
+  <script src="/js/dialog.js"></script>
 
 
 
@@ -589,6 +542,8 @@ ga('send', 'pageview');
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>
