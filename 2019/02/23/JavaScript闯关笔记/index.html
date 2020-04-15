@@ -6,8 +6,6 @@
   
   <title>
     
-    javascript闯关笔记 |
-    
     Timbok&#39;s Blog
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -17,18 +15,18 @@
   
   
   
-  <meta name="description" content="介绍通过Array/Object/Function基础类型编写。 看到自己不了解的或者比较新颖的用法便会写上。 不定时更新内容。 目录 Array 迭代方法 split和join   Object object映射   Function promise async-await    Array迭代方法 every()方法对数组中的每一项运行给定函数，如果该函数对每一项都返回 true，则返回 tr">
+  <meta name="description" content="介绍通过Array/Object/Function/Api基础类型编写。 看到自己不了解的或者比较新颖的用法便会写上。 不定时更新内容。  本文首发于我的个人网站: Timbok.top  目录 Array 迭代方法 split和join splice from   Object object映射   Function promise async-await   Api 可选链    Array迭">
 <meta name="keywords" content="前端 git react JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript闯关笔记">
+<meta property="og:title" content="Timbok&#39;s Blog">
 <meta property="og:url" content="https://timbok.github.io/2019/02/23/JavaScript闯关笔记/index.html">
 <meta property="og:site_name" content="Timbok&#39;s Blog">
-<meta property="og:description" content="介绍通过Array/Object/Function基础类型编写。 看到自己不了解的或者比较新颖的用法便会写上。 不定时更新内容。 目录 Array 迭代方法 split和join   Object object映射   Function promise async-await    Array迭代方法 every()方法对数组中的每一项运行给定函数，如果该函数对每一项都返回 true，则返回 tr">
+<meta property="og:description" content="介绍通过Array/Object/Function/Api基础类型编写。 看到自己不了解的或者比较新颖的用法便会写上。 不定时更新内容。  本文首发于我的个人网站: Timbok.top  目录 Array 迭代方法 split和join splice from   Object object映射   Function promise async-await   Api 可选链    Array迭">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-23T01:21:53.174Z">
+<meta property="og:updated_time" content="2020-04-15T12:10:36.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript闯关笔记">
-<meta name="twitter:description" content="介绍通过Array/Object/Function基础类型编写。 看到自己不了解的或者比较新颖的用法便会写上。 不定时更新内容。 目录 Array 迭代方法 split和join   Object object映射   Function promise async-await    Array迭代方法 every()方法对数组中的每一项运行给定函数，如果该函数对每一项都返回 true，则返回 tr">
+<meta name="twitter:title" content="Timbok&#39;s Blog">
+<meta name="twitter:description" content="介绍通过Array/Object/Function/Api基础类型编写。 看到自己不了解的或者比较新颖的用法便会写上。 不定时更新内容。  本文首发于我的个人网站: Timbok.top  目录 Array 迭代方法 split和join splice from   Object object映射   Function promise async-await   Api 可选链    Array迭">
   
   <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
   
@@ -204,26 +202,14 @@
   <div id="articleInner" class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      JavaScript闯关笔记
-    </h1>
-  
-
-      </header>
-    
     
       <div class="article-meta">
         
 	<a href="/2019/02/23/JavaScript闯关笔记/" class="article-date">
-	  <time datetime="2019-02-23T01:20:27.000Z" itemprop="datePublished">2019-02-23</time>
+	  <time datetime="2019-02-23T01:20:27.593Z" itemprop="datePublished">2019-02-23</time>
 	</a>
 
         
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-
         
 	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
@@ -235,13 +221,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>通过Array/Object/Function基础类型编写。</p>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>通过Array/Object/Function/Api基础类型编写。</p>
 <p>看到自己不了解的或者比较新颖的用法便会写上。</p>
 <p>不定时更新内容。</p>
+<blockquote>
+<p>本文首发于我的个人网站: <a href="https://timbok.top/2019/01/30/TypeScript/" target="_blank" rel="noopener">Timbok.top</a></p>
+</blockquote>
 <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
 <li><strong>Array</strong><ul>
 <li><a href="#迭代方法">迭代方法</a></li>
 <li><a href="#split和join">split和join</a></li>
+<li><a href="#splice">splice</a></li>
+<li><a href="#from">from</a></li>
 </ul>
 </li>
 <li><strong>Object</strong><ul>
@@ -251,6 +242,10 @@
 <li><strong>Function</strong><ul>
 <li><a href="#promise">promise</a></li>
 <li><a href="#async-await">async-await</a></li>
+</ul>
+</li>
+<li><strong>Api</strong><ul>
+<li><a href="#可选链">可选链</a></li>
 </ul>
 </li>
 </ul>
@@ -295,6 +290,45 @@
 <h2 id="split和join"><a href="#split和join" class="headerlink" title="split和join"></a>split和join</h2><p><strong>split()</strong>: 用于把一个字符串分割成字符串数组。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> string = <span class="string">'1, 2, 3, 4, 5'</span>;</span><br><span class="line">string.split(<span class="string">','</span>); <span class="comment">// ["1", "2", "3", "4", "5"]</span></span><br></pre></td></tr></table></figure></p>
 <p>如果string为空，则返回一个空数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> string = <span class="string">''</span>;</span><br><span class="line">string.split(<span class="string">','</span>); <span class="comment">// [""]</span></span><br><span class="line">string.split(); <span class="comment">// [""]</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>join()</strong>: 用于把数组中的所有元素放入一个字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">array.join(); <span class="comment">// '1,2,3,4,5' 默认用，分割</span></span><br><span class="line">array.join(<span class="string">'|'</span>); <span class="comment">// "1|2|3|4|5" 默认用，分割</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="splice"><a href="#splice" class="headerlink" title="splice"></a>splice</h2><p>splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。</p>
+<p><strong>注释</strong>：该方法会改变原始数组。</p>
+<p><code>arrayObject.splice(index,howmany,item1,.....,itemX)</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td>必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。</td>
+</tr>
+<tr>
+<td>howmany</td>
+<td>必需。要删除的项目数量。如果设置为 0，则不会删除项目。</td>
+</tr>
+<tr>
+<td>item1, …, itemX</td>
+<td>可选。向数组添加的新项目。</td>
+</tr>
+</tbody>
+</table>
+<p>举个例子🌰<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="comment">//增加</span></span><br><span class="line">arr.splice(<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>); <span class="comment">// arr = [1]</span></span><br><span class="line">arr.splice(<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>); <span class="comment">// arr = [1, 2]</span></span><br><span class="line">arr.splice(<span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>); <span class="comment">// arr = [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除</span></span><br><span class="line">arr.splice(<span class="number">2</span>, <span class="number">1</span>); <span class="comment">// arr = [1, 2]</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="from"><a href="#from" class="headerlink" title="from"></a>from</h2><p><strong>MDN释义</strong>：Array.from() 方法从一个类似数组或可迭代对象中创建一个新的</p>
+<p>用法：</p>
+<ul>
+<li><p>将字符串拆成数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.from(<span class="string">'foo'</span>); </span><br><span class="line"><span class="comment">// ["f", "o", "o"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将类数组转换为数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = &#123;</span><br><span class="line">    <span class="number">0</span>: <span class="string">'name'</span>, </span><br><span class="line">    <span class="number">1</span>: <span class="string">'age'</span>,</span><br><span class="line">    <span class="number">2</span>: <span class="string">'sex'</span>,</span><br><span class="line">    <span class="number">3</span>: [<span class="string">'user1'</span>,<span class="string">'user2'</span>,<span class="string">'user3'</span>],</span><br><span class="line">    <span class="string">'length'</span>: <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> arr = <span class="built_in">Array</span>.from(array )</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// ['name','age','sex',['user1','user2','user3']]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用length生成数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.from(&#123; <span class="attr">length</span>: <span class="number">4</span> &#125;, (...arg) =&gt; arg[<span class="number">1</span>])</span><br><span class="line"><span class="comment">// [0, 1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h1 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h1><h2 id="object映射"><a href="#object映射" class="headerlink" title="object映射"></a>object映射</h2><p>定义一个object作为配置对象来存放不同状态，通过链表查找</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> statusMap = &#123;</span><br><span class="line">    <span class="number">1</span>:<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'a1'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="number">2</span>:<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'b2'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* n.... */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 执行</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span> </span><br><span class="line">statusMap[a]() <span class="comment">// a1</span></span><br></pre></td></tr></table></figure>
 <p>这样比较清晰，将条件配置与具体执行分离。如果要增加其他状态，只修改配置对象即可。</p>
@@ -328,6 +362,14 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">second</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            reject(<span class="string">'want to sleep~'</span>);</span><br><span class="line">        &#125;, second);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">errorDemo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;</span><br><span class="line">errorDemo();<span class="comment">// VM706:11 Uncaught (in promise) want to sleep~</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 为了处理Promise.reject 的情况我们应该将代码块用 try catch 包裹一下</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">errorDemoSuper</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> result = <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(result);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">errorDemoSuper();<span class="comment">// want to sleep~</span></span><br><span class="line"><span class="comment">// 有了 try catch 之后我们就能够拿到 Promise.reject 回来的数据了。</span></span><br></pre></td></tr></table></figure>
 <p>最后一点，await必须在async函数的上下文中的。</p>
 <p><a href="https://segmentfault.com/a/1190000011526612#articleHeader5" target="_blank" rel="noopener">参考文章</a></p>
+<h1 id="Api"><a href="#Api" class="headerlink" title="Api"></a>Api</h1><h2 id="可选链"><a href="#可选链" class="headerlink" title="可选链?."></a>可选链<code>?.</code></h2><p><strong>MDN释义</strong></p>
+<blockquote>
+<p>可选链操作符?.能够去读取一个被连接对象的深层次的属性的值而无需明确校验链条上每一个引用的有效性</p>
+</blockquote>
+<p>基本使用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> prop = obj?.prop</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">let</span> prop = obj &amp;&amp; obj.prop</span><br></pre></td></tr></table></figure></p>
+<p>可选链与函数调用</p>
+<p>函数调用时如果被调用的方法不存在，使用可选链可以使表达式自动返回undefined而不是抛出一个异常。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props.onSearch?.()</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：可选链在赋值时无效<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> object = &#123;&#125;;</span><br><span class="line">object?.property = <span class="number">1</span>; <span class="comment">// Uncaught SyntaxError: Invalid left-hand side in assignment</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -354,7 +396,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>本文链接:  </strong>
-          <a href="/2019/02/23/JavaScript闯关笔记/" target="_blank" title="JavaScript闯关笔记">https://timbok.github.io/2019/02/23/JavaScript闯关笔记/</a>
+          <a href="/2019/02/23/JavaScript闯关笔记/" target="_blank" title="">https://timbok.github.io/2019/02/23/JavaScript闯关笔记/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明:   </strong>
@@ -419,7 +461,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Array"><span class="nav-number">3.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代方法"><span class="nav-number">3.1.</span> <span class="nav-text">迭代方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#split和join"><span class="nav-number">3.2.</span> <span class="nav-text">split和join</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object"><span class="nav-number">4.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#object映射"><span class="nav-number">4.1.</span> <span class="nav-text">object映射</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Function"><span class="nav-number">5.</span> <span class="nav-text">Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#promise"><span class="nav-number">5.1.</span> <span class="nav-text">promise</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-all"><span class="nav-number">5.1.1.</span> <span class="nav-text">Promise.all</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-race"><span class="nav-number">5.1.2.</span> <span class="nav-text">Promise.race</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#async-await"><span class="nav-number">5.2.</span> <span class="nav-text">async-await</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#async"><span class="nav-number">5.2.1.</span> <span class="nav-text">async</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#await"><span class="nav-number">5.2.2.</span> <span class="nav-text">await</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误处理"><span class="nav-number">5.2.3.</span> <span class="nav-text">错误处理</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Array"><span class="nav-number">3.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代方法"><span class="nav-number">3.1.</span> <span class="nav-text">迭代方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#split和join"><span class="nav-number">3.2.</span> <span class="nav-text">split和join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#splice"><span class="nav-number">3.3.</span> <span class="nav-text">splice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#from"><span class="nav-number">3.4.</span> <span class="nav-text">from</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object"><span class="nav-number">4.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#object映射"><span class="nav-number">4.1.</span> <span class="nav-text">object映射</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Function"><span class="nav-number">5.</span> <span class="nav-text">Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#promise"><span class="nav-number">5.1.</span> <span class="nav-text">promise</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-all"><span class="nav-number">5.1.1.</span> <span class="nav-text">Promise.all</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-race"><span class="nav-number">5.1.2.</span> <span class="nav-text">Promise.race</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#async-await"><span class="nav-number">5.2.</span> <span class="nav-text">async-await</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#async"><span class="nav-number">5.2.1.</span> <span class="nav-text">async</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#await"><span class="nav-number">5.2.2.</span> <span class="nav-text">await</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误处理"><span class="nav-number">5.2.3.</span> <span class="nav-text">错误处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Api"><span class="nav-number">6.</span> <span class="nav-text">Api</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可选链"><span class="nav-number">6.1.</span> <span class="nav-text">可选链?.</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -434,7 +476,7 @@ var a = new Donate({
   <div class="container">
       	<div class="row">
 	      <!-- <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p> -->
-	      <p id="copyRightEn">Copyright &copy; 2017 - 2019 Timbok&#39;s Blog All Rights Reserved.</p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2020 Timbok&#39;s Blog All Rights Reserved.</p>
 	      
 	      
     		<p class="busuanzi_uv">
@@ -610,7 +652,7 @@ ga('send', 'pageview');
           </div>
           <div class="panel-body"> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </div>
           <div class="panel-body">
-            Copyright © 2019 Timbok All Rights Reserved.
+            Copyright © 2020 Timbok All Rights Reserved.
           </div>
         </div>
       </div>
