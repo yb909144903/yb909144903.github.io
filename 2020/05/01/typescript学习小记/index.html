@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>
+    
+    typescript学习小记 |
+    
+    Timbok&#39;s Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="前端 Git React Es6 JavaScript">
+  
+  
+  
+  
+  <meta name="description" content="Tips可选参数?: 1234567interface Person &amp;#123;  gender?: string; // 可选属性&amp;#125;function sayHello(person: string, age?: number): string &amp;#123;  return `Hello, $&amp;#123;person&amp;#125;. I am $&amp;#123;age&amp;#125;`;&amp;#12">
+<meta name="keywords" content="前端 git react JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript学习小记">
+<meta property="og:url" content="https://timbok.github.io/2020/05/01/typescript学习小记/index.html">
+<meta property="og:site_name" content="Timbok&#39;s Blog">
+<meta property="og:description" content="Tips可选参数?: 1234567interface Person &amp;#123;  gender?: string; // 可选属性&amp;#125;function sayHello(person: string, age?: number): string &amp;#123;  return `Hello, $&amp;#123;person&amp;#125;. I am $&amp;#123;age&amp;#125;`;&amp;#12">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-08T03:08:11.850Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript学习小记">
+<meta name="twitter:description" content="Tips可选参数?: 1234567interface Person &amp;#123;  gender?: string; // 可选属性&amp;#125;function sayHello(person: string, age?: number): string &amp;#123;  return `Hello, $&amp;#123;person&amp;#125;. I am $&amp;#123;age&amp;#125;`;&amp;#12">
+  
+  <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/avatar.jpg">
+  <link rel="apple-touch-icon" href="/css/images/avatar.jpg">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+  <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <script>
+    console.log("%cTimbok",
+      " text-shadow: 0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);font-size:5em"
+    );
+    console.log('%c这里都是很一般的博客，但是希望你我一起进步。','font-size: 15px');
+  </script>
+
+</head></html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+    <link href="https://cdn.bootcss.com/csshake/1.5.3/csshake-little.min.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_943855_whj85qlkoi.css" rel="stylesheet">
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand shake-little" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/message">留言</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/share">分享</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/introduce">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-typescript学习小记" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      typescript学习小记
+    </h1>
+  
+
+      </header>
+    
+    
+      <div class="article-meta">
+        
+	<a href="/2020/05/01/typescript学习小记/" class="article-date">
+	  <time datetime="2020-05-01T02:20:15.000Z" itemprop="datePublished">2020-05-01</time>
+	</a>
+
+        
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+
+        
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><h2 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h2><p><code>?:</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person &#123;</span><br><span class="line">  gender?: <span class="built_in">string</span>; <span class="comment">// 可选属性</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person: <span class="built_in">string</span>, age?: <span class="built_in">number</span></span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`Hello, <span class="subst">$&#123;person&#125;</span>. I am <span class="subst">$&#123;age&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><h3 id="类型“Readonly-lt-gt-amp-Readonly-lt-children-ReactNode-gt-”上不存在属性“history”。ts-2339"><a href="#类型“Readonly-lt-gt-amp-Readonly-lt-children-ReactNode-gt-”上不存在属性“history”。ts-2339" class="headerlink" title="类型“Readonly&lt;{}&gt; &amp; Readonly&lt;{ children?: ReactNode; }&gt;”上不存在属性“history”。ts(2339)"></a>类型“Readonly&lt;{}&gt; &amp; Readonly&lt;{ children?: ReactNode; }&gt;”上不存在属性“history”。ts(2339)</h3><p>ts直接引用路由会报如上的错</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; history: &#123; location: &#123; pathname &#125; &#125; &#125; = <span class="keyword">this</span>.props;</span><br></pre></td></tr></table></figure>
+<p>引用下 <code>RouteComponentProps</code> 即可</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; RouteComponentProps &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> Home <span class="keyword">extends</span> Component&lt;RouteComponentProps&gt; &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; history: &#123; location: &#123; pathname &#125; &#125; &#125; = <span class="keyword">this</span>.props;</span><br><span class="line">    <span class="keyword">return</span> &lt;div className=&#123;style.test&#125;&gt;这是&#123;pathname&#125;&lt;<span class="regexp">/div&gt;;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="找不到模块“-index-module-less”。ts-2307"><a href="#找不到模块“-index-module-less”。ts-2307" class="headerlink" title="找不到模块“./index.module.less”。ts(2307)"></a>找不到模块“./index.module.less”。ts(2307)</h3><p>在 <code>global.d.ts</code> 里声明：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> '*.<span class="keyword">module</span>.less' &#123;</span><br><span class="line">  <span class="keyword">const</span> classes: &#123; readonly [key: <span class="built_in">string</span>]: <span class="built_in">string</span> &#125;;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> classes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：函数的可选参数必须放在必需后</p>
+<h1 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h1><h2 id="空值-void"><a href="#空值-void" class="headerlink" title="空值 void"></a>空值 void</h2><p>声明一个 void 类型的变量没有什么用，因为你只能将它赋值为 undefined 和 null：<br><code>let unusable: void = undefined;</code></p>
+<h2 id="Null-和-Undefined"><a href="#Null-和-Undefined" class="headerlink" title="Null 和 Undefined"></a>Null 和 Undefined</h2><p>在 TypeScript 中，可以使用 null 和 undefined 来定义这两个原始数据类型：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> u: <span class="literal">undefined</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">let</span> n: <span class="literal">null</span> = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<p>与 void 的区别是，undefined 和 null 是所有类型的子类型。也就是说 undefined 类型的变量，可以赋值给 number 类型的变量：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这样不会报错</span></span><br><span class="line"><span class="keyword">let</span> num: <span class="built_in">number</span> = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h1><p>联合类型（Union Types）表示取值可以为多种类型中的一种。</p>
+<p>联合类型使用 | 分隔每个类型。<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> num: <span class="built_in">number</span> | <span class="built_in">string</span>;</span><br><span class="line">num = <span class="number">6</span>;</span><br><span class="line">num = <span class="string">'six'</span>;</span><br></pre></td></tr></table></figure></p>
+<h1 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">x: <span class="built_in">number</span></span>): <span class="title">number</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">x: <span class="built_in">string</span></span>): <span class="title">string</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">x: <span class="built_in">number</span> | <span class="built_in">string</span></span>): <span class="title">number</span> | <span class="title">string</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> x === <span class="string">'number'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Number</span>(x.toString().split(<span class="string">''</span>).reverse().join(<span class="string">''</span>));</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> x === <span class="string">'string'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> x.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上例中，我们重复定义了多次函数 <code>reverse</code>，前几次都是函数定义，最后一次是函数实现。在编辑器的代码提示中，可以正确的看到前两个提示。</p>
+<p>注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。</p>
+<h1 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h1><ul>
+<li>联合类型可以被断言为其中一个类型</li>
+<li>父类可以被断言为子类</li>
+<li>任何类型都可以被断言为 any</li>
+<li>any 可以被断言为任何类型</li>
+</ul>
+<h1 id="声明文件"><a href="#声明文件" class="headerlink" title="声明文件"></a>声明文件</h1><p>全局变量的声明文件主要有以下几种语法：</p>
+<ul>
+<li><code>declare var</code> 声明全局变量</li>
+<li><code>declare function</code> 声明全局方法</li>
+<li><code>declare class</code> 声明全局类</li>
+<li><code>declare enum</code> 声明全局枚举类型</li>
+<li><code>declare namespace</code> 声明（含有子属性的）全局对象</li>
+<li><code>interface 和 type</code> 声明全局类型</li>
+</ul>
+<h1 id="npm-包"><a href="#npm-包" class="headerlink" title="npm 包"></a>npm 包</h1><p>发布到 @types 里。我们只需要尝试安装一下对应的 @types 包就知道是否存在该声明文件，安装命令是 <code>npm install @types/foo --save-dev</code>。这种模式一般是由于 npm 包的维护者没有提供声明文件，所以只能由其他人将声明文件发布到 @types 里了。</p>
+<h1 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h1><p>类型别名用来给一个类型起个新名字。使用<code>type</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> stringOrNumber = <span class="built_in">string</span> | <span class="built_in">Function</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params">n: stringOrNumber</span>): <span class="title">stringOrNumber</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> n === <span class="string">'string'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> n();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="字符串字面量类型"><a href="#字符串字面量类型" class="headerlink" title="字符串字面量类型"></a>字符串字面量类型</h1><p>字符串字面量类型用来约束取值只能是某几个字符串中的一个。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> EventNames = <span class="string">'click'</span> | <span class="string">'scroll'</span> | <span class="string">'mousemove'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleEvent</span>(<span class="params">ele: Element, event: EventNames</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">handleEvent(<span class="built_in">document</span>.getElementById(<span class="string">'hello'</span>), <span class="string">'scroll'</span>);  <span class="comment">// 没问题</span></span><br><span class="line">handleEvent(<span class="built_in">document</span>.getElementById(<span class="string">'world'</span>), <span class="string">'dbclick'</span>); <span class="comment">// 报错，event 不能为 'dbclick'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// index.ts(7,47): error TS2345: Argument of type '"dbclick"' is not assignable to parameter of type 'EventNames'.</span></span><br></pre></td></tr></table></figure>
+<h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><p>枚举（Enum）类型用于取值被限定在一定范围内的场景</p>
+<p>枚举成员会被赋值为从 0 开始递增的数字，同时也会对枚举值到枚举名进行反向映射：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Days &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="string">"Sun"</span>] === <span class="number">0</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="string">"Mon"</span>] === <span class="number">1</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="string">"Tue"</span>] === <span class="number">2</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="string">"Sat"</span>] === <span class="number">6</span>); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="number">0</span>] === <span class="string">"Sun"</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="number">1</span>] === <span class="string">"Mon"</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="number">2</span>] === <span class="string">"Tue"</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="number">6</span>] === <span class="string">"Sat"</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>事实上，上面的例子会被编译为：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Days;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">Days</span>) </span>&#123;</span><br><span class="line">    Days[Days[<span class="string">"Sun"</span>] = <span class="number">0</span>] = <span class="string">"Sun"</span>;</span><br><span class="line">    Days[Days[<span class="string">"Mon"</span>] = <span class="number">1</span>] = <span class="string">"Mon"</span>;</span><br><span class="line">    Days[Days[<span class="string">"Tue"</span>] = <span class="number">2</span>] = <span class="string">"Tue"</span>;</span><br><span class="line">    Days[Days[<span class="string">"Wed"</span>] = <span class="number">3</span>] = <span class="string">"Wed"</span>;</span><br><span class="line">    Days[Days[<span class="string">"Thu"</span>] = <span class="number">4</span>] = <span class="string">"Thu"</span>;</span><br><span class="line">    Days[Days[<span class="string">"Fri"</span>] = <span class="number">5</span>] = <span class="string">"Fri"</span>;</span><br><span class="line">    Days[Days[<span class="string">"Sat"</span>] = <span class="number">6</span>] = <span class="string">"Sat"</span>;</span><br><span class="line">&#125;)(Days || (Days = &#123;&#125;));</span><br></pre></td></tr></table></figure>
+<p>枚举项只能被赋值为常数</p>
+<h1 id="类实现接口"><a href="#类实现接口" class="headerlink" title="类实现接口"></a>类实现接口</h1><p>实现（implements）是面向对象中的一个重要概念。一般来讲，一个类只能继承自另一个类，有时候不同类之间可以有一些共有的特性，这时候就可以把特性提取成接口（interfaces），用 implements 关键字来实现。这个特性大大提高了面向对象的灵活性。</p>
+<p>举例来说，门是一个类，防盗门是门的子类。如果防盗门有一个报警器的功能，我们可以简单的给防盗门添加一个报警方法。这时候如果有另一个类，车，也有报警器的功能，就可以考虑把报警器提取出来，作为一个接口，防盗门和车都去实现它：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Alarm &#123;</span><br><span class="line">  alert(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Door &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> SecurityDoor <span class="keyword">extends</span> Door <span class="keyword">implements</span> Alarm &#123;</span><br><span class="line">  alert() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'SecurityDoor alert'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Car <span class="keyword">implements</span> Alarm &#123;</span><br><span class="line">  alert() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Car alert'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createArray</span>&lt;<span class="title">T</span>&gt;(<span class="params">length: <span class="built_in">number</span>, value: T</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result: T[] = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        result[i] = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">createArray&lt;<span class="built_in">string</span>&gt;(<span class="number">3</span>, <span class="string">'x'</span>); <span class="comment">// ['x', 'x', 'x']</span></span><br></pre></td></tr></table></figure>
+<p>上例中，我们在函数名后添加了 <code>&lt;T&gt;</code>，其中 T 用来指代任意输入的类型，在后面的输入 <code>value: T</code> 和输出 <code>Array&lt;T&gt;</code> 中即可使用了。</p>
+<p><a href="https://ts.xcatliu.com/" target="_blank" rel="noopener">资料: https://ts.xcatliu.com/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '救救孩子吧，我想喝一点点奶茶！', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/webchat.jpg",
+  alipayImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/alipay.jpg",
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Timbok
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2020/05/01/typescript学习小记/" target="_blank" title="typescript学习小记">https://timbok.github.io/2020/05/01/typescript学习小记/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<!-- Valine start -->
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <div id="vcomments" style="margin-top: 20px;"></div>
+  <script>
+      new Valine({
+          el: '#vcomments',
+          appId: '2OIV4MkEvPw7WNQEXOKh9YNq-gzGzoHsz',
+          appKey: 'rvPKKHDlqLtjJhcIaUg0XETR',
+          avatar: 'monsterid',
+          placeholder: '来啊，快活啊！ㄟ( ▔, ▔ )ㄏ',
+      })
+  </script>
+	<!-- Valine end -->
+
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/08/原型和原型链/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          原型和原型链
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/27/React冷门但很好用的知识点/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">React冷门但很好用的知识点</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可选参数"><span class="nav-number">1.1.</span> <span class="nav-text">可选参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#报错"><span class="nav-number">1.2.</span> <span class="nav-text">报错</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型“Readonly-lt-gt-amp-Readonly-lt-children-ReactNode-gt-”上不存在属性“history”。ts-2339"><span class="nav-number">1.2.1.</span> <span class="nav-text">类型“Readonly&lt;{}&gt; &amp; Readonly&lt;{ children?: ReactNode; }&gt;”上不存在属性“history”。ts(2339)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#找不到模块“-index-module-less”。ts-2307"><span class="nav-number">1.2.2.</span> <span class="nav-text">找不到模块“./index.module.less”。ts(2307)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本类型"><span class="nav-number">2.</span> <span class="nav-text">基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#空值-void"><span class="nav-number">2.1.</span> <span class="nav-text">空值 void</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Null-和-Undefined"><span class="nav-number">2.2.</span> <span class="nav-text">Null 和 Undefined</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#联合类型"><span class="nav-number">3.</span> <span class="nav-text">联合类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数重载"><span class="nav-number">4.</span> <span class="nav-text">函数重载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类型断言"><span class="nav-number">5.</span> <span class="nav-text">类型断言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#声明文件"><span class="nav-number">6.</span> <span class="nav-text">声明文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-包"><span class="nav-number">7.</span> <span class="nav-text">npm 包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类型别名"><span class="nav-number">8.</span> <span class="nav-text">类型别名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串字面量类型"><span class="nav-number">9.</span> <span class="nav-text">字符串字面量类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#枚举"><span class="nav-number">10.</span> <span class="nav-text">枚举</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类实现接口"><span class="nav-number">11.</span> <span class="nav-text">类实现接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#泛型"><span class="nav-number">12.</span> <span class="nav-text">泛型</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <!-- <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p> -->
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2020 Timbok&#39;s Blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/message" class="mobile-nav-link">Message</a>
+  
+    <a href="/share" class="mobile-nav-link">Share</a>
+  
+    <a href="/introduce" class="mobile-nav-link">Introduce</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-130181265-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var id = '996ec7f06c07b1e3b09cd843ae120862';
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + id;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Timbok&#39;s Blog
+          </div>
+          <div class="panel-body"> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </div>
+          <div class="panel-body">
+            Copyright © 2020 Timbok All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
