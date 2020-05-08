@@ -270,6 +270,115 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-stompJs出现TextEncoder is not defined解决方法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/08/12/stompJs出现TextEncoder is not defined解决方法/">stompJs出现TextEncoder is not defined解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    
+      <div class="article-meta">
+        
+	<a href="/2019/08/12/stompJs出现TextEncoder is not defined解决方法/" class="article-date">
+	  <time datetime="2019-08-12T08:48:12.000Z" itemprop="datePublished">2019-08-12</time>
+	</a>
+
+        
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+
+        
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          介绍上周在实现一个聊天的业务时，测试发现该功能在IE和Edge下是不能实现。在查看报错之后发现报错 Unhandled promise rejection ReferenceError: &#39;TextEncoder&#39; is not defined。原来是stompJs使用了TextEncoder方法，但IE和Edge的JavaScript运行环境不支持该方法。我找到了以下几种方法。只针对SPA应用
+正文In NodeJs如果你的NodeJs版本升到了v11，那么node的运行...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/08/12/stompJs出现TextEncoder is not defined解决方法/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-Mac实现iTerm2 免登录ssh服务器" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/07/23/Mac实现iTerm2 免登录ssh服务器/">Mac实现iTerm2 免登录ssh服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    
+      <div class="article-meta">
+        
+	<a href="/2019/07/23/Mac实现iTerm2 免登录ssh服务器/" class="article-date">
+	  <time datetime="2019-07-23T03:43:09.000Z" itemprop="datePublished">2019-07-23</time>
+	</a>
+
+        
+    <a class="article-category-link" href="/categories/工具资源/">工具资源</a>
+
+        
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          没图自己想象在你电脑的任意位置创建自动登录的脚本
+
+touch itermSsh.sh
+vim itermSsh.sh
+shell12345678910#!/usr/bin/expect -fset user _userset host _hostset password _passwordset timeout -1spawn ssh $user@$hostexpect &quot;*assword:*&quot;send &quot;$password\r&quot;interacte...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/07/23/Mac实现iTerm2 免登录ssh服务器/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-Summary and Prospect" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
@@ -466,123 +575,11 @@ No...
 
 
   
-    <article id="post-如何给博客加上音乐" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/03/03/如何给博客加上音乐/">如何给博客加上音乐</a>
-    </h1>
-  
-
-      </header>
-    
-    
-      <div class="article-meta">
-        
-	<a href="/2019/03/03/如何给博客加上音乐/" class="article-date">
-	  <time datetime="2019-03-03T09:23:19.000Z" itemprop="datePublished">2019-03-03</time>
-	</a>
-
-        
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-
-        
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          介绍今天在逛技术大佬的博客的时候，发现他们的有的生活向的博客放上了自己喜欢的音乐，这让我心神向往。以我的好奇心加爱折腾的个性，必要给我的博客来一个这个功能。😬
-正文十多分钟的百度加Google，看到了两种可行的方法。
-方法一安装 hexo-tag-aplayer
-
-npm install –save hexo-tag-aplayer
-
-在你需要的地方引入1&#123;% aplayer &quot;歌曲名称&quot; &quot;作者&quot; &quot;音乐_url&quot; ...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/03/03/如何给博客加上音乐/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-Jay" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/03/03/Jay/">周杰伦的歌</a>
-    </h1>
-  
-
-      </header>
-    
-    
-      <div class="article-meta">
-        
-	<a href="/2019/03/03/Jay/" class="article-date">
-	  <time datetime="2019-03-03T08:48:04.000Z" itemprop="datePublished">2019-03-03</time>
-	</a>
-
-        
-    <a class="article-category-link" href="/categories/诗歌与远方/">诗歌与远方</a>
-
-        
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          网易云没有Jay，但是又不想打开其他音乐播放器。就把周杰伦的歌都放在博客上，想听就来。
-
-    
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/03/03/Jay/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
   </nav>
 
 </section>
