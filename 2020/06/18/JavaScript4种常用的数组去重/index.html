@@ -6,7 +6,7 @@
   
   <title>
     
-    个人简历 |
+    javascript4种常用的数组去重 |
     
     Timbok&#39;s Blog
   </title>
@@ -17,18 +17,18 @@
   
   
   
-  <meta name="description" content="Timbok(yb909144903@163.com)个人信息 学历：本科 专业：软件工程 职业：前端攻城狮 发量：茂盛 技术博客：https://timbok.top 地点： 上海  项目经历 ████████████████████ ████████████████████ ████████████████████ ████████████████████  技能列表 熟悉vueJ">
+  <meta name="description" content="数组去重面试中或者开发经常会问到数组去重，整理了我知道的四种。还有什么新方法，新操作，欢迎补充！ 1var arr = [1, 1, &apos;1&apos;, &apos;1&apos;, &apos;true&apos;, &apos;true&apos;, true, true, null, null, undefined, undefined, NaN, NaN, &amp;#123;&apos;a&apos;: 1&amp;#125;, &amp;#123;&apos;a&apos;: 1&amp;#125;] 1. ES6去重{}不">
 <meta name="keywords" content="前端 git react JavaScript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="个人简历">
-<meta property="og:url" content="https://timbok.github.io/introduce/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript4种常用的数组去重">
+<meta property="og:url" content="https://timbok.github.io/2020/06/18/JavaScript4种常用的数组去重/index.html">
 <meta property="og:site_name" content="Timbok&#39;s Blog">
-<meta property="og:description" content="Timbok(yb909144903@163.com)个人信息 学历：本科 专业：软件工程 职业：前端攻城狮 发量：茂盛 技术博客：https://timbok.top 地点： 上海  项目经历 ████████████████████ ████████████████████ ████████████████████ ████████████████████  技能列表 熟悉vueJ">
+<meta property="og:description" content="数组去重面试中或者开发经常会问到数组去重，整理了我知道的四种。还有什么新方法，新操作，欢迎补充！ 1var arr = [1, 1, &apos;1&apos;, &apos;1&apos;, &apos;true&apos;, &apos;true&apos;, true, true, null, null, undefined, undefined, NaN, NaN, &amp;#123;&apos;a&apos;: 1&amp;#125;, &amp;#123;&apos;a&apos;: 1&amp;#125;] 1. ES6去重{}不">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-15T12:16:58.185Z">
+<meta property="og:updated_time" content="2020-06-18T02:23:30.284Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人简历">
-<meta name="twitter:description" content="Timbok(yb909144903@163.com)个人信息 学历：本科 专业：软件工程 职业：前端攻城狮 发量：茂盛 技术博客：https://timbok.top 地点： 上海  项目经历 ████████████████████ ████████████████████ ████████████████████ ████████████████████  技能列表 熟悉vueJ">
+<meta name="twitter:title" content="JavaScript4种常用的数组去重">
+<meta name="twitter:description" content="数组去重面试中或者开发经常会问到数组去重，整理了我知道的四种。还有什么新方法，新操作，欢迎补充！ 1var arr = [1, 1, &apos;1&apos;, &apos;1&apos;, &apos;true&apos;, &apos;true&apos;, true, true, null, null, undefined, undefined, NaN, NaN, &amp;#123;&apos;a&apos;: 1&amp;#125;, &amp;#123;&apos;a&apos;: 1&amp;#125;] 1. ES6去重{}不">
   
   <link rel="alternate" href="/atom.xml" title="Timbok&#39;s Blog" type="application/atom+xml">
   
@@ -91,8 +91,6 @@
   
 
   
-  <link rel="stylesheet" href="/css/archive.css">
-  
 
   
   <link rel="stylesheet" href="/css/vdonate.css">
@@ -105,13 +103,10 @@
     console.log('%c这里都是很一般的博客，但是希望你我一起进步。','font-size: 15px');
   </script>
 
-<link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
-<script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
-<script src="/assets/js/Meting.min.js" class="meting-script-marker"></script>
 </head></html>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -134,7 +129,7 @@
 
             
               <a class="brand shake-little" style="
-                 margin-top: 0px;">
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
                   <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
               </a>
             
@@ -205,7 +200,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-JavaScript4种常用的数组去重" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -213,50 +208,84 @@
         
   
     <h1 class="thumb" itemprop="name">
-      个人简历
+      JavaScript4种常用的数组去重
     </h1>
   
 
       </header>
     
     
+      <div class="article-meta">
+        
+	<a href="/2020/06/18/JavaScript4种常用的数组去重/" class="article-date">
+	  <time datetime="2020-06-18T02:22:57.000Z" itemprop="datePublished">2020-06-18</time>
+	</a>
+
+        
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+
+        
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      </div>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        
-    <div id="aplayer-kyVOnwIH" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="4341314" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="false" data-listmaxheight="150px" data-preload="none" data-theme="#fb6d19"></div>
-<h1 id="Timbok-yb909144903-163-com"><a href="#Timbok-yb909144903-163-com" class="headerlink" title="Timbok(yb909144903@163.com)"></a>Timbok(<a href="mailto:yb909144903@163.com" target="_blank" rel="noopener">yb909144903@163.com</a>)</h1><h2 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h2><ul>
-<li>学历：本科</li>
-<li>专业：软件工程</li>
-<li>职业：前端攻城狮</li>
-<li>发量：茂盛</li>
-<li>技术博客：<a href="https://timbok.top" target="_blank" rel="noopener">https://timbok.top</a></li>
-<li>地点： 上海</li>
-</ul>
-<h2 id="项目经历"><a href="#项目经历" class="headerlink" title="项目经历"></a>项目经历</h2><ul>
-<li>████████████████████</li>
-<li>████████████████████</li>
-<li>████████████████████</li>
-<li>████████████████████</li>
-</ul>
-<h2 id="技能列表"><a href="#技能列表" class="headerlink" title="技能列表"></a>技能列表</h2><ul>
-<li>熟悉vueJS、React等主流MVC、MVVM框架；</li>
-<li>掌握localStorage、sessionStorage等前端存储方案，记录用户操作习惯或常用数据，从而降低HTTP请求，提升用户体验；</li>
-<li>熟练使用SVN、git版本控制工具，进行代码管理，实现敏捷开发；</li>
-<li>熟练使用Bootstarp框架，通过栅格系统快速布局响应式页面以适应   不同设备；</li>
-<li>熟练使用Ajax，实现异步页面无刷新抽取数据，同步校验数据；</li>
-<li>熟练使用HTML、CSS、JavaScript等前端技术，完成网页静态布局，  开发兼容主流浏览器的页面，以及实现页面的交互，提升用户体验；</li>
-<li>了解node.js，利用其搭建简单的服务器。</li>
-</ul>
-<h2 id="个人爱好"><a href="#个人爱好" class="headerlink" title="个人爱好"></a>个人爱好</h2><ul>
-<li>吃饭、睡觉、打豆豆</li>
-<li>玩游戏</li>
-<li>运动</li>
-</ul>
-
+        <h1 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h1><p>面试中或者开发经常会问到数组去重，整理了我知道的四种。还有什么新方法，新操作，欢迎补充！</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="string">'1'</span>, <span class="string">'true'</span>, <span class="string">'true'</span>, <span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">null</span>, <span class="literal">null</span>, <span class="literal">undefined</span>, <span class="literal">undefined</span>, <span class="literal">NaN</span>, <span class="literal">NaN</span>, &#123;<span class="string">'a'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'a'</span>: <span class="number">1</span>&#125;]</span><br></pre></td></tr></table></figure>
+<h2 id="1-ES6去重"><a href="#1-ES6去重" class="headerlink" title="1. ES6去重"></a>1. ES6去重</h2><p><code>{}</code>不能去重<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr))</span><br><span class="line"><span class="comment">// (9) [1, "1", "true", true, null, undefined, NaN, &#123;…&#125;, &#123;…&#125;]</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="2-双重遍历去重"><a href="#2-双重遍历去重" class="headerlink" title="2. 双重遍历去重"></a>2. 双重遍历去重</h2><p><code>{}、NaN</code>不能去重，可做特殊操作实现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(arr[i] === arr[j]) &#123;</span><br><span class="line">        arr.splice(j, <span class="number">1</span>);</span><br><span class="line">        j--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// (10) [1, "1", "true", true, null, undefined, NaN, NaN, &#123;…&#125;, &#123;…&#125;]</span></span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li>indexOf 或者 includes 去重</li>
+</ol>
+<p>需要注意的是 <code>includes</code> 可以去除NaN，而 <code>indexOf</code> 不可以。</p>
+<p><code>arr.indexOf(NaN) === -1</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> newArr = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">debugger</span>;</span><br><span class="line">    <span class="keyword">if</span>(!newArr.includes(arr[i]) || newArr.indexOf(arr[i]) === <span class="number">-1</span>) &#123;</span><br><span class="line">      newArr.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// (10) [1, "1", "true", true, null, undefined, NaN, NaN, &#123;…&#125;, &#123;…&#125;]</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>filter去重</li>
+</ol>
+<p>原理：<code>indexOf</code>只会返回在数组中第一次出现的元素位置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">arr.filter(<span class="function">(<span class="params">item, index, arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> arr.indexOf(item) === index;</span><br><span class="line">&#125;)</span><br><span class="line">(<span class="number">8</span>) [<span class="number">1</span>, <span class="string">"1"</span>, <span class="string">"true"</span>, <span class="literal">true</span>, <span class="literal">null</span>, <span class="literal">undefined</span>, &#123;…&#125;, &#123;…&#125;]</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
       
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '救救孩子吧，我想喝一点点奶茶！', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/webchat.jpg",
+  alipayImage: "https://raw.githubusercontent.com/yb909144903/PictureBed/develop/img/alipay.jpg",
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Timbok
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2020/06/18/JavaScript4种常用的数组去重/" target="_blank" title="JavaScript4种常用的数组去重">https://timbok.github.io/2020/06/18/JavaScript4种常用的数组去重/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
       
       
         
@@ -283,10 +312,29 @@
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/08/commit格式化代码并校验/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">commit格式化代码并校验</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 <!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数组去重"><span class="nav-number">1.</span> <span class="nav-text">数组去重</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ES6去重"><span class="nav-number">1.1.</span> <span class="nav-text">1. ES6去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-双重遍历去重"><span class="nav-number">1.2.</span> <span class="nav-text">2. 双重遍历去重</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
 
 </section>
         
@@ -385,6 +433,8 @@
 
 
 
+
+  <script src="/js/dialog.js"></script>
 
 
 
@@ -489,6 +539,8 @@ ga('send', 'pageview');
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>

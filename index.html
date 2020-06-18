@@ -270,6 +270,60 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-JavaScript4种常用的数组去重" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/06/18/JavaScript4种常用的数组去重/">JavaScript4种常用的数组去重</a>
+    </h1>
+  
+
+      </header>
+    
+    
+      <div class="article-meta">
+        
+	<a href="/2020/06/18/JavaScript4种常用的数组去重/" class="article-date">
+	  <time datetime="2020-06-18T02:22:57.000Z" itemprop="datePublished">2020-06-18</time>
+	</a>
+
+        
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+
+        
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          数组去重面试中或者开发经常会问到数组去重，整理了我知道的四种。还有什么新方法，新操作，欢迎补充！
+1var arr = [1, 1, '1', '1', 'true', 'true', true, true, null, null, undefined, undefined, NaN, NaN, &#123;'a': 1&#125;, &#123;'a': 1&#125;]
+1. ES6去重{}不能去重12Array.from(new Set(arr))// (9) [1, "1", "t...
+        </p>
+        <p class="article-more-link">
+          <a href="/2020/06/18/JavaScript4种常用的数组去重/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-commit格式化代码并校验" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
@@ -470,61 +524,6 @@ Hook是什么Hook 是一个特殊的函数，它可以让你“钩入” React �
         </p>
         <p class="article-more-link">
           <a href="/2020/04/18/Hook学习小记/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-React冷门但很好用的知识点" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/08/27/React冷门但很好用的知识点/">React冷门但很好用的知识点</a>
-    </h1>
-  
-
-      </header>
-    
-    
-      <div class="article-meta">
-        
-	<a href="/2019/08/27/React冷门但很好用的知识点/" class="article-date">
-	  <time datetime="2019-08-27T13:00:03.000Z" itemprop="datePublished">2019-08-27</time>
-	</a>
-
-        
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-
-        
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          介绍最近在重读React官方文档，盘点一些不常用但有用的知识点。如果有啥说的不好的地方，欢迎指正！
-推荐个翻译的不错的React文档
-getSnapshotBeforeUpdate()getSnapshotBeforeUpdate()为React生命周期函数， 在render()之前调用。它使得组件能在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置）。此生命周期的任何返回值将作为参数传递给 componentDidUpdate()。
-处理聊天滚动的示例：12345678910111...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/08/27/React冷门但很好用的知识点/#more">阅读全文</a>
         </p>
       
     </div>
